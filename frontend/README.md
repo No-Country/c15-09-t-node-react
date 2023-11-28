@@ -55,6 +55,8 @@ export default Component = () => {}
 export const Component = () => {}
 ```
 
+.
+
 ### Referencias
 
 - [Estructura del proyecto de react](https://medium.com/@kthamodaran/react-8-best-practices-folder-structure-5dbda48a69e)

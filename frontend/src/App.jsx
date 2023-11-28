@@ -1,3 +1,10 @@
+import { Login } from './pages/Login'
+
+
 export const App = () => {
-  return <div className="text-red-500">App</div>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 };
