@@ -1,10 +1,6 @@
-import { Login } from './pages/login'
-
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 export const App = () => {
-  return (
-    <>
-      <Login />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
