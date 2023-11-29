@@ -3,9 +3,9 @@ import { Logo } from "../components/Logo";
 import "../components/Register.css";
 export const Register = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen  flex items-center justify-center">
       {/* Parte izquierda - Fondo con imagen */}
-      <div className="flex-1 h-screen imagen"></div>
+      <div className="flex-1 sm:block hidden h-screen imagen"></div>
 
       {/* Parte derecha - Formulario */}
       <div className="absolute top-20 right-16">

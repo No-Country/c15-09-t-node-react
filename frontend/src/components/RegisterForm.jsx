@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 export const RegisterForm = () => {
   const [formulario, setFormulario] = useState({
     nombre: "",
@@ -45,7 +44,15 @@ export const RegisterForm = () => {
   // };
 
   return (
-    <form onSubmit={handleSubmit} className="w-96 ">
+    <form onSubmit={handleSubmit} className="w-96  ">
+      <button
+        className="bg-white w-full mb-2 hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-2xl border-2"
+        onClick={() => {
+          // Lógica de inicio de sesión con Google
+        }}
+      >
+        Registrarse con Google
+      </button>
       <div className="inline-flex items-center justify-between w-full">
         <hr className="w-44 h-px  bg-gray-400 border-0" />
         <span className="font-medium text-gray-700">O</span>
@@ -109,7 +116,7 @@ export const RegisterForm = () => {
 
       <button
         type="submit"
-        className="bg-orange-200 rounded-2xl py-3 w-full text-base text-white font-black mb-3"
+        className="bg-orange-200 hover:bg-orange-400 rounded-2xl py-3 w-full text-base text-white font-black mb-3"
       >
         Registrarse
       </button>
