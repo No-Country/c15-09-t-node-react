@@ -15,7 +15,7 @@ export const Login = () => {
         <h1 className="text-4xl font-bold mb-8">Iniciar Sesion</h1>
 
         <LoginForm />
-        <Link to={"/register"} className="underline">
+        <Link to={"/register"} className="underline ">
           No tienes cuenta? Crea una.
         </Link>
       </div>
