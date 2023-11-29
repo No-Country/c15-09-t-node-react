@@ -56,6 +56,7 @@ export const RegisterForm = () => {
           Usuario:
         </label>
         <input
+          placeholder="Tu nombre de usuario"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="text"
           name="nombre"
@@ -69,6 +70,7 @@ export const RegisterForm = () => {
           Email:
         </label>
         <input
+          placeholder="Name@email.com"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="email"
           name="email"
@@ -82,6 +84,7 @@ export const RegisterForm = () => {
           Password:
         </label>
         <input
+          placeholder="Password"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="password"
           name="password"
@@ -95,6 +98,7 @@ export const RegisterForm = () => {
           Confirm Password:
         </label>
         <input
+          placeholder="Password"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="password"
           name="confirmPassword"
