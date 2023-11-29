@@ -1,8 +1,6 @@
-import { Register } from "./pages/Register";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 export const App = () => {
-  return (
-    <>
-      <Register />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
