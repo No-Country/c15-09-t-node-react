@@ -1,5 +1,3 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -7,7 +5,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+        poppings: ["Poppins"],
+      },
+      colors: {
+        primary: "#FE9130",
+        secondary: "#FEC38E",
       },
     },
   },
