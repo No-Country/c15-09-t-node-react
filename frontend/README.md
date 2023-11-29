@@ -62,3 +62,5 @@ export const Component = () => {}
 - [Estructura del proyecto de react](https://medium.com/@kthamodaran/react-8-best-practices-folder-structure-5dbda48a69e)
 
 - [Node version manager](https://github.com/coreybutler/nvm-windows/releases)
+
+.
