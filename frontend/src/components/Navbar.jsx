@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import beerMugImage from "../assets/images/noto_beer-mug.svg";
 
 export const Navbar = () => {
@@ -8,12 +9,18 @@ export const Navbar = () => {
         <a className="text-white text-2xl flex items-center">Brewer&apos;s Cookbook</a>
       </div>
       <div className="flex items-center">
-        <button className="text-black bg-white px-4 py-[0.375rem] mr-6 font-medium rounded-md">
+        <Link
+          className="text-black bg-white px-4 py-[0.375rem] mr-6 font-medium rounded-md"
+          to="/login"
+        >
           Iniciar sesion
-        </button>
-        <button className="text-black bg-white px-4 py-[0.375rem] font-medium rounded-md">
+        </Link>
+        <Link
+          className="text-black bg-white px-4 py-[0.375rem] font-medium rounded-md"
+          to="/register"
+        >
           Registrarse
-        </button>
+        </Link>
       </div>
     </nav>
   );
