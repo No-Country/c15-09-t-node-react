@@ -31,7 +31,7 @@ export const LoginForm = () => {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                     Email:
                 </label>
-                <input
+                <input placeholder="nombre@email.com"
                     className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
                     type="email"
                     name="email"
@@ -44,7 +44,7 @@ export const LoginForm = () => {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                     Password:
                 </label>
-                <input
+                <input placeholder=" Escribe tu Contraseña"
                     className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
                     type="password"
                     name="password"
@@ -57,8 +57,8 @@ export const LoginForm = () => {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
                     Confirm Password:
                 </label>
-                <input
-                    className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
+                <input placeholder="Confirma tu contraseña"
+                    className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3 "
                     type="password"
                     name="confirmPassword"
                     value={formulario.confirmPassword}
