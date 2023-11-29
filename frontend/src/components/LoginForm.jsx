@@ -53,18 +53,7 @@ export const LoginForm = () => {
                 />
             </div>
 
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
-                    Confirm Password:
-                </label>
-                <input placeholder="Confirma tu contraseña"
-                    className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3 "
-                    type="password"
-                    name="confirmPassword"
-                    value={formulario.confirmPassword}
-                    onChange={handleChange}
-                />
-            </div>
+
 
             <button
                 type="submit"
