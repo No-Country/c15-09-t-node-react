@@ -11,12 +11,15 @@ h4,
 h5,
 h6,
 button {
-  font-family: "Poppings";
+  @apply font-poppings;
 }
 
 h1 {
-  font-weight: 700;
-  font-size: 40px;
+  @apply font-bold text-[40px];
+}
+
+button {
+  @apply transition-colors;
 }
 
 .container {
