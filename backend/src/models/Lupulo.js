@@ -19,4 +19,5 @@ module.exports = (dataBase) => {
     //muchos lupulos
     lupulo.hasMany(lupulos, {  foreignKey: 'lupulo_id'   });
     return lupulo
+    
 }
