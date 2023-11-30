@@ -1,7 +1,8 @@
 const { DataTypes } = require('sequelize')
-
+const fermentables = require('./Fermentables')
 module.exports = (dataBase) => {
-    dataBase.define('Maltas', {
+
+   const maltas= dataBase.define('Maltas', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -14,4 +15,8 @@ module.exports = (dataBase) => {
         },     
         
     }, {timestamps: false})
+
+    //muchos fermentables
+    maltas.hasMany(fermentables, {  foreignKey: 'maltasId'   });
+    return maltas
 }
