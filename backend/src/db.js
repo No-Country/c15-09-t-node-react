@@ -3,8 +3,9 @@ const { Sequelize } = require('sequelize')
 const {USER, PASS, HOST} = process.env
 const url= `postgres://${USER}:${PASS}@${HOST}/cervezaNC`
 
-const modelMalta = require('../src/models/Maltas')
-const modelFermentable = require('../src/models/Fermentables')
+const modelMalta = require('./models/Maltas')
+const modelFermentable = require('./models/Fermentables')
+const modelUser = require('./models/Users')
 
 const dataBase = new Sequelize(
     url, {
@@ -24,16 +25,18 @@ const connectDB = async () => {
 
 modelMalta(dataBase)
 modelFermentable(dataBase)
+modelUser(dataBase)
 
-const { Maltas, Fermentables } = dataBase.models
+const { Maltas, Fermentables, User } = dataBase.models
 
-//! ---------------------------------------- relaciones
+//! ---------------------------------------- relaciones ------------------------------
 Maltas.hasMany(Fermentables)
 
 
 module.exports = {
     Maltas,
     Fermentables,
+    User,
     connectDB,
     conn: dataBase
 }
