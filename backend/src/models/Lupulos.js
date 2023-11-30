@@ -52,9 +52,9 @@ module.exports = (dataBase) => {
 
 
     //tiene un nombre de lupulo
-    lupulos.belongsTo(lupulo, { foreignKey: 'lupulo_id' });
+    lupulos.belongsTo(lupulo, { foreignKey: 'lupuloId' });
     //tiene un tipo de lupulo
-    lupulos.belongsTo(tipoLupulos, { foreignKey: 'tipoLupulos_id' });
+    lupulos.belongsTo(tipoLupulos, { foreignKey: 'tipoLupuloId' });
 
     return lupulos
 }
