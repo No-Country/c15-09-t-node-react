@@ -4,8 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-h1{
-    font-family: "Poppings";
-    font-weight: 700;
-    font-size: 40px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Poppings";
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.container {
+  max-width: 1178px;
+  margin: 0 auto;
 }
