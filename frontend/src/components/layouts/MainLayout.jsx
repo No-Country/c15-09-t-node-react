@@ -30,7 +30,7 @@ export const MainLayout = () => {
             <li>
               <Search />
             </li>
-            <li>
+            <li className="z-10">
               <UserBtn />
             </li>
           </ul>

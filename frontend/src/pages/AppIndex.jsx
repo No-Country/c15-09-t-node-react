@@ -17,7 +17,7 @@ export const AppIndex = () => {
           conviértete en un maestro cervecero desde la comodidad de tu dispositivo.
         </p>
 
-        <button className="bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px]">
+        <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px]">
           Descubrir
         </button>
       </div>
