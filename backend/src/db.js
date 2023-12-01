@@ -7,6 +7,8 @@ const modelMalta = require('./models/Maltas')
 const modelFermentable = require('./models/Fermentables')
 const modelUser = require('./models/Users')
 
+
+
 const dataBase = new Sequelize(
     url, {
         logging: false,
@@ -26,6 +28,7 @@ const connectDB = async () => {
 modelMalta(dataBase)
 modelFermentable(dataBase)
 modelUser(dataBase)
+
 
 const { Maltas, Fermentables, User } = dataBase.models
 

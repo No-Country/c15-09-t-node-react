@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize')
-const lupulo = require('./Lupulo')
-const tipoLupulos = require('./TipoLupulos')
+//const lupulo = require('./Lupulo')
+//const tipoLupulos = require('./TipoLupulos')
 module.exports = (dataBase) => {
 
 
@@ -11,15 +11,31 @@ module.exports = (dataBase) => {
             primaryKey: true,
             allowNull: false
         },
-        cantidad:{
-            type: DataTypes.DECIMAL,
-            allowNull: false 
-        },
-        tiempo:{
+        amount:{
             type: DataTypes.INTEGER,
             allowNull: false 
 
         },
+        use:{
+            type: DataTypes.STRING,
+            allowNull: false 
+        },
+        time:{
+            type: DataTypes.INTEGER,
+            allowNull: false 
+            
+        },
+        ibu:{
+            type: DataTypes.INTEGER,
+            allowNull: false 
+
+        },
+        alpha:{
+            type: DataTypes.DECIMAL,
+            allowNull: false 
+
+        }
+       /*,
         tipoLupuloId:{
 
                  
@@ -46,15 +62,15 @@ module.exports = (dataBase) => {
             }
 
 
-        },
+        },*/
         
     }, {timestamps: false})
 
 
     //tiene un nombre de lupulo
-    lupulos.belongsTo(lupulo, { foreignKey: 'lupuloId' });
+    //lupulos.belongsTo(lupulo, { foreignKey: 'lupuloId' });
     //tiene un tipo de lupulo
-    lupulos.belongsTo(tipoLupulos, { foreignKey: 'tipoLupuloId' });
+    //lupulos.belongsTo(tipoLupulos, { foreignKey: 'tipoLupuloId' });
 
     return lupulos
 }
