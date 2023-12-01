@@ -11,13 +11,13 @@ export const AppIndex = () => {
           <span className="block font-homemade">Cerveza Casera</span>
         </h1>
 
-        <p className="mt-6 max-w-[552px]">
+        <p className="mt-6 max-w-[512px] text-lg">
           Encuentra inspiración en una amplia colección de recetas probadas y, lo mejor de todo,
           ¡también puedes compartir tus creaciones únicas con la comunidad! Descubre, aprende y
           conviértete en un maestro cervecero desde la comodidad de tu dispositivo.
         </p>
 
-        <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px]">
+        <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
           Descubrir
         </button>
       </div>
