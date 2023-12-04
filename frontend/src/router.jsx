@@ -6,7 +6,7 @@ import { MainLayout } from "./components/layouts/MainLayout";
 import { AppIndex } from "./pages/AppIndex";
 import { Stylespage } from "./pages/Stylespage";
 import { CreateBeer } from "./pages/CreateBeer";
-
+import { StyleDetails } from "./pages/StyleDetails";
 
 export const router = createBrowserRouter([
   {
@@ -32,13 +32,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "styles",
-        element: <Stylespage />
+        element: <Stylespage />,
+      },
+      {
+        path: "styledetails",
+        element: <StyleDetails />,
       },
       {
         path: "create",
-        element: <CreateBeer />
+        element: <CreateBeer />,
       },
     ],
   },
-
 ]);
