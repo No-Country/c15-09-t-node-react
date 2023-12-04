@@ -219,7 +219,6 @@ export const Stylesbeer = () => {
 
     const productosPorPagina = 10;
     const totalPaginas = Math.ceil(productos.length / productosPorPagina);
-
     const [paginaActual, setPaginaActual] = useState(1);
 
     const handlePaginaChange = (nuevaPagina) => {
@@ -230,6 +229,8 @@ export const Stylesbeer = () => {
         (paginaActual - 1) * productosPorPagina,
         paginaActual * productosPorPagina
     );
+
+
 
 
     return (
