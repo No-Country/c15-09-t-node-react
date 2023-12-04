@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { AppIndex } from "./pages/AppIndex";
 import { Stylespage } from "./pages/Stylespage";
+import { CreateBeer } from "./pages/CreateBeer";
 
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "styles",
         element: <Stylespage />
+      },
+      {
+        path: "create",
+        element: <CreateBeer />
       },
     ],
   },

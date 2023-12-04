@@ -13,21 +13,20 @@ export const MainLayout = () => {
           <ul className="flex gap-[33px] items-center text-gray">
             <li>
               <Link to={"/app"}> Inicio </Link>
-
             </li>
             <li>
               <a href="#!">Recetas</a>
             </li>
             <li>
-              <Link to={"/app/styles"} > Estilos </Link>
+              <Link to={"/app/styles"}> Estilos </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
-                href="#!"
+                to={"/app/create"}
               >
                 Crear
-              </a>
+              </Link>
             </li>
             <li>
               <Search />
@@ -40,6 +39,6 @@ export const MainLayout = () => {
       </header>
 
       <Outlet />
-    </div >
+    </div>
   );
 };
