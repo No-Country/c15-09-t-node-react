@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (dataBase) => {
-  dataBase.define('Estilos', {
+  const Estilos = dataBase.define('Estilos', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -99,4 +99,5 @@ module.exports = (dataBase) => {
   {
     timestamps: false
   })
+  return Estilos
 }
