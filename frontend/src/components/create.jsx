@@ -237,8 +237,6 @@ export const Create = () => {
     };
 
 
-
-
     //MACERACION 
 
     const handleChangeMaceracion = (e, index) => {
@@ -568,7 +566,7 @@ FERMENTABLES */}
                             Eliminar
                         </button>
                     </div>
-                ))};
+                ))}
                 <button
                     type="button"
                     onClick={handleAddFermentable}
@@ -700,7 +698,7 @@ LEVADURA */}
                             Eliminar
                         </button>
                     </div>
-                ))};
+                ))}
                 <button
                     type="button"
                     onClick={handleAddLevadura}
@@ -827,7 +825,7 @@ INGREDIENTES ADICIONALES */}
                                 Eliminar
                             </button>
                         </div>
-                    ))};
+                    ))}
 
 
                 <button
@@ -881,7 +879,7 @@ INGREDIENTES ADICIONALES */}
                                 Eliminar
                             </button>
                         </div>
-                    ))};
+                    ))}
 
 
                 <button
