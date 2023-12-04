@@ -1,6 +1,12 @@
+import { useState } from "react";
 import amberAle from "../assets/images/amber-ale.jpg";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 // placeholder por ahora
 export const StyleDetails = () => {
+  const [favorite, setFavorite] = useState(false);
+
   return (
     <div className="container font-poppings">
       <main className="flex mt-16">
@@ -8,8 +14,26 @@ export const StyleDetails = () => {
           <img src={amberAle} className="rounded-xl"></img>
         </div>
         <div className="ml-auto max-w-xl">
-          <h1 className="text-5xl mb-6 font-bold">American Amber Ale</h1>
-          <p className="font-normal">
+          <div className="flex items-center">
+            <h1 className="text-4xl font-bold mr-4">American Amber Ale</h1>
+            {favorite === false ? (
+              <FavoriteBorderIcon
+                className="scale-150 text-red-900"
+                onClick={() => {
+                  setFavorite(!favorite);
+                }}
+              />
+            ) : (
+              <FavoriteIcon
+                className="scale-150 text-red-900"
+                onClick={() => {
+                  setFavorite(!favorite);
+                }}
+              />
+            )}
+          </div>
+
+          <p className="font-normal mt-6">
             An amber, hoppy, moderate-strength American craft beer with a malty caramel flavor. The
             balance can vary quite a bit, with some versions being fairly malty and others being
             aggressively hoppy. Hoppy and bitter versions should not have clashing flavors with the
@@ -25,14 +49,12 @@ export const StyleDetails = () => {
             <p className="ml-1">DARK</p>
           </div>
           <p className="font-bold text-[#DB8116] mx-auto w-fit">11-18 SRM (COLOR)</p>
-
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">LOW</p>
             <span className="block w-11/12 h-3 bg-gradient-to-r from-[#000000] to-[#909922] rounded-xl"></span>
             <p className="ml-1">HIGH</p>
           </div>
           <p className="font-bold text-[#B3B554] mx-auto w-fit">25-45 IBU (BITTERNESS)</p>
-
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">LOW</p>
             <span className="block w-11/12 h-3 bg-gradient-to-r from-[#e7e4c1] to-[#d1bf51] rounded-xl"></span>
