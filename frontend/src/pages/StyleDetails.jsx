@@ -7,6 +7,18 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 export const StyleDetails = () => {
   const [favorite, setFavorite] = useState(false);
 
+  // hacer esto prop cuando tenga la info
+
+  const totalSrm = 40;
+  const totalIbu = 100;
+  const totalAbv = 15;
+
+  function calculatePercentage(value, totalType) {
+    return (value / totalType) * 100;
+  }
+
+  // TODO: agregar tooltips
+
   return (
     <div className="container font-poppings">
       <main className="flex mt-16">
@@ -45,19 +57,71 @@ export const StyleDetails = () => {
           </h6>
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">PALE</p>
-            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#ffe699] via-[#962d00] to-[#36080a] rounded-xl"></span>
+            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#ffe699] via-[#962d00] to-[#36080a] rounded-xl relative">
+              {" "}
+              <span
+                style={{
+                  left: `${calculatePercentage(11, totalSrm)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                [
+              </span>
+              <span
+                style={{
+                  left: `${calculatePercentage(18, totalSrm)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                ]
+              </span>
+            </span>
             <p className="ml-1">DARK</p>
           </div>
           <p className="font-bold text-[#DB8116] mx-auto w-fit">11-18 SRM (COLOR)</p>
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">LOW</p>
-            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#000000] to-[#909922] rounded-xl"></span>
+            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#000000] to-[#909922] rounded-xl relative">
+              <span
+                style={{
+                  left: `${calculatePercentage(25, totalIbu)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                [
+              </span>
+              <span
+                style={{
+                  left: `${calculatePercentage(45, totalIbu)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                ]
+              </span>
+            </span>
             <p className="ml-1">HIGH</p>
           </div>
           <p className="font-bold text-[#B3B554] mx-auto w-fit">25-45 IBU (BITTERNESS)</p>
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">LOW</p>
-            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#e7e4c1] to-[#d1bf51] rounded-xl"></span>
+            <span className="block w-11/12 h-3 bg-gradient-to-r from-[#e7e4c1] to-[#d1bf51] rounded-xl relative">
+              <span
+                style={{
+                  left: `${calculatePercentage(4.4, totalAbv)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                [
+              </span>
+              <span
+                style={{
+                  left: `${calculatePercentage(6.1, totalAbv)}%`,
+                }}
+                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+              >
+                ]
+              </span>
+            </span>
             <p className="ml-1">HIGH</p>
           </div>
           <p className="font-bold text-[#DED490] mx-auto w-fit">4.4-6.1% ABV(ALCOHOL)</p>
