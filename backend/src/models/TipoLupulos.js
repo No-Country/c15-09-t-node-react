@@ -1,23 +1,21 @@
 const { DataTypes } = require('sequelize')
-// Listado de levaduras comerciales con sus atributos.
+const lupulos = require('./Lupulos')
 module.exports = (dataBase) => {
-  const levaduras = dataBase.define('Levaduras', {
+  const tipoLupulos = dataBase.define('TipoLupulos', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    type: {
+    hervor: {
       type: DataTypes.STRING,
       allowNull: false
     }
 
   }, { timestamps: false })
 
-  return levaduras
+  // muchos lupulos
+  tipoLupulos.hasMany(lupulos, { foreignKey: 'tipoLupuloId' })
+  return tipoLupulos
 }

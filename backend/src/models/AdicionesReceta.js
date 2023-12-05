@@ -1,23 +1,34 @@
 const { DataTypes } = require('sequelize')
-// Listado de levaduras comerciales con sus atributos.
+
 module.exports = (dataBase) => {
-  const levaduras = dataBase.define('Levaduras', {
+  const AdicionesReceta = dataBase.define('AdicionesReceta', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
-    name: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    type: {
+    tipo: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    cantidad: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    unidad: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    notas: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
-
   }, { timestamps: false })
 
-  return levaduras
+  return AdicionesReceta
 }

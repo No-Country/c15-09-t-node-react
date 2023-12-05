@@ -53,6 +53,5 @@ module.exports = (dataBase) => {
     //tiene una malta
     //fermentables.belongsTo(maltas, { foreignKey: 'maltasId' });
 
-    return fermentables
-
+  return fermentables
 }

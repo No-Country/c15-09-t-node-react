@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Logo } from "../Logo";
 import { Search } from "../navbar/Search";
 import { UserBtn } from "../navbar/UserBtn";
+import { Link } from "react-router-dom";
 
 export const MainLayout = () => {
   return (
@@ -11,13 +12,14 @@ export const MainLayout = () => {
         <nav>
           <ul className="flex gap-[33px] items-center text-gray">
             <li>
-              <a href="#!">Inicio</a>
+              <Link to={"/app"}> Inicio </Link>
+
             </li>
             <li>
               <a href="#!">Recetas</a>
             </li>
             <li>
-              <a href="#!">Estilos</a>
+              <Link to={"/app/styles"} > Estilos </Link>
             </li>
             <li>
               <a
@@ -38,6 +40,6 @@ export const MainLayout = () => {
       </header>
 
       <Outlet />
-    </div>
+    </div >
   );
 };
