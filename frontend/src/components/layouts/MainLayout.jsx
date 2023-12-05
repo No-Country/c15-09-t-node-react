@@ -3,6 +3,7 @@ import { Logo } from "../Logo";
 import { Search } from "../navbar/Search";
 import { UserBtn } from "../navbar/UserBtn";
 import { Link } from "react-router-dom";
+import { DarkModeToggle } from "../../assets/styles/components/DarkModeToggle";
 
 export const MainLayout = () => {
   return (
@@ -10,7 +11,7 @@ export const MainLayout = () => {
       <header className="flex items-center justify-between mt-[57px]">
         <Logo />
         <nav>
-          <ul className="flex gap-[33px] items-center text-gray">
+          <ul className="flex gap-[33px] items-center ">
             <li>
               <Link to={"/app"}> Inicio </Link>
             </li>
@@ -27,6 +28,9 @@ export const MainLayout = () => {
               >
                 Crear
               </Link>
+            </li>
+            <li>
+              <DarkModeToggle />
             </li>
             <li>
               <Search />
