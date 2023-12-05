@@ -15,7 +15,7 @@ const modelEstilos = require('../src/models/Estilos')
 
 const dataBase = new Sequelize(
   url, {
-    logging: true,
+    logging: false,
     native: false
   }
 )

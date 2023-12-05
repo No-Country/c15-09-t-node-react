@@ -7,7 +7,7 @@ const { conn } = require('./src/db')
 
 app.use(express.json())
 
-conn.sync({ force: true })
+conn.sync({ force: false })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server raised in port ${PORT} `)
