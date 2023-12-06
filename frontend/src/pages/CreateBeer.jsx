@@ -282,9 +282,6 @@ export const CreateBeer = () => {
           />
         </label>
 
-  
-
-
         {recipeData.fermentables.map((item, index) => (
           <div key={index} className="flex items-center mb-2">
             <label>
