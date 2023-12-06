@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const controllersLupulos = require('../../controllers/controllerLupulos')
+const infoControllerLupulos = require('../../controllers/controllerLupulos/infoControllerLupulos')
+const createControllerLupulos = require('../../controllers/controllerLupulos/createControllerLupulos')
 
-router.get('/mostrarLupulos', controllersLupulos.infoLupulos)
-router.post('/crearLupulos', controllersLupulos.CreateLupulos)
+router.get('/mostrarLupulos', infoControllerLupulos.infoLupulos)
+router.post('/crearLupulos', createControllerLupulos.createLupulos)
 
 module.exports = router

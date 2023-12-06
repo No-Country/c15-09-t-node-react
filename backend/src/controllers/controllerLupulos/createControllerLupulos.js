@@ -1,9 +1,9 @@
 const modelLupulos = require('../../models/Lupulos')
 
-exports.CreateLupulos = async (req, res) => {
-  const { amount, use, time, ibu, alpha } = req.body
+exports.createLupulos = async (req, res) => {
+  const { name, alpha } = req.body
   try {
-    const lupulo = await modelLupulos.create({ amount, use, time, ibu, alpha })
+    const lupulo = await modelLupulos.create({ name, alpha })
     res.status(201).json(lupulo)
   } catch (error) {
     console.error(error)

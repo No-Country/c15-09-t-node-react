@@ -1,8 +1,8 @@
-const modelLupulos = require('../../models/Lupulos')
+const { Lupulos } = require('../../db')
 
 exports.infoLupulos = async (req, res) => {
   try {
-    const lupulos = await modelLupulos.findAll()
+    const lupulos = await Lupulos.findAll()
     res.status(200).json(lupulos)
   } catch (error) {
     console.error(error)
