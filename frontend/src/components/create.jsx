@@ -5,12 +5,10 @@ export const Create = () => {
         name: "",
         author: "",
         image: "",
-        type: "",
         abv: 0.0,
         og: "",
         fg: "",
         ibu: "",
-        color: "",
         batchSize: "",
         volumenAguaMaceracion: "",
         volumenAguaLavado: "",
@@ -37,11 +35,10 @@ export const Create = () => {
         levadura: [
             {
                 name: "",
-                type: "",
                 quantity: "",
             },
         ],
-        ingredientesAdicionales: [
+        adiciones: [
             {
                 name: "",
                 type: "",
@@ -51,7 +48,6 @@ export const Create = () => {
         ],
         maceracion: [
             {
-                name: "",
                 temperature: "",
                 time: "",
             },
@@ -197,25 +193,25 @@ export const Create = () => {
 
     //Ingredientes adicionales 
 
-    const handleChangeIngredientesAdicionales = (e, index) => {
+    const handleChangeAdiciones = (e, index) => {
         const { name, value } = e.target;
-        const updatedIngredientesAdicionales = [...recipeData.ingredientesAdicionales];
-        updatedIngredientesAdicionales[index] = {
-            ...updatedIngredientesAdicionales[index],
+        const updatedAdiciones = [...recipeData.adiciones];
+        updatedAdiciones[index] = {
+            ...updatedAdiciones[index],
             [name]: value,
         };
 
         setRecipeData({
             ...recipeData,
-            ingredientesAdicionales: updatedIngredientesAdicionales,
+            adiciones: updatedAdiciones,
         });
     };
 
-    const handleAddIngredientesAdicionales = () => {
+    const handleAddAdiciones = () => {
         setRecipeData({
             ...recipeData,
-            ingredientesAdicionales: [
-                ...recipeData.ingredientesAdicionales,
+            adiciones: [
+                ...recipeData.adiciones,
                 {
                     name: "",
                     type: "",
@@ -226,13 +222,13 @@ export const Create = () => {
         });
     };
 
-    const handleRemoveIngredientesAdicionales = (index) => {
-        const updatedIngredientesAdicionales = [...recipeData.ingredientesAdicionales];
-        updatedIngredientesAdicionales.splice(index, 1);
+    const handleRemoveAdiciones = (index) => {
+        const updatedAdiciones = [...recipeData.adiciones];
+        updatedAdiciones.splice(index, 1);
 
         setRecipeData({
             ...recipeData,
-            ingredientesAdicionales: updatedIngredientesAdicionales,
+            adiciones: updatedAdiciones,
         });
     };
 
@@ -259,7 +255,6 @@ export const Create = () => {
             maceracion: [
                 ...recipeData.maceracion,
                 {
-                    name: "",
                     temperature: "",
                     time: "",
                 },
@@ -300,7 +295,6 @@ export const Create = () => {
             fermentacion: [
                 ...recipeData.fermentacion,
                 {
-                    type: "",
                     temperature: "",
                     time: "",
                 },
@@ -324,7 +318,7 @@ export const Create = () => {
         <div className="w-full">
             <form onSubmit={handleSubmit} className="flex flex-col">
                 <label className="w-full mb-4 block text-sm font-medium text-gray-700">
-                    Nombre
+                    Nombre de la Cerveza
                     <input
                         className="mt-1 p-2 border rounded-md w-full"
                         type="text"
@@ -353,16 +347,7 @@ export const Create = () => {
                         onChange={handleChange}
                     />
                 </label>
-                <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
-                    Tipo
-                    <input
-                        className="mt-1 p-2 border rounded-md w-full"
-                        name="type"
-                        type="text"
-                        value={recipeData.type}
-                        onChange={handleChange}
-                    />
-                </label>
+
 
                 <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
                     Alcohol por Volumen
@@ -378,7 +363,7 @@ export const Create = () => {
                 </label>
 
                 <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
-                    Graverdad Original
+                    Gravedad Original
                     <input
                         className="mt-1 p-2 border rounded-md w-full"
                         name="og"
@@ -390,7 +375,7 @@ export const Create = () => {
                 </label>
 
                 <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
-                    Graverdad Final
+                    Gravedad Final
                     <input
                         className="mt-1 p-2 border rounded-md w-full"
                         name="fg"
@@ -413,17 +398,7 @@ export const Create = () => {
                     />
                 </label>
 
-                <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
-                    Color
-                    <input
-                        className="mt-1 p-2 border rounded-md w-full"
-                        name="color"
-                        type="number"
-                        value={recipeData.color}
-                        onChange={handleChange}
-                        placeholder="0.0"
-                    />
-                </label>
+
 
                 <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
                     Tamaño del Lote
@@ -670,16 +645,7 @@ LEVADURA */}
                                 onChange={(e) => handleChangeLevadura(e, index)}
                             />
                         </label>
-                        <label>
-                            Type:
-                            <input
-                                className="p-2 border rounded-md mr-2"
-                                type="text"
-                                name="type"
-                                value={item.type}
-                                onChange={(e) => handleChangeLevadura(e, index)}
-                            />
-                        </label>
+
                         <label>
                             Quantity:
                             <input
@@ -708,11 +674,11 @@ LEVADURA */}
                 </button>
 
                 {/* 
-INGREDIENTES ADICIONALES */}
+ADICIONES */}
 
 
                 {
-                    recipeData.ingredientesAdicionales.map((item, index) => (
+                    recipeData.adiciones.map((item, index) => (
                         <div key={index} className="flex items-center mb-2">
                             <label>
                                 Nombre:
@@ -721,7 +687,7 @@ INGREDIENTES ADICIONALES */}
                                     type="text"
                                     name="name"
                                     value={item.name}
-                                    onChange={(e) => handleChangeIngredientesAdicionales(e, index)}
+                                    onChange={(e) => handleChangeAdiciones(e, index)}
                                 />
                             </label>
                             <label>
@@ -731,7 +697,7 @@ INGREDIENTES ADICIONALES */}
                                     type="text"
                                     name="type"
                                     value={item.type}
-                                    onChange={(e) => handleChangeIngredientesAdicionales(e, index)}
+                                    onChange={(e) => handleChangeAdiciones(e, index)}
                                 />
                             </label>
 
@@ -742,7 +708,7 @@ INGREDIENTES ADICIONALES */}
                                     type="text"
                                     name="quantity"
                                     value={item.quantity}
-                                    onChange={(e) => handleChangeIngredientesAdicionales(e, index)}
+                                    onChange={(e) => handleChangeAdiciones(e, index)}
                                 />
                             </label>
 
@@ -753,14 +719,14 @@ INGREDIENTES ADICIONALES */}
                                     type="text"
                                     name="unit"
                                     value={item.unit}
-                                    onChange={(e) => handleChangeIngredientesAdicionales(e, index)}
+                                    onChange={(e) => handleChangeAdiciones(e, index)}
                                 />
                             </label>
 
                             <button
                                 className="p-2 bg-red-500 text-white rounded-md"
                                 type="button"
-                                onClick={() => handleRemoveIngredientesAdicionales(index)}
+                                onClick={() => handleRemoveAdiciones(index)}
                             >
                                 Eliminar
                             </button>
@@ -770,7 +736,7 @@ INGREDIENTES ADICIONALES */}
 
                 <button
                     type="button"
-                    onClick={handleAddIngredientesAdicionales}
+                    onClick={handleAddAdiciones}
                     className="p-2 bg-green-500 text-white rounded-md"
                 >
                     Agregar Ingredientes
@@ -783,16 +749,7 @@ INGREDIENTES ADICIONALES */}
                 {
                     recipeData.maceracion.map((item, index) => (
                         <div key={index} className="flex items-center mb-2">
-                            <label>
-                                Nombre:
-                                <input
-                                    className="p-2 border rounded-md mr-2"
-                                    type="text"
-                                    name="name"
-                                    value={item.name}
-                                    onChange={(e) => handleChangeMaceracion(e, index)}
-                                />
-                            </label>
+
                             <label>
                                 Temperatura:
                                 <input
@@ -839,16 +796,6 @@ INGREDIENTES ADICIONALES */}
                 {
                     recipeData.fermentacion.map((item, index) => (
                         <div key={index} className="flex items-center mb-2">
-                            <label>
-                                Tipo:
-                                <input
-                                    className="p-2 border rounded-md mr-2"
-                                    type="text"
-                                    name="type"
-                                    value={item.type}
-                                    onChange={(e) => handleChangeFermentacion(e, index)}
-                                />
-                            </label>
                             <label>
                                 Temperatura:
                                 <input
