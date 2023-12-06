@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Login } from "./pages/Login";
+import { Login } from "./pages/login";
 import { Register } from "./pages/Register";
 import { Home } from "./pages/Home";
 import { MainLayout } from "./components/layouts/MainLayout";
@@ -7,6 +7,8 @@ import { AppIndex } from "./pages/AppIndex";
 import { Stylespage } from "./pages/Stylespage";
 import { CreateBeer } from "./pages/CreateBeer";
 import { StyleDetails } from "./pages/StyleDetails";
+import { RecipeBeer } from "./pages/RecipeBeer";
+import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
       {
         path: "create",
         element: <CreateBeer />,
+      },
+      {
+        path: "recipe",
+        element: <RecipeBeer />,
+      },
+      {
+        path: "recipedetails",
+        element: <RecipeBeerDetails />,
       },
     ],
   },
