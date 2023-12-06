@@ -16,7 +16,7 @@ export const MainLayout = () => {
               <Link to={"/app"}> Inicio </Link>
             </li>
             <li>
-              <a href="#!">Recetas</a>
+              <Link to={"/app/recipe"}> Recetas </Link>
             </li>
             <li>
               <Link to={"/app/styles"}> Estilos </Link>

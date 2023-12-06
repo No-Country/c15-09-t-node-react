@@ -244,7 +244,7 @@ export const Stylesbeer = () => {
                             <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
                                 <img className="w-full" src={producto.imagen} alt="Sunset in the mountains" />
                                 <div className="px-6 py-4">
-                                    <div className="font-bold text-xl mb-2">{producto.nombre}</div>
+                                    <div className="font-bold font-homemade text-xl mb-2">{producto.nombre}</div>
                                     <p className="text-gray-700 text-base">{producto.parrafo}</p>
                                 </div>
                             </div>{" "}
@@ -268,8 +268,8 @@ export const Stylesbeer = () => {
                         <li
                             key={numeroPagina + 1}
                             className={`mx-1 w-6 h-6 flex cursor-pointer text-center justify-center items-center ${numeroPagina + 1 === paginaActual
-                                    ? "  bg-primary rounded-full text-white"
-                                    : "text-gray"
+                                ? "  bg-primary rounded-full text-white"
+                                : "text-gray"
                                 }`}
                             onClick={() => handlePaginaChange(numeroPagina + 1)}
                         >
