@@ -51,10 +51,10 @@ export const StyleDetails = () => {
             aggressively hoppy. Hoppy and bitter versions should not have clashing flavors with the
             caramel malt profile.
           </p>
-          <h6 className="text-[#DB8116] font-bold text-[18px] mt-12">
-            CATEGORY:
-            <span className="text-black font-semibold">AMBER AND BROWN AMERICAN BEER</span>
-          </h6>
+          <div className="flex mt-12 text-[18px]">
+            <h6 className="text-[#DB8116] font-bold mr-1">CATEGORY:</h6>{" "}
+            <h6 className="font-semibold">AMBER AND BROWN AMERICAN BEER</h6>
+          </div>
           <div className="flex items-center text-xs font-medium mt-10 mb-4">
             <p className="mr-1">PALE</p>
             <span className="block w-11/12 h-3 bg-gradient-to-r from-[#ffe699] via-[#962d00] to-[#36080a] rounded-xl relative">
@@ -63,7 +63,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(11, totalSrm)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  text-3xl bottom-2"
               >
                 [
               </span>
@@ -71,7 +71,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(18, totalSrm)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  text-3xl bottom-2"
               >
                 ]
               </span>
@@ -86,7 +86,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(25, totalIbu)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  text-3xl bottom-2"
               >
                 [
               </span>
@@ -94,7 +94,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(45, totalIbu)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  text-3xl bottom-2"
               >
                 ]
               </span>
@@ -109,7 +109,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(4.4, totalAbv)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  dark:text-white text-3xl bottom-2"
               >
                 [
               </span>
@@ -117,7 +117,7 @@ export const StyleDetails = () => {
                 style={{
                   left: `${calculatePercentage(6.1, totalAbv)}%`,
                 }}
-                className="absolute h-full text-neutral-900 text-3xl bottom-2"
+                className="absolute h-full  text-3xl bottom-2"
               >
                 ]
               </span>
