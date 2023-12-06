@@ -3,6 +3,7 @@ import { Logo } from "../Logo";
 import { Search } from "../navbar/Search";
 import { UserBtn } from "../navbar/UserBtn";
 import { Link } from "react-router-dom";
+import { DarkModeToggle } from "../../assets/styles/components/DarkModeToggle";
 
 export const MainLayout = () => {
   return (
@@ -10,24 +11,26 @@ export const MainLayout = () => {
       <header className="flex items-center justify-between mt-[57px]">
         <Logo />
         <nav>
-          <ul className="flex gap-[33px] items-center text-gray">
+          <ul className="flex gap-[33px] items-center ">
             <li>
               <Link to={"/app"}> Inicio </Link>
-
             </li>
             <li>
               <a href="#!">Recetas</a>
             </li>
             <li>
-              <Link to={"/app/styles"} > Estilos </Link>
+              <Link to={"/app/styles"}> Estilos </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
-                href="#!"
+                to={"/app/create"}
               >
                 Crear
-              </a>
+              </Link>
+            </li>
+            <li>
+              <DarkModeToggle />
             </li>
             <li>
               <Search />
@@ -40,6 +43,6 @@ export const MainLayout = () => {
       </header>
 
       <Outlet />
-    </div >
+    </div>
   );
 };

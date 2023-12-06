@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize')
+//const fermentables = require('./Fermentables')
 // const fermentables = require('./Fermentables')
 // Listado de maltas comerciales con sus atributos.
 module.exports = (dataBase) => {
@@ -24,7 +25,7 @@ module.exports = (dataBase) => {
 
   }, { timestamps: false })
 
-  // muchos fermentables
-  //   maltas.hasMany(fermentables, { foreignKey: 'maltasId' })
-  return maltas
+    //muchos fermentables
+    //maltas.hasMany(fermentables, {  foreignKey: 'maltasId'   });
+    return maltas
 }
