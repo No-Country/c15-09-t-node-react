@@ -26,3 +26,9 @@ button {
   max-width: 1178px;
   margin: 0 auto;
 }
+@layer utilities {
+  .dark-mode {
+    @apply bg-gray-dark dark:bg-gray-dark;
+    @apply text-white dark:text-white !important;
+  }
+}
