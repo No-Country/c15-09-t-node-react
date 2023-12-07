@@ -9,6 +9,7 @@ import { CreateBeer } from "./pages/CreateBeer";
 import { StyleDetails } from "./pages/StyleDetails";
 import { RecipeBeer } from "./pages/RecipeBeer";
 import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
+import { ProfileLayout } from "./components/layouts/ProfileLayout";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,24 @@ export const router = createBrowserRouter([
       {
         path: "recipedetails",
         element: <RecipeBeerDetails />,
+      },
+      {
+        path: "profile",
+        element: <ProfileLayout />,
+        children: [
+          {
+            index: true,
+            element: <h1 className="mt-8">Tus recetas</h1>,
+          },
+          {
+            path: "favorites-recipes",
+            element: <h1 className="mt-8">Recetas favoritas</h1>,
+          },
+          {
+            path: "newest",
+            element: <h1 className="mt-8">Newest</h1>,
+          },
+        ],
       },
     ],
   },
