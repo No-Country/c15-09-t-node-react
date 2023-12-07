@@ -1,4 +1,5 @@
 import licorImg from "../assets/images/app-index/licor-hero.png";
+import { Link } from "react-router-dom";
 
 import "../assets/styles/components/app-index.css";
 
@@ -17,9 +18,9 @@ export const AppIndex = () => {
           conviértete en un maestro cervecero desde la comodidad de tu dispositivo.
         </p>
 
-        <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+        <Link to='/app/recipe'> <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
           Descubrir
-        </button>
+        </button></Link>
       </div>
       <div className="relative">
         <div className="absolute block-gradiant z-10"></div>
