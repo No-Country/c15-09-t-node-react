@@ -27,7 +27,7 @@ export const UserBtn = () => {
         <div className="dropdown-menu absolute top-full text-black bg-white right-0 mt-2  border rounded shadow-md">
           <ul className="py-1">
             <li>
-              <Link to="/perfil" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+              <Link to="/app/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                 Perfil
               </Link>
             </li>
