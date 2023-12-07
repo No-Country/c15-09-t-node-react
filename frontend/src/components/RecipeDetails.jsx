@@ -1,3 +1,4 @@
+import ZoomImage from "./ZoomImage";
 
 export const RecipeDetails = () => {
   const recetas = [
@@ -243,8 +244,16 @@ export const RecipeDetails = () => {
 
               </div>
 
+
+
+
+
               <div className="ml-auto max-w-md ">
-                <img src={receta.image} className="rounded-xl "></img>
+                <ZoomImage
+                  src={receta.image} className="rounded-xl"
+                  alt="Zoomable Image"
+                  zoomArea={{ x: 1, y: 1, width: 1, height: 1 }} // ajusta según tus necesidades
+                />
               </div>
             </main>
           </div>

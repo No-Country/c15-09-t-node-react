@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 
 const ZoomImage = ({ src, alt, zoomArea }) => {
   const [isZoomed, setZoomed] = useState(false);
@@ -39,9 +40,8 @@ const ZoomImage = ({ src, alt, zoomArea }) => {
       <img
         src={src}
         alt={alt}
-        className={`rounded-xl mt-5 w-full h-auto transition-transform transform ${
-          isZoomed ? "scale-150" : "scale-100"
-        }`}
+        className={`rounded-xl mt-5 w-full h-auto transition-transform transform ${isZoomed ? "scale-150" : "scale-100"
+          }`}
         style={{
           transformOrigin: `${position.x * 100}% ${position.y * 100}%`,
         }}
