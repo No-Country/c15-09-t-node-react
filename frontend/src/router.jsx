@@ -10,6 +10,7 @@ import { StyleDetails } from "./pages/StyleDetails";
 import { RecipeBeer } from "./pages/RecipeBeer";
 import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
 import { ProfileLayout } from "./components/layouts/ProfileLayout";
+import { RecipeFavorites } from "./pages/RecipeFavorites";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +64,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "favorites-recipes",
-            element: <h1 className="mt-8">Recetas favoritas</h1>,
+            element: <RecipeFavorites />,
           },
           {
             path: "newest",
