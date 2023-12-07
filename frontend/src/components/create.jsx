@@ -318,8 +318,8 @@ export const Create = () => {
 
   return (
     <div className="w-full mt-5">
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center gap-10">
-        <div className="w-auto">
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:gap-10 ">
+        <div className="md:w-1/3 w-96">
           <label className="w-full mb-4 block text-sm font-medium text-gray-700">
             Nombre de la Cerveza
             <input
@@ -400,7 +400,7 @@ export const Create = () => {
             />
           </label>
         </div>
-        <div className="w-auto">
+        <div className="md:w-1/3 w-96">
           <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
             Tamaño del Lote
             <input
@@ -413,7 +413,7 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className="w-full mb-4 block text-sm font-medium text-gray-700">
             Volumen de Agua de Maceración
             <input
               className="mt-1 p-2 border rounded-md w-full"
@@ -464,7 +464,7 @@ export const Create = () => {
           <label className="w-full mb-4 block text-sm font-medium text-gray-700">
             Estilo
             <select
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border rounded-md w-full text-black"
               name="style"
               value={recipeData.style}
               onChange={handleChange}
@@ -500,7 +500,7 @@ export const Create = () => {
         </div>
         {/* FERMENTABLES */}
         <div className="flex flex-wrap gap-10 justify-center">
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <FermentablesSection
               fermentables={recipeData.fermentables}
               onChange={handleChangeFermentable}
@@ -510,7 +510,7 @@ export const Create = () => {
           </div>
 
           {/* LUPULOS */}
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <LupulosSection
               lupulos={recipeData.lupulos}
               onChange={handleChangeLupulos}
@@ -520,7 +520,7 @@ export const Create = () => {
           </div>
 
           {/* LEVADURA */}
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <LevadurasSection
               levadura={recipeData.levadura}
               onChange={handleChangeLevadura}
@@ -530,7 +530,7 @@ export const Create = () => {
           </div>
 
           {/* ADICIONES */}
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <AdicionesSection
               adiciones={recipeData.adiciones}
               onChange={handleChangeAdiciones}
@@ -540,7 +540,7 @@ export const Create = () => {
           </div>
 
           {/* MACERACION */}
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <MaceracionSection
               maceracion={recipeData.maceracion}
               onChange={handleChangeMaceracion}
@@ -550,7 +550,7 @@ export const Create = () => {
           </div>
 
           {/* Fermentacion */}
-          <div className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
             <FermentacionSection
               fermentacion={recipeData.fermentacion}
               onChange={handleChangeFermentacion}
