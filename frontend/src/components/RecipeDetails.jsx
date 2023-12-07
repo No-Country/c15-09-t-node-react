@@ -143,53 +143,22 @@ export const RecipeDetails = () => {
 
 
 
-
-        // <div className="container mx-auto my-8">
-        //     <h1 className="text-3xl font-bold mb-8 text-center">Recetas</h1>
-        //     {recetas.map((receta, index) => (
-        //         <div key={index} className="mb-8 p-4 bg-white shadow-md rounded-md">
-        //             <h2 className="text-2xl font-bold mb-4">{receta.name}</h2>
-        //             <div className="flex flex-col md:flex-row md:space-x-8">
-        //                 <div className="md:w-1/2">
-        //                     <img src={receta.image} className="rounded-lg mb-6" alt={receta.name} />
-        //                     <h4 className="text-lg font-bold">Autor: {receta.author}</h4>
-        //                     <h5>Tipo: {receta.type}</h5>
-        //                 </div>
-        //                 <div className="md:w-1/2">
-        //                     <div className="mb-4">
-        //                         <h6 className="font-bold">Información General:</h6>
-        //                         <p>ABV: {receta.abv}%</p>
-        //                         <p>OG: {receta.og}</p>
-        //                         <p>FG: {receta.fg}</p>
-        //                         <p>IBU: {receta.ibu}</p>
-        //                         <p>Color: {receta.color}</p>
-        //                     </div>
-        //                     {/* ... Otras secciones de la receta ... */}
-        //                 </div>
-        //             </div>
-        //             {/* ... Más detalles de la receta ... */}
-        //         </div>
-        //     ))}
-        // </div>
-
-
-
         <div >
 
             {recetas.map((receta, index) => (
                 <div key={index}>
+                    <div className=" mt-9 rounded-xl overflow-hidden h-96 relative flex justify-center items-center"> <img src="https://wallpapers.com/images/hd/beer-bottles-at-sunset-j8akxlz8u85f58j3.jpg" alt="" />
+                    </div>
                     <div className="container font-poppings">
                         <main className="flex mt-16">
-                            <div className="ml-auto max-w-md ">
-                                <img src={receta.image} className="rounded-xl mt-5"></img>
-                            </div>
-                            <div className="ml-auto max-w-xl">
-                                <h1 className="font-homemade mb-6">{receta.name}</h1>
+
+                            <div className=" max-w-xl">
+                                <h2 className="mb-6  font-semibold text-5xl">{receta.name} </h2>
                                 <h4> Autor: {receta.author}</h4>
 
 
                                 <div className="mb-6">
-                                    <h6 className="text-xl font-semibold my-2 font-homemade ">Información General:</h6>
+                                    <h6 className="text-xl font-semibold my-2  ">Información General:</h6>
                                     <p>Tipo: {receta.type}</p>
                                     <p>ABV: {receta.abv}%</p>
                                     <p>OG: {receta.og}</p>
@@ -204,14 +173,14 @@ export const RecipeDetails = () => {
                                 </div>
 
                                 <div className="mb-6">
-                                    <p className="text-xl font-semibold mb-2 font-homemade"> Notas:</p>
+                                    <p className="text-xl font-semibold mb-2 "> Notas:</p>
                                     <span>{receta.notes}</span>
 
                                 </div>
 
 
                                 <div className="mb-6">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Fermentables</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Fermentables</h3>
                                     <ul>
                                         {receta.fermentables.map((fermentable, fermentableIndex) => (
                                             <li key={fermentableIndex} className="mb-1">
@@ -222,60 +191,64 @@ export const RecipeDetails = () => {
                                 </div>
 
                                 <div className="mb-6">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Lúpulos</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Lúpulos</h3>
                                     <ul>
                                         {receta.hops.map((hop, hopIndex) => (
                                             <li key={hopIndex} className="mb-1">
-                                                Nombre: {hop.name} - Cantidad: {hop.amount} - Uso: {hop.use} - Tiempo: {hop.time} - {hop.ibu} -{hop.alpha}
+                                                {hop.name} - Cantidad: {hop.amount} - Uso: {hop.use} - Tiempo: {hop.time} - {hop.ibu} -{hop.alpha}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div className="mb-6">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Levadura</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Levadura</h3>
                                     <ul>
                                         {receta.yeasts.map((yeast, yeastIndex) => (
                                             <li key={yeastIndex} className="mb-1">
-                                                Nombre: {yeast.name} - Cantidad: {yeast.amount} - Tipo: {yeast.type}
+                                                {yeast.name} - Cantidad: {yeast.amount} - Tipo: {yeast.type}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div className="mb-6">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Adiciones</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Adiciones</h3>
                                     <ul>
                                         {receta.miscs.map((misc, miscIndex) => (
                                             <li key={miscIndex} className="mb-1">
-                                                Nombre: {misc.name} - Tipo: {misc.type} - Cantidad: {misc.amount} - Unidad: {misc.unit}
+                                                {misc.name} - Tipo: {misc.type} - Cantidad: {misc.amount} - Unidad: {misc.unit}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div className="mb-6">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Maceración</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Maceración</h3>
                                     <ul>
                                         {receta.mash.map((mas, masIndex) => (
                                             <li key={masIndex} className="mb-1">
-                                                Nombre: {mas.name} - Temperatura: {mas.stepTemp} - Tiempo: {mas.stepTime}
+                                                {mas.name}   {mas.stepTemp}º  - Tiempo: {mas.stepTime}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div className="mb-8">
-                                    <h3 className="text-xl font-semibold mb-2 font-homemade">Fermentación</h3>
+                                    <h3 className="text-xl font-semibold mb-2 ">Fermentación</h3>
                                     <ul>
                                         {receta.fermentation.map((fermenta, fermentaIndex) => (
                                             <li key={fermentaIndex} className="mb-1">
-                                                Nombre: {fermenta.name} - Temperatura: {fermenta.stepTemp} - Tiempo: {fermenta.stepTime}
+                                                {fermenta.type} -  {fermenta.stepTemp}º - Tiempo: {fermenta.stepTime}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
+                            </div>
+
+                            <div className="ml-auto max-w-md ">
+                                <img src={receta.image} className="rounded-xl "></img>
                             </div>
                         </main>
                     </div>

@@ -77,7 +77,8 @@ export const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Datos de la receta:", recipeData);
+        console.log("Datos de la receta:", recipeData)
+            ;
     };
     // Fermentables
     const handleChangeFermentable = (e, index) => {
