@@ -12,6 +12,7 @@ const modelLevaduras = require('./models/Levaduras')
 const modelAdicionesReceta = require('./models/AdicionesReceta')
 const modelRecetas = require('../src/models/Recetas')
 const modelEstilos = require('../src/models/Estilos')
+const modelUser = require('./models/Users')
 
 const dataBase = new Sequelize(
   url, {
@@ -39,6 +40,8 @@ modelLevadurasReceta(dataBase)
 modelLevaduras(dataBase)
 // Adiciones
 modelAdicionesReceta(dataBase)
+//Usuarios
+modelUser(dataBase)
 
 modelEstilos(dataBase)
 modelRecetas(dataBase)
@@ -52,7 +55,8 @@ const {
   LevadurasReceta, // Tabla pivote: contiene las levaduras y su cantidad para cada receta.
   AdicionesReceta, // Contiene directamente las adiciones con su descripción y cantidad.
   Estilos, // Guía de estilos.
-  Recetas // Recetas de cerveza creadas por usuarios.
+  Recetas, // Recetas de cerveza creadas por usuarios.
+  User // Usuarios
 } = dataBase.models
 
 //! ---------------------------------------- relaciones ------------------------------
@@ -76,6 +80,7 @@ module.exports = {
   AdicionesReceta,
   Estilos,
   Recetas,
+  User,
   connectDB,
   conn: dataBase
 }
