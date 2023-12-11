@@ -5,9 +5,15 @@ const app = express()
 const PORT = process.env.PORT || 5001
 const { conn } = require('./src/db')
 
+const lupulosRoutes = require('./src/routes/routeLupulos/route')
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 const { Estilos, Maltas } = require('./src/db')
 
-app.use(express.json())
+app.use('/lupulos', lupulosRoutes)
+
 // TEST ______________________________________________________________________________
 app.get('/', (req, res) => {
   res.send('Working')

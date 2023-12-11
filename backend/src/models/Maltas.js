@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-// const fermentables = require('./Fermentables')
+
 // const fermentables = require('./Fermentables')
 // Listado de maltas comerciales con sus atributos.
 module.exports = (dataBase) => {
