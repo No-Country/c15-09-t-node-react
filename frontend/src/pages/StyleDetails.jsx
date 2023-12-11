@@ -2,6 +2,7 @@ import { useState } from "react";
 import amberAle from "../assets/images/amber-ale.jpg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ZoomImage from "../components/ZoomImage";
 
 // placeholder por ahora
 export const StyleDetails = () => {
@@ -104,7 +105,11 @@ export const StyleDetails = () => {
     <div className="container font-poppings">
       <main className="flex mt-16">
         <div>
-          <img src={amberAle} className="rounded-xl"></img>
+          <ZoomImage
+            src={amberAle}
+            alt="Zoomable Image"
+            zoomArea={{ x: 1, y: 1, width: 1, height: 1 }} // ajusta según tus necesidades
+          />
         </div>
         <div className="ml-auto max-w-xl">
           <div className="flex items-center">

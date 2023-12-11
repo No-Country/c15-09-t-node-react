@@ -57,7 +57,7 @@ module.exports = (dataBase) => {
     },
     boilSize: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: true
     },
     boilTime: {
       type: DataTypes.INTEGER,
@@ -73,11 +73,11 @@ module.exports = (dataBase) => {
     },
     mashOutTemperature: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     mashOutTime: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     primaryFermentationTemperature: {
       type: DataTypes.INTEGER,
