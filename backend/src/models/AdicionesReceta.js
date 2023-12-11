@@ -1,33 +1,34 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (dataBase) => {
-  dataBase.define('User', {
+  const AdicionesReceta = dataBase.define('AdicionesReceta', {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
       autoIncrement: true,
+      primaryKey: true,
       allowNull: false
     },
-    usuario: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    comfirmpass: {
+    tipo: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    googlePass: {
+    cantidad: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    unidad: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    notas: {
+      type: DataTypes.TEXT,
       allowNull: true
     }
   }, { timestamps: false })
+
+  return AdicionesReceta
 }

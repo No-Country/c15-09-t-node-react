@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize')
-const maltas = require('./Maltas')
+//const maltas = require('./Maltas')
+
 module.exports = (dataBase) => {
 
 
@@ -10,10 +11,29 @@ module.exports = (dataBase) => {
             primaryKey: true,
             allowNull: false
         },
-        cantidad: {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false 
+        },
+        potential:{
             type: DataTypes.DECIMAL,
             allowNull: false 
-        },   
+
+        },
+        amount:{ 
+            type: DataTypes.DECIMAL,
+            allowNull: false 
+
+        },
+        color: {
+            type: DataTypes.DECIMAL,
+            allowNull: false 
+
+        }
+        
+        
+        
+        /*,   
         maltasId:{
 
             type:DataTypes.INTEGER,
@@ -26,13 +46,12 @@ module.exports = (dataBase) => {
             }
 
 
-        },  
+        },*/  
         
     }, {timestamps: false})
 
     //tiene una malta
-    fermentables.belongsTo(maltas, { foreignKey: 'maltasId' });
+    //fermentables.belongsTo(maltas, { foreignKey: 'maltasId' });
 
-    return fermentables
-
+  return fermentables
 }
