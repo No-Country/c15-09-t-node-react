@@ -40,7 +40,7 @@ modelLevadurasReceta(dataBase)
 modelLevaduras(dataBase)
 // Adiciones
 modelAdicionesReceta(dataBase)
-//Usuarios
+// Usuarios
 modelUser(dataBase)
 
 modelEstilos(dataBase)
