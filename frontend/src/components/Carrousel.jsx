@@ -5,7 +5,7 @@ import licorImg from "../assets/images/app-index/licor-hero.png";
 const SlideContent1 = () => (
   <div>
     <section className="bg-gray-dark appIndex text-white mt-[56px] rounded-[32px] flex flex-col md:flex-row relative">
-      <div className="pt-[123px] pl-[85px] md:order-1 order-2">
+      <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="font-poppings text-[38px]">
           El Arte de la
           <span className="block font-homemade">Cerveza Casera</span>
@@ -35,7 +35,7 @@ const SlideContent1 = () => (
 const SlideContent2 = () => (
   <div>
     <section className=" bg-gray-dark appIndex text-white mt-[56px] rounded-[32px] flex w-full h-full">
-      <div className="pt-[123px] pl-[85px] ">
+      <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="block font-homemade">La Cerveza Artesanal</h1>
 
         <p className="mt-6 max-w-[512px] text-lg">
