@@ -153,146 +153,216 @@ export const RecipeDetails = () => {
       {recetas.map((receta, index) => (
         <div key={index}>
           <div className="container font-poppings">
-            <div className=" w-48 h-30 absolute bottom-auto  right-56 ">
-              <ZoomImage
-                src={receta.image}
-                className="rounded-xl "
-                alt="Zoomable Image"
-                zoomArea={{ x: 1, y: 1, width: 1, height: 1 }} // ajusta según tus necesidades
-              />
-            </div>
-            <main className="flex mt-16">
+
+            <main className="flex mt-2 md:mt-16">
               <div className=" max-w-full">
-                <h2 className="mb-6 mx-auto text-center  text-4xl  font-bold ">{receta.name} </h2>
-                <h4 className="text-center text-[#f08649] font-bold text-2xl ">
-                  {" "}
-                  Autor: {receta.author}
-                </h4>
 
-                <div className="mb-8">
-                  <h6 className="text-xl font-semibold my-2  ">
-                    {" "}
-                    <ImportContactsIcon /> Información General{" "}
-                  </h6>
-                  <p>Tipo: {receta.type}</p>
-                  <p>ABV: {receta.abv}%</p>
-                  <p>OG: {receta.og}</p>
-                  <p>FG: {receta.fg}</p>
-                  <p>IBU: {receta.ibu}</p>
-                  <p>Color: {receta.color}</p>
-                  <p>Tamano de Lote: {receta.batchSize}</p>
-                  <p>Volumen de Agua de Maceracion: {receta.spargeWaterAmount}</p>
-                  <p>Volumen de Agua de Lavado: {receta.mashWaterAmount}</p>
-                  <p>Tamaño del Hervor: {receta.boilSize}</p>
-                  <p>Tiempo de Hervor: {receta.boilTime}</p>
-                </div>
+                <div>
 
-                <div className="mb-8">
-                  <p className="text-xl font-semibold mb-2 ">
-                    {" "}
-                    <ChecklistIcon /> Notas
-                  </p>
-                  <span>{receta.notes}</span>
-                </div>
+                  <div className=" flex flex-col">
+                    <div className="flex flex-col items-center justify-center md:flex-row ">
+                      <div className="flex flex-col  mb-8 order-2 px-5 md:px-0">
 
-                <div className="flex flex-wrap space-x-11 space-y-11 mb-8 ">
-                  <div className=" group ml-11 mt-11 ">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100">
-                      {" "}
-                      &#x1F376; Fermentables
-                    </h3>
-                    <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
-                      {receta.fermentables.map((fermentable, fermentableIndex) => (
-                        <li key={fermentableIndex} className="mb-1">
-                          {fermentable.amount} lbs - {fermentable.name} ({fermentable.color} SRM)
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                        <div >
+                          <h2 className=" mx-auto text-center  text-4xl  font-bold ">{receta.name} </h2>
+                          <h4 className="text-center text-[#f08649] font-bold text-2xl first-letter: ">
+                            Autor: {receta.author}
+                          </h4>
+                        </div>
 
-                  <div className="group">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
-                      {" "}
-                      &#x1F33F; Lúpulos
-                    </h3>
+                        <div className="flex  flex-col  justify-center  md:flex-row mt-10 order-3 md:order-2">
 
-                    {receta.hops.map((hop, hopIndex) => (
-                      <div
-                        key={hopIndex}
-                        className="mb-1 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400"
-                      >
-                        <p className="text-lg font-semibold">{hop.name}</p>
-                        <p> Cantidad: {hop.amount}</p>
-                        <p>Uso: {hop.use}</p>
-                        <p>Tiempo: {hop.time}</p>
-                        <p>{hop.ibu}</p>
-                        <p>{hop.alpha}</p>
+                          <div >
+                            <div className=" group ">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100">
+                                {" "}
+                                &#x1F376; Fermentables
+                              </h3>
+                              <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
+                                {receta.fermentables.map((fermentable, fermentableIndex) => (
+                                  <li key={fermentableIndex} className="mb-1">
+                                    {fermentable.amount} lbs - {fermentable.name} ({fermentable.color} SRM)
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="group">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
+                                {" "}
+                                &#x1F33F; Lúpulos
+                              </h3>
+
+                              {receta.hops.map((hop, hopIndex) => (
+                                <div
+                                  key={hopIndex}
+                                  className="mb-1 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400"
+                                >
+                                  <p className="text-lg font-semibold">{hop.name}</p>
+                                  <p> Cantidad: {hop.amount}</p>
+                                  <p>Uso: {hop.use}</p>
+                                  <p>Tiempo: {hop.time}</p>
+                                  <p>{hop.ibu}</p>
+                                  <p>{hop.alpha}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="group">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
+                                {" "}
+                                &#x1F35E; Levadura
+                              </h3>
+                              <ul className="mb-1 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
+                                {receta.yeasts.map((yeast, yeastIndex) => (
+                                  <li key={yeastIndex} className="mb-1">
+                                    {yeast.name} - Cantidad: {yeast.amount} - Tipo: {yeast.type}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="group">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
+                                {" "}
+                                &#x1F4CC; Adiciones
+                              </h3>
+                              <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
+                                {receta.miscs.map((misc, miscIndex) => (
+                                  <li key={miscIndex} className="mb-1">
+                                    {misc.name} - Tipo: {misc.type} - Cantidad: {misc.amount} - Unidad:{" "}
+                                    {misc.unit}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="group">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
+                                {" "}
+                                &#x1F321; Maceración
+                              </h3>
+                              <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
+                                {receta.mash.map((mas, masIndex) => (
+                                  <li key={masIndex} className="mb-1">
+                                    {mas.name} {mas.stepTemp}º - Tiempo: {mas.stepTime}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="group">
+                              <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
+                                {" "}
+                                &#x1F377; Fermentación
+                              </h3>
+                              <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
+                                {receta.fermentation.map((fermenta, fermentaIndex) => (
+                                  <li key={fermentaIndex} className="mb-1">
+                                    {fermenta.type} - {fermenta.stepTemp}º - Tiempo: {fermenta.stepTime}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+
+                          </div>
+                        </div>
+
+
+
+                        <div className="order-1 md:order-3">
+                          <div className="mb-8 mt-10">
+                            <h6 className="text-xl font-semibold my-2  ">
+                              {" "}
+                              <ImportContactsIcon /> Información General{" "}
+                            </h6>
+                            <p>Tipo: {receta.type}</p>
+                            <p>ABV: {receta.abv}%</p>
+                            <p>OG: {receta.og}</p>
+                            <p>FG: {receta.fg}</p>
+                            <p>IBU: {receta.ibu}</p>
+                            <p>Color: {receta.color}</p>
+                            <p>Tamano de Lote: {receta.batchSize}</p>
+                            <p>Volumen de Agua de Maceracion: {receta.spargeWaterAmount}</p>
+                            <p>Volumen de Agua de Lavado: {receta.mashWaterAmount}</p>
+                            <p>Tamaño del Hervor: {receta.boilSize}</p>
+                            <p>Tiempo de Hervor: {receta.boilTime}</p>
+                          </div>
+
+                          <div className="mb-8">
+                            <p className="text-xl font-semibold mb-2 ">
+                              {" "}
+                              <ChecklistIcon /> Notas
+                            </p>
+                            <span>{receta.notes}</span>
+                          </div>
+
+                        </div>
+
                       </div>
-                    ))}
+
+
+
+
+                      <div className="w-48 order-1 mb-6 md:order-3 md:mb-0">
+                        <ZoomImage
+                          src={receta.image}
+                          className="rounded-xl  "
+                          alt="Zoomable Image"
+                          zoomArea={{ x: 1, y: 1, width: 1, height: 1 }} // ajusta según tus necesidades
+                        />
+                      </div>
+
+
+
+                    </div>
+
+
+
                   </div>
 
-                  <div className="group">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
-                      {" "}
-                      &#x1F35E; Levadura
-                    </h3>
-                    <ul className="mb-1 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
-                      {receta.yeasts.map((yeast, yeastIndex) => (
-                        <li key={yeastIndex} className="mb-1">
-                          {yeast.name} - Cantidad: {yeast.amount} - Tipo: {yeast.type}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
-                  <div className="group">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
-                      {" "}
-                      &#x1F4CC; Adiciones
-                    </h3>
-                    <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
-                      {receta.miscs.map((misc, miscIndex) => (
-                        <li key={miscIndex} className="mb-1">
-                          {misc.name} - Tipo: {misc.type} - Cantidad: {misc.amount} - Unidad:{" "}
-                          {misc.unit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="group">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
-                      {" "}
-                      &#x1F321; Maceración
-                    </h3>
-                    <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
-                      {receta.mash.map((mas, masIndex) => (
-                        <li key={masIndex} className="mb-1">
-                          {mas.name} {mas.stepTemp}º - Tiempo: {mas.stepTime}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="group">
-                    <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
-                      {" "}
-                      &#x1F377; Fermentación
-                    </h3>
-                    <ul className="opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:overflow-visible transition-opacity duration-400">
-                      {receta.fermentation.map((fermenta, fermentaIndex) => (
-                        <li key={fermentaIndex} className="mb-1">
-                          {fermenta.type} - {fermenta.stepTemp}º - Tiempo: {fermenta.stepTime}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
+
+
+                {/* <div className="mb-8 mt-10">
+                    <h6 className="text-xl font-semibold my-2  ">
+                      {" "}
+                      <ImportContactsIcon /> Información General{" "}
+                    </h6>
+                    <p>Tipo: {receta.type}</p>
+                    <p>ABV: {receta.abv}%</p>
+                    <p>OG: {receta.og}</p>
+                    <p>FG: {receta.fg}</p>
+                    <p>IBU: {receta.ibu}</p>
+                    <p>Color: {receta.color}</p>
+                    <p>Tamano de Lote: {receta.batchSize}</p>
+                    <p>Volumen de Agua de Maceracion: {receta.spargeWaterAmount}</p>
+                    <p>Volumen de Agua de Lavado: {receta.mashWaterAmount}</p>
+                    <p>Tamaño del Hervor: {receta.boilSize}</p>
+                    <p>Tiempo de Hervor: {receta.boilTime}</p>
+                  </div>
+
+                  <div className="mb-8">
+                    <p className="text-xl font-semibold mb-2 ">
+                      {" "}
+                      <ChecklistIcon /> Notas
+                    </p>
+                    <span>{receta.notes}</span>
+                  </div> */}
+
+
               </div>
+
             </main>
           </div>
-        </div>
+        </div >
       ))}
-    </div>
+    </div >
   );
 };
