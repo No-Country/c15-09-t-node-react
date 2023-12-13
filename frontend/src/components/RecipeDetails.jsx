@@ -159,7 +159,7 @@ export const RecipeDetails = () => {
 
                 <div>
 
-                  <div className=" flex flex-col">
+                  <div className=" flex flex-col ">
                     <div className="flex flex-col items-center justify-center md:flex-row ">
                       <div className="flex flex-col  mb-8 order-2 px-5 md:px-0">
 

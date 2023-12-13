@@ -318,13 +318,13 @@ export const Create = () => {
   };
 
   return (
-    <div className="w-full mt-5">
+    <div className="w-full mt-5 ">
       <img
         src={bgForm}
-        className="h-screen z-[-1] absolute w-full right-0 top-32 bg-contain brightness-[0.4] object-cover"
+        className="h-screen z-[-1]  w-full right-0 top-32 bg-contain rightness-[0.4] object-cover sticky"
       ></img>
 
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:gap-10 ">
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:gap-10  ">
         <div className="md:w-1/3 w-96">
           <label className="w-full mb-4 block text-sm font-medium text-gray-700">
             Nombre de la Cerveza
@@ -506,7 +506,7 @@ export const Create = () => {
         </div>
         {/* FERMENTABLES */}
         <div className="flex flex-wrap gap-10 justify-center">
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-black  flex rounded-lg">
             <FermentablesSection
               fermentables={recipeData.fermentables}
               onChange={handleChangeFermentable}

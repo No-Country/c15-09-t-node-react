@@ -35,7 +35,7 @@ export const FermentablesSection = ({ fermentables, onChange, onAdd, onRemove })
             />
           </label>
           <button
-            className="p-1 mt-2 bg-red-500 text-white rounded-md"
+            className="p-1 mt-2 bg-[#D35400] text-white rounded-md"
             type="button"
             onClick={() => onRemove(index)}
           >
@@ -43,7 +43,7 @@ export const FermentablesSection = ({ fermentables, onChange, onAdd, onRemove })
           </button>
         </div>
       ))}
-      <button type="button" onClick={onAdd} className="mt-4 p-1 bg-green-500 text-white rounded-md">
+      <button type="button" onClick={onAdd} className="mt-4 p-1 bg-[#82E0AA] text-white rounded-md">
         Agregar Fermentable
       </button>
     </div>
