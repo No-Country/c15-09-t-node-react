@@ -82,23 +82,29 @@ const UserServices = {
       throw new Error('Error fetching user')
     }
   },
-  register: async (name, email, password, street, zipCode, roleid) => {
+  // register: async (name, email, password, street, zipCode, roleid)
+  register: async (usuario, email, password, confirmpass, googlePass) => {
     try {
       let passCript
-      if (password.length >= 6) {
+      if (password !== confirmpass) {
+        throw new Error('password and confirm password do not match.')
+      } else if (password.length >= 6) {
         passCript = bcrypt.hashSync(password, 10)
+        console.log('PassCript Created', passCript)
       } else {
-        passCript = password
+        // passCript = password
+        throw new Error('password must be at least 6 characters long')
       }
 
       const user = await User.create({
-        name,
+        usuario,
         email,
-        street,
-        zipCode,
-        roleid,
-        password: passCript
+        password: passCript,
+        confirmpass: passCript,
+        googlePass
       })
+
+      console.log(user)
 
       if (user) {
         const token = jwt.sign({ user }, secretKey, {

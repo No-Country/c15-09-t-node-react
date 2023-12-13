@@ -15,9 +15,17 @@ const modelEstilos = require('../src/models/Estilos')
 const modelUser = require('./models/Users')
 
 const dataBase = new Sequelize(
-  url, {
+  url,
+  {
     logging: false,
-    native: false
+    native: false,
+    ssl: true, // Enable SSL
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // disable rejecting unauthorized connections (this is common in some development scenarios)
+      }
+    }
   }
 )
 
@@ -69,6 +77,7 @@ Recetas.hasMany(LupulosReceta)
 Recetas.hasMany(LevadurasReceta)
 Recetas.hasMany(AdicionesReceta)
 Recetas.belongsTo(Estilos)
+Recetas.belongsTo(User)
 
 module.exports = {
   Maltas,

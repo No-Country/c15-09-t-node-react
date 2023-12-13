@@ -8,23 +8,23 @@ module.exports = (dataBase) => {
       primaryKey: true,
       allowNull: false
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    tipo: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    cantidad: {
+    amount: {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    unidad: {
+    unit: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    notas: {
+    notes: {
       type: DataTypes.TEXT,
       allowNull: true
     }
