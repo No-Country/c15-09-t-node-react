@@ -5,6 +5,7 @@ import { LevadurasSection } from "./createBeerComponents/LevadurasSection";
 import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
 import { MaceracionSection } from "./createBeerComponents/MaceracionSection";
 import { FermentacionSection } from "./createBeerComponents/FermentacionSection";
+import bgForm from "../assets/images/bg-form.jpg";
 
 export const Create = () => {
   const [recipeData, setRecipeData] = useState({
@@ -75,10 +76,10 @@ export const Create = () => {
     });
   };
 
-  const getLabel = (fieldName) => {
-    const unitLabel = recipeData.unitSystem === "metric" ? "(litros)" : "(galones)";
-    return `Cantidad ${unitLabel} de ${fieldName}`;
-  };
+  // const getLabel = (fieldName) => {
+  //   const unitLabel = recipeData.unitSystem === "metric" ? "(litros)" : "(galones)";
+  //   return `Cantidad ${unitLabel} de ${fieldName}`;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -318,6 +319,11 @@ export const Create = () => {
 
   return (
     <div className="w-full mt-5">
+      <img
+        src={bgForm}
+        className="h-screen z-[-1] absolute w-full right-0 top-32 bg-contain brightness-[0.4] object-cover"
+      ></img>
+
       <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:gap-10 ">
         <div className="md:w-1/3 w-96">
           <label className="w-full mb-4 block text-sm font-medium text-gray-700">
