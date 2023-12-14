@@ -8,7 +8,6 @@ export const MainLayout = () => {
     <>
       <div className="container">
         <Header />
-
         <Outlet />
       </div>
       <Footer />
