@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 export default function Header() {
   return (
-    <header className="flex items-center md:flex-row flex-col justify-between mt-[57px]">
+    <header className="flex items-center md:flex-row flex-col justify-between mt-[57px]  ">
       <div className="flex justify-between items-center gap-20 md:mb-0 mb-4">
         <Logo />
         <div className="md:hidden block">
           <DarkModeToggle />
         </div>
       </div>
-      <nav>
+      <nav >
         <ul className="flex gap-[33px] items-center md:flex-row flex-col ">
           <div className="flex md:gap-10 gap-10 md:order-1 order-2">
             <li>
