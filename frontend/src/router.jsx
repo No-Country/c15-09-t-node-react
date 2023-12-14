@@ -12,6 +12,7 @@ import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
 import { ProfileLayout } from "./components/layouts/ProfileLayout";
 import { RecipeFavorites } from "./pages/RecipeFavorites";
 import { FavoritesLayout } from "./components/layouts/FavoritesLayout";
+import { Contact } from "./pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
             element: <h1 className="mt-14 text-center">No se encontraron estilos favoritos</h1>,
           },
         ],
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
     ],
   },

@@ -5,6 +5,7 @@ import { LevadurasSection } from "./createBeerComponents/LevadurasSection";
 import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
 import { MaceracionSection } from "./createBeerComponents/MaceracionSection";
 import { FermentacionSection } from "./createBeerComponents/FermentacionSection";
+import bgForm from "../assets/images/bgForm.jpg";
 
 export const Create = () => {
   const [recipeData, setRecipeData] = useState({
@@ -75,10 +76,10 @@ export const Create = () => {
     });
   };
 
-  const getLabel = (fieldName) => {
-    const unitLabel = recipeData.unitSystem === "metric" ? "(litros)" : "(galones)";
-    return `Cantidad ${unitLabel} de ${fieldName}`;
-  };
+  // const getLabel = (fieldName) => {
+  //   const unitLabel = recipeData.unitSystem === "metric" ? "(litros)" : "(galones)";
+  //   return `Cantidad ${unitLabel} de ${fieldName}`;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -317,44 +318,57 @@ export const Create = () => {
   };
 
   return (
-    <div className="w-full mt-5">
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:gap-10 ">
-        <div className="md:w-1/3 w-96">
-          <label className="w-full mb-4 block text-sm font-medium text-gray-700">
+    <div className="w-full mt-5 ">
+
+
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4  ">
+
+        {" "}
+        <img className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
+          src={bgForm}
+          alt=""
+        />
+
+
+        <div className="md:w-1/3 w-96 ">
+          <label className="w-full mb-4 block text-lg font-medium ">
             Nombre de la Cerveza
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2  border-gray-light rounded-md w-full "
+              placeholder="Chocolat Coffe Stout"
               type="text"
               name="name"
               value={recipeData.name}
               onChange={handleChange}
             />
           </label>
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Autor
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
+              placeholder="Louis Pasteur"
               name="author"
               type="text"
               value={recipeData.author}
               onChange={handleChange}
             />
           </label>
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Imagen
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2  rounded-md w-full"
+              placeholder="URL"
               name="image"
-              type="text"
+              type="file"
               value={recipeData.image}
               onChange={handleChange}
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Alcohol por Volumen
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="abv"
               type="number"
               pattern="[0-9]+([.][0-9]+)?"
@@ -364,10 +378,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Gravedad Original
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="og"
               type="number"
               value={recipeData.og}
@@ -376,10 +390,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Gravedad Final
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="fg"
               type="number"
               value={recipeData.fg}
@@ -388,10 +402,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Unidades Internacionales de Amargor
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="ibu"
               type="number"
               value={recipeData.ibu}
@@ -401,10 +415,10 @@ export const Create = () => {
           </label>
         </div>
         <div className="md:w-1/3 w-96">
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Tamaño del Lote
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="batchSize"
               type="number"
               value={recipeData.batchSize}
@@ -413,10 +427,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className="w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className="w-full mb-4 block text-lg font-medium">
             Volumen de Agua de Maceración
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="volumenAguaMaceracion"
               type="number"
               value={recipeData.volumenAguaMaceracion}
@@ -425,10 +439,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Volumen de Agua de Lavado
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="volumenAguaLavado"
               type="number"
               value={recipeData.volumenAguaLavado}
@@ -437,10 +451,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Tamaño del Hervor
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="boilSize"
               type="number"
               value={recipeData.boilSize}
@@ -449,10 +463,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Tiempo del Hervor
             <input
-              className="mt-1 p-2 border rounded-md w-full"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full"
               name="boilTime"
               type="number"
               value={recipeData.boilTime}
@@ -461,10 +475,10 @@ export const Create = () => {
             />
           </label>
 
-          <label className="w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className="w-full mb-4 block text-lg font-medium">
             Estilo
             <select
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 border-gray-light rounded-md w-full text-black"
               name="style"
               value={recipeData.style}
               onChange={handleChange}
@@ -486,7 +500,7 @@ export const Create = () => {
             </select>
           </label>
 
-          <label className=" w-full mb-4 block text-sm font-medium text-gray-700">
+          <label className=" w-full mb-4 block text-lg font-medium">
             Nota
             <input
               className="mt-1 p-2 border rounded-md w-full"
@@ -500,7 +514,7 @@ export const Create = () => {
         </div>
         {/* FERMENTABLES */}
         <div className="flex flex-wrap gap-10 justify-center">
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <FermentablesSection
               fermentables={recipeData.fermentables}
               onChange={handleChangeFermentable}
@@ -510,7 +524,7 @@ export const Create = () => {
           </div>
 
           {/* LUPULOS */}
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <LupulosSection
               lupulos={recipeData.lupulos}
               onChange={handleChangeLupulos}
@@ -520,7 +534,7 @@ export const Create = () => {
           </div>
 
           {/* LEVADURA */}
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <LevadurasSection
               levadura={recipeData.levadura}
               onChange={handleChangeLevadura}
@@ -530,7 +544,7 @@ export const Create = () => {
           </div>
 
           {/* ADICIONES */}
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <AdicionesSection
               adiciones={recipeData.adiciones}
               onChange={handleChangeAdiciones}
@@ -540,7 +554,7 @@ export const Create = () => {
           </div>
 
           {/* MACERACION */}
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <MaceracionSection
               maceracion={recipeData.maceracion}
               onChange={handleChangeMaceracion}
@@ -550,7 +564,7 @@ export const Create = () => {
           </div>
 
           {/* Fermentacion */}
-          <div className="bg-gradient-to-r text-black from-yellow-600 via-yellow-400 to-yellow-600 flex rounded-lg">
+          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <FermentacionSection
               fermentacion={recipeData.fermentacion}
               onChange={handleChangeFermentacion}
@@ -560,31 +574,9 @@ export const Create = () => {
           </div>
         </div>
 
-        <label className="w-full mb-4 block text-sm font-medium text-gray-700">
-          Sistema Métrico:
-          <select
-            className="mt-1 p-2 border rounded-md w-full"
-            name="unitSystem"
-            value={recipeData.unitSystem}
-            onChange={handleChange}
-          >
-            <option value="metric">Métrico</option>
-            <option value="imperial">Imperial</option>
-          </select>
-        </label>
 
-        <label className="w-full mb-4 block text-sm font-medium text-gray-700">
-          Instrucciones:
-          <input
-            className="mt-1 p-2 border rounded-md w-full"
-            name="instructions"
-            type="text"
-            value={recipeData.instructions}
-            onChange={handleChange}
-          />
-        </label>
-        <div className="w-full">
-          <button className="p-2 bg-blue-500 text-white rounded-md" type="submit">
+        <div className="w-full flex justify-center">
+          <button className="p-2 bg-[#1E8449] hover:bg-[#145A32] text-white rounded-md" type="submit">
             Enviar Receta
           </button>
         </div>
