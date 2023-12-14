@@ -2,7 +2,6 @@ import { useState } from "react";
 import amberAle from "../assets/images/amber-ale.jpg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ZoomImage from "../components/ZoomImage";
 
 // placeholder por ahora
 export const StyleDetails = () => {

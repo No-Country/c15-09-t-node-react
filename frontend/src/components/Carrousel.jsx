@@ -65,7 +65,7 @@ const SlideContent2 = () => (
 );
 
 export const Carousel = () => {
-  const slides = [<SlideContent1 />, <SlideContent2 />];
+  const slides = [<SlideContent1 key="1" />, <SlideContent2 key="2" />];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -82,6 +82,7 @@ export const Carousel = () => {
     }, 5000);
 
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSlide]);
 
   return (

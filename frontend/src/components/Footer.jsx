@@ -1,5 +1,4 @@
 // src/components/Footer.js
-import React from "react";
 import { Facebook, Twitter, Instagram, MailOutline, Phone, Gavel } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
