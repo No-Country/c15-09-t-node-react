@@ -13,6 +13,15 @@
     url("../../images/app-index/licor-hero.png");
   background-repeat: no-repeat; */
 }
+@media (max-width: 768px) {
+  .appIndex {
+    background-size: cover;
+    opacity: 0.9;
+  }
+}
+.appIndex {
+  background-image: none;
+}
 
 .block-gradiant {
   width: 300px;

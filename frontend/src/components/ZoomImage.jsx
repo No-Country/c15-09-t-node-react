@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ZoomImage = ({ src, alt, zoomArea }) => {
   const [isZoomed, setZoomed] = useState(false);

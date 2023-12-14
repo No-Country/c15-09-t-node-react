@@ -2,22 +2,18 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getLastPath } from "../../utils/path";
 
-const profileRoutes = [
+const routes = [
   {
-    href: "/app/profile",
-    text: "Tus recetas",
+    href: "/app/favorites/reciepes",
+    text: "Recetas Favoritas",
   },
   {
-    href: "/app/profile/favorites-recipes",
-    text: "Recetas favoritas",
-  },
-  {
-    href: "/app/profile/newest",
-    text: "Newest",
+    href: "/app/favorites/styles",
+    text: "Estilos Favoritos",
   },
 ];
 
-export const ProfileButtons = () => {
+export const ActionButtons = () => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState("");
 
@@ -26,8 +22,8 @@ export const ProfileButtons = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex gap-5 text-base mt-14 text-white">
-      {profileRoutes.map(({ text, href }) => (
+    <div className="flex gap-5 text-base mt-14 text-white justify-center">
+      {routes.map(({ text, href }) => (
         <Link
           key={href}
           to={href}

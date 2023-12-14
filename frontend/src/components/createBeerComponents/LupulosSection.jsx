@@ -1,6 +1,6 @@
 export const LupulosSection = ({ lupulos, onChange, onAdd, onRemove }) => {
   return (
-    <div className="flex flex-col justify-center items-center px-10 py-10">
+    <div className="flex flex-col justify-center items-stretch px-10 py-10">
       <h2 className="text-2xl pb-4">Lupulos</h2>
       {lupulos.map((item, index) => (
         <div key={index} className="flex flex-wrap flex-col  mb-2">
@@ -55,7 +55,7 @@ export const LupulosSection = ({ lupulos, onChange, onAdd, onRemove }) => {
             />
           </label>
           <button
-            className="p-1 mt-2 bg-red-500 text-white rounded-md"
+            className="p-1 mt-6 bg-[#A04000] text-white rounded-md"
             type="button"
             onClick={() => onRemove(index)}
           >
@@ -63,7 +63,7 @@ export const LupulosSection = ({ lupulos, onChange, onAdd, onRemove }) => {
           </button>
         </div>
       ))}
-      <button type="button" onClick={onAdd} className="p-2 bg-green-500 text-white rounded-md mt-4">
+      <button type="button" onClick={onAdd} className="p-2 bg-[#229954] hover:bg-[#145A32] text-white rounded-md ">
         Agregar Lupulo
       </button>
     </div>
