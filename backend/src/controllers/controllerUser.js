@@ -49,7 +49,8 @@ const UserControllers = {
   },
   createUser: async (req, res) => {
     try {
-      const { usuario, email, password, comfirmpass } = req.body
+      const { usuario, email, password, confirmpass } = req.body
+      console.log(usuario, email, password, confirmpass)
       let err = ''
       if (!usuario) {
         err += '[usuario can\'t be empty] '
@@ -60,15 +61,16 @@ const UserControllers = {
       if (!password) {
         err += '[password can\'t be empty] '
       }
-      if (!comfirmpass) {
-        err += '[comfirmpass can\'t be empty] '
+      if (!confirmpass) {
+        err += '[confirmpass can\'t be empty] '
       }
       if (err !== '') {
         res.status(400).json({ error: err })
       }
-      const roleid = 3
+      // TODO
+      const googlePass = 'googlePass'
 
-      const result = await UserServices.register(usuario, email, password, comfirmpass, roleid)
+      const result = await UserServices.register(usuario, email, password, confirmpass, googlePass)
       res.status(200).json(result)
     } catch (error) {
       console.error(error)

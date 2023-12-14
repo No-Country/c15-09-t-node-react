@@ -1,14 +1,16 @@
 require('dotenv').config()
 // sample data
-const { sampleLevaduras, sampleLupulos, sampleMaltas, stylesDB } = require('../seeders/sampleData')
-const { recepiesArray } = require('./jsonRecepieExtractor')
+const { stylesDB } = require('../seeders/sampleData')
+const { recepiesArray, sampleLevaduras, sampleLupulos, sampleMaltas, sampleMiscs } = require('./jsonRecepieExtractor')
 
 // Models
 const modelMalta = require('../models/Maltas')
 const modelLupulo = require('../models/Lupulos')
 const modelLevadura = require('../models/Levaduras')
 const modelEstilos = require('../models/Estilos')
-const modelRecetas = require('../models/Recetas')
+// const modelRecetas = require('../models/Recetas')
+// const modelAdicionesReceta = require('../models/AdicionesReceta')
+
 const { conn } = require('../db')
 
 async function recetasSeeder () {
@@ -16,9 +18,10 @@ async function recetasSeeder () {
   modelLupulo(conn)
   modelLevadura(conn)
   modelEstilos(conn)
-  modelRecetas(conn)
+  // modelRecetas(conn)
+  // modelAdicionesReceta(conn)
 
-  const { Maltas, Lupulos, Levaduras, Estilos, Recetas } = conn.models
+  const { Maltas, Lupulos, Levaduras, Estilos } = conn.models
 
   try {
     // Sincronización con la BD
@@ -29,9 +32,10 @@ async function recetasSeeder () {
     const resultadoLupulos = await Lupulos.bulkCreate(sampleLupulos)
     const resultadoLevaduras = await Levaduras.bulkCreate(sampleLevaduras)
     const resultadoEstilos = await Estilos.bulkCreate(stylesDB)
-    const resultadoRecetas = await Recetas.bulkCreate(recepiesArray)
+    // const resultadoRecetas = await Recetas.bulkCreate(recepiesArray)
+    // const resultadoAdiciones = await AdicionesReceta.bulkCreate(sampleMiscs)
 
-    console.log(resultadoMaltas, resultadoLevaduras, resultadoLupulos, resultadoEstilos, resultadoRecetas)
+    // console.log(resultadoMaltas, resultadoLevaduras, resultadoLupulos, resultadoEstilos)
   } catch (error) {
     console.error('Error seeding database:', error)
   } finally {

@@ -21,7 +21,7 @@ module.exports = (dataBase) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    comfirmpass: {
+    confirmpass: {
       type: DataTypes.STRING,
       allowNull: false
     },

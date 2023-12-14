@@ -12,29 +12,29 @@ function extractJsonRecepie (jsonFile) {
 
   parsedJson.fermentables.forEach(fermentable => {
     const { name, potential, amount, color } = fermentable
-    fermentables.push({ name, potential, amount, color })
+    fermentables.push({ name, potential, color })
   })
 
   const hops = []
 
   parsedJson.hops.forEach(hop => {
     const { name, amount, use, time, ibu, alpha } = hop
-    hops.push({ name, amount, use, time, ibu, alpha })
+    hops.push({ name, alpha })
   })
 
   const yeasts = []
 
   parsedJson.yeasts.forEach(yeast => {
     const { name, type, amount } = yeast
-    yeasts.push({ name, type, amount })
+    yeasts.push({ name, type })
   })
 
   const miscs = []
 
   parsedJson.miscs.forEach(misc => {
-    const { name, type, amount, unit } = misc
+    const { name, type, amount, unit, notes } = misc
     if (type === 'Flavor' || type === 'Herb' || type === 'Spice') {
-      miscs.push({ name, type, amount, unit })
+      miscs.push({ name, type, amount, unit, notes })
     }
   })
 
@@ -79,7 +79,6 @@ function extractJsonRecepie (jsonFile) {
     mashWaterAmount: parsedJson.data.mashWaterAmount, // water for mash
     spargeWaterAmount: parsedJson.data.spargeWaterAmount, // water for sparge
     boilTime: parsedJson.boilTime, // boiling time
-    style: beerStyleId, // beer style according to BJCP
     notes: parsedJson.notes,
     mashTemperature: mash[0].stepTemp,
     mashTime: mash[0].stepTime,
@@ -88,10 +87,12 @@ function extractJsonRecepie (jsonFile) {
     primaryFermentationTemperature: fermentation[0].stepTemp,
     primaryFermentationTime: fermentation[0].stepTime,
     seccondaryFermentationTemperature: fermentation[1]?.stepTemp ?? null,
-    seccondaryFermentationTime: fermentation[1]?.stepTime ?? null
+    seccondaryFermentationTime: fermentation[1]?.stepTime ?? null,
+    EstiloId: beerStyleId // beer style according to BJCP
   }
+  console.log(newRecepie.name, newRecepie.EstiloId)
 
-  return newRecepie
+  return { newRecepie, fermentables, hops, yeasts, miscs }
 }
 
 const jsonRecepies = ['Brewfather_RECIPE_BrewdogPunkIPAClone_20231123.json',
@@ -104,11 +105,44 @@ const jsonRecepies = ['Brewfather_RECIPE_BrewdogPunkIPAClone_20231123.json',
   'Brewfather_RECIPE_Pilsner_20231211.json'
 
 ]
+// Inicializar arrays
 const recepiesArray = []
+let sampleMaltas = []
+let sampleLevaduras = []
+let sampleLupulos = []
+let sampleMiscs = []
 
-jsonRecepies.forEach(file => {
+// Remove duplicates function
+function removeDuplicates (array) {
+  const uniqueNames = []
+  const uniqueItems = array.filter(item => {
+    if (!uniqueNames.includes(item.name)) {
+      uniqueNames.push(item.name)
+      return true
+    } else return false
+  })
+  return uniqueItems
+}
+
+jsonRecepies.forEach((file, index) => {
   const fileRoute = `./mock/json/${file}`
-  recepiesArray.push(extractJsonRecepie(fileRoute))
+  const { newRecepie, yeasts, hops, miscs, fermentables } = extractJsonRecepie(fileRoute)
+  recepiesArray.push(newRecepie)
+  const miscsWithId = miscs.map(misc => ({ ...misc, RecetaId: index + 1 }))
+  sampleMaltas = [...sampleMaltas, ...fermentables]
+  sampleLevaduras = [...sampleLevaduras, ...yeasts]
+  sampleLupulos = [...sampleLupulos, ...hops]
+  sampleMiscs = [...sampleMiscs, ...miscsWithId]
+
+  sampleLupulos = removeDuplicates(sampleLupulos)
+  sampleLevaduras = removeDuplicates(sampleLevaduras)
+  sampleMaltas = removeDuplicates(sampleMaltas)
+  sampleMiscs = removeDuplicates(sampleMiscs)
 })
 
-module.exports = { recepiesArray }
+// console.log(sampleMaltas)
+// console.log(sampleLupulos)
+// console.log(sampleLevaduras)
+// console.log(sampleMiscs)
+
+module.exports = { recepiesArray, sampleMaltas, sampleLevaduras, sampleLupulos, sampleMiscs }
