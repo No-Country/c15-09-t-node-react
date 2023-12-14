@@ -1,50 +1,47 @@
 import { useState } from "react";
 export const RegisterForm = () => {
   const [formulario, setFormulario] = useState({
-    nombre: "",
+    usuario: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmpass: "",
   });
+
+  const URL = "http://localhost:5001/users/register";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario({ ...formulario, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí puedes realizar acciones como enviar los datos a un servidor o realizar otras lógicas
-    console.log("Datos del formulario:", formulario);
+
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formulario),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Respuesta del servidor:", responseData);
+        // Puedes realizar acciones adicionales después de un registro exitoso
+      } else {
+        console.error("Error en la solicitud al backend:", response.statusText);
+        // Puedes manejar errores aquí
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      // Puedes manejar errores de red aquí
+    }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch("http://tu-backend.com/api/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formulario),
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       console.log("Respuesta del servidor:", responseData);
-  //       // Puedes realizar acciones adicionales después de un registro exitoso
-  //     } else {
-  //       console.error("Error en la solicitud al backend:", response.statusText);
-  //       // Puedes manejar errores aquí
-  //     }
-  //   } catch (error) {
-  //     console.error("Error en la solicitud:", error);
-  //     // Puedes manejar errores de red aquí
-  //   }
-  // };
 
   return (
-    <form onSubmit={handleSubmit} className="w-96  ">
+    <form onSubmit={handleSubmit} className="w-96">
       <button
         className="bg-white w-full mb-2 hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-2xl border-2"
         onClick={() => {
@@ -66,8 +63,8 @@ export const RegisterForm = () => {
           placeholder="Tu nombre de usuario"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="text"
-          name="nombre"
-          value={formulario.nombre}
+          name="usuario"
+          value={formulario.usuario}
           onChange={handleChange}
         />
       </div>
@@ -108,8 +105,8 @@ export const RegisterForm = () => {
           placeholder="Password"
           className="w-full rounded-2xl border-2 border-gray-300 bg-white py-2 px-3"
           type="password"
-          name="confirmPassword"
-          value={formulario.confirmPassword}
+          name="confirmpass"
+          value={formulario.confirmpass}
           onChange={handleChange}
         />
       </div>
