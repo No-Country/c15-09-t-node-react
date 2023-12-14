@@ -30,6 +30,5 @@ button {
   .dark-mode {
     @apply bg-gray-dark dark:bg-gray-dark;
     @apply text-white dark:text-white !important;
-    
   }
 }
