@@ -4,7 +4,7 @@ import licorImg from "../assets/images/app-index/licor-hero.png";
 
 const SlideContent1 = () => (
   <div>
-    <section className="bg-gray-dark appIndex text-white mt-[56px] rounded-[32px] flex flex-col md:flex-row relative">
+    <section className="bg-gray-dark appIndex text-white mt-[56px] rounded-[32px] flex flex-col md:flex-row relative justify-between">
       <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="font-poppings text-[38px]">
           El Arte de la
