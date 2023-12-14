@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "styles",
-            element: <h1 className="mt-14 text-center">No se encontraron estilos favoritos</h1>,
+            element: <h1 className="mt-8 text-center">No se encontraron estilos favoritos</h1>,
           },
         ],
       },

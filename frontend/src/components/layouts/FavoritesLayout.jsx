@@ -3,9 +3,11 @@ import { ActionButtons } from "../favorites/ActionButtons";
 
 export const FavoritesLayout = () => {
   return (
-    <section className="mt-14">
+    <section className="">
       <ActionButtons />
-      <Outlet />
+      <div className="h-[435px] max-h-[435px]">
+        <Outlet />
+      </div>
     </section>
   );
 };
