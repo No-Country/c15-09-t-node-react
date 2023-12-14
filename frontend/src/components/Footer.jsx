@@ -1,6 +1,7 @@
 // src/components/Footer.js
 import React from "react";
 import { Facebook, Twitter, Instagram, MailOutline, Phone, Gavel } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -9,7 +10,11 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row lg:flex-row justify-evenly items-center">
           {/* Sección 2: Contáctanos */}
           <div className="mb-8 md:mb-0 lg:mb-0">
-            <h3 className="text-lg font-semibold mb-4">Contáctanos</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              <Link to={"/app/contact"} className="hover:text-primary">
+                Contáctanos
+              </Link>
+            </h3>
             <p className="pb-3">
               <MailOutline /> Email: info@tutiendaonline.com
             </p>
