@@ -12,7 +12,7 @@ export default function Header() {
           <DarkModeToggle />
         </div>
       </div>
-      <nav >
+      <nav>
         <ul className="flex gap-[33px] items-center md:flex-row flex-col ">
           <div className="flex md:gap-10 gap-10 md:order-1 order-2">
             <li>
@@ -24,6 +24,10 @@ export default function Header() {
             <li>
               <Link to={"/app/styles"}> Estilos </Link>
             </li>
+            <li>
+              <Link to={"/app/favorites"}> Favoritos </Link>
+            </li>
+
             <li className="md:hidden block">
               <Link
                 className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
