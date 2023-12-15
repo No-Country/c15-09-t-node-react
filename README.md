@@ -3,7 +3,9 @@
 <h3>👉🏻 Nuestra plataforma de recetas de cervezas artesanales ofrece un amplio catálogo de productos para aquellos interesados en la industria, desde recetas, estilos, insumos y maquinaria hasta una comunidad donde compartir con colegas interesados en las cervezas artesanales como tu .El website ofrece una expeiencia de usuario centrada en ser lo mas sencilla y eficiente posible.</h3>
 <h3>👉🏻 <b>Visita nuestra website en <a href="https://c15-09-t-node-react.vercel.app/app">Brewer's CookBook</a></b></h3>
 <hr/>
+
 ### ⚛️ Front End:
+
 #### 🛠️ Tech Stack:
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -22,7 +24,9 @@
 | **Camilo Martinez**| **Gloria Ramos**| **Matias Zarate**| **Saul**|
 | <a href="https://github.com/CamiloProg"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/camilomartinez01/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/artem-liamichev"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/artem-liamichev-6227b7266/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Bagse"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/brian-ar%C3%B3n-g%C3%B3mez-sequeiros/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Bagse"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/brian-ar%C3%B3n-g%C3%B3mez-sequeiros/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 <hr/>
+
 ### ☕ Back End:
+
 #### 🛠️ Tech Stack:
 
 [![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white)](https://www.java.com/)
