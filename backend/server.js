@@ -5,7 +5,7 @@ const app = express()
 const PORT = process.env.PORT || 5001
 const { conn } = require('./src/db')
 
-const lupulosRoutes = require('./src/routes/lupulosRoutes')
+const ingredientesRoutes = require('./src/routes/routeIngredientes')
 const userRoutes = require('./src/routes/userRoutes')
 
 app.use(express.urlencoded({ extended: true }))
@@ -13,7 +13,7 @@ app.use(express.json())
 
 const { Estilos, Maltas } = require('./src/db')
 
-app.use('/lupulos', lupulosRoutes)
+app.use('/ingredientes', ingredientesRoutes)
 app.use('/users', userRoutes)
 
 // TEST ______________________________________________________________________________
