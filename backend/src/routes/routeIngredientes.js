@@ -1,13 +1,10 @@
 const { Router } = require('express')
 const router = Router()
 const IngredientesController = require('../controllers/controllerIngredientes')
-const EstilosController = require('../controllers/controllerEstilos')
 
 router.get('/lupulos', IngredientesController.getAllLupulos)
 router.get('/levaduras', IngredientesController.getAllLevaduras)
 router.get('/maltas', IngredientesController.getAllMaltas)
-
-router.get('/estilos', EstilosController.getAllEstilos)
 
 router.post('/lupulos', IngredientesController.createLupulos)
 router.post('/levaduras', IngredientesController.createLevaduras)
