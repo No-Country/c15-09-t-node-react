@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 
 export const useServiceGet = (service) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getData = async () => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const response = await service();
       setData(response);
     } catch (err) {
-      setError(true);
+      setIsError(true);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -22,5 +22,5 @@ export const useServiceGet = (service) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return [data, loading, error];
+  return [data, isLoading, isError];
 };
