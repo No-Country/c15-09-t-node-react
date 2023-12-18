@@ -24,6 +24,9 @@ export const Recipe = () => {
 
     {/* Paginacion*/ }
 
+    const handlePaginaChange = (nuevaPagina) => {
+        setPaginaActual(nuevaPagina);
+    };
     return (
         <div className="flex items-center flex-col mt-8 ">
             <h1 className="font-homemade my-10 self-start">Recetas</h1>
