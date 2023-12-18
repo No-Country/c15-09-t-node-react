@@ -83,9 +83,12 @@ function extractJsonRecepie (jsonFile) {
     miscs,
     mashTemperature: mash[0].stepTemp,
     mashTime: mash[0].stepTime,
-    mashOutTemperature: mash[1].stepTemp,
-    mashOutTime: mash[1].stepTime,
-    fermentation
+    mashOutTemperature: mash[1]?.stepTemp ?? null,
+    mashOutTime: mash[1]?.stepTime ?? null,
+    primaryFermentationTemperature: fermentation[0].stepTemp,
+    primaryFermentationTime: fermentation[0].stepTime,
+    seccondaryFermentationTemperature: fermentation[1]?.stepTemp ?? null,
+    seccondaryFermentationTime: fermentation[1]?.stepTime ?? null
   }
   // Convert the newRecepie object to JSON
   const jsonString = JSON.stringify(newRecepie, null, 2)
@@ -99,10 +102,15 @@ function extractJsonRecepie (jsonFile) {
   console.log(`File "${fileName}" created successfully.`)
 }
 
-const jsonRecepies = ['Brewfather_RECIPE_BrewdogPunkIPAClone_20231123.json',
-  'Brewfather_RECIPE_ChocolateCoffeeStout_20231123.json',
-  'Brewfather_RECIPE_GuinessClone_20231123.json',
-  'Brewfather_RECIPE_Lefte_20231130.json'
+const jsonRecepies = [
+  // 'Brewfather_RECIPE_BrewdogPunkIPAClone_20231123.json',
+  // 'Brewfather_RECIPE_ChocolateCoffeeStout_20231123.json',
+  // 'Brewfather_RECIPE_GuinessClone_20231123.json',
+  // 'Brewfather_RECIPE_Lefte_20231130.json'
+  'Brewfather_RECIPE_BrewDogHazyJaneCloneDIYDog268_20231123.json',
+  'Brewfather_RECIPE_JuicyNEIPA_20231123.json',
+  'Brewfather_RECIPE_SierraNevadaPaleAle_20231123.json',
+  'Brewfather_RECIPE_Pilsner_20231211.json'
 ]
 
 jsonRecepies.forEach(file => {

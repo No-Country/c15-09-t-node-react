@@ -46,7 +46,8 @@ app.get('/malts', async (req, res) => {
   }
 })
 // END TEST ______________________________________________________________________________
-conn.sync({ force: false })
+// conn.sync({ force: false })
+conn.sync({ alter: true })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server raised in port ${PORT} `)
