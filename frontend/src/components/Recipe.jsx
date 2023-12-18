@@ -16,15 +16,13 @@ export const Recipe = () => {
     const totalPaginas = Math.ceil(data.length / recetasPorPagina);
     const [paginaActual, setPaginaActual] = useState(1);
 
-    const handlePaginaChange = (nuevaPagina) => {
-        setPaginaActual(nuevaPagina);
-    };
-
     const recetasPaginados = data.slice(
         (paginaActual - 1) * recetasPorPagina,
         paginaActual * recetasPorPagina
     );
 
+
+    {/* Paginacion*/ }
 
     return (
         <div className="flex items-center flex-col mt-8 ">
