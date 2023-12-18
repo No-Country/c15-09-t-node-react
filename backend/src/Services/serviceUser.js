@@ -23,7 +23,7 @@ const UserServices = {
   },
   getUserById: async (id) => {
     try {
-      const response = await User.findByPk(id)
+      const response = await User.findByPk(id, { include: { all: true, nested: true } })
 
       if (!response) {
         return 'Cannot find the User ID'

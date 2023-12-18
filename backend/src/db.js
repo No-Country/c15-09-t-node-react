@@ -13,6 +13,7 @@ const modelAdicionesReceta = require('./models/AdicionesReceta')
 const modelRecetas = require('../src/models/Recetas')
 const modelEstilos = require('../src/models/Estilos')
 const modelUser = require('./models/Users')
+const modelFavoritos = require('./models/Favoritos')
 
 const dataBase = new Sequelize(
   url,
@@ -54,6 +55,8 @@ modelUser(dataBase)
 modelEstilos(dataBase)
 modelRecetas(dataBase)
 
+modelFavoritos(dataBase)
+
 const {
   Maltas, // Listado de Maltas comerciales con sus atributos
   Fermentables, // Tabla pivote: contiene las maltas y su cantidad para cada receta.
@@ -64,7 +67,8 @@ const {
   AdicionesReceta, // Contiene directamente las adiciones con su descripción y cantidad.
   Estilos, // Guía de estilos.
   Recetas, // Recetas de cerveza creadas por usuarios.
-  User // Usuarios
+  User, // Usuarios
+  Favoritos
 } = dataBase.models
 
 //! ---------------------------------------- relaciones ------------------------------
@@ -78,6 +82,9 @@ Recetas.hasMany(LevadurasReceta)
 Recetas.hasMany(AdicionesReceta)
 Recetas.belongsTo(Estilos)
 Recetas.belongsTo(User)
+
+User.belongsToMany(Recetas, { through: Favoritos })
+Recetas.belongsToMany(User, { through: Favoritos })
 
 module.exports = {
   Maltas,

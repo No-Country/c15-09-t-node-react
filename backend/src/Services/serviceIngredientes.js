@@ -30,7 +30,27 @@ module.exports = {
     }
     return maltas
   },
-
+  getMaltaById: async (id) => {
+    const malta = await Maltas.findByPk(id)
+    if (!malta) {
+      return 'Id not found in Maltas'
+    }
+    return malta
+  },
+  getLupuloById: async (id) => {
+    const lupulo = await Lupulos.findByPk(id)
+    if (!lupulo) {
+      return 'Id not found in Lupulos'
+    }
+    return lupulo
+  },
+  getLevaduraById: async (id) => {
+    const levadura = await Levaduras.findByPk(id)
+    if (!levadura) {
+      return 'Id not found in Levaduras'
+    }
+    return levadura
+  },
   deleteByIdLupulo: async (id) => {
     try {
       await Lupulos.destroy({

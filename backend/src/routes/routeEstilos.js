@@ -3,6 +3,7 @@ const router = Router()
 
 const EstilosController = require('../controllers/controllerEstilos')
 
-router.get('/estilos', EstilosController.getAllEstilos)
+router.get('/', EstilosController.getAllEstilos)
+router.get('/:id', EstilosController.getEstiloById)
 
 module.exports = router

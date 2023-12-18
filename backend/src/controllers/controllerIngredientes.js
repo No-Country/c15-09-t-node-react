@@ -31,6 +31,36 @@ module.exports = {
       res.status(500).send('Internal Server Error')
     }
   },
+  getMaltaById: async (req, res) => {
+    try {
+      const { id } = req.params
+      const malta = await IngredientesService.getMaltaById(id)
+      res.status(200).json(malta)
+    } catch (error) {
+      console.log(error)
+      res.status(500).send('Internal Server Error')
+    }
+  },
+  getLupuloById: async (req, res) => {
+    try {
+      const { id } = req.params
+      const lupulo = await IngredientesService.getLupuloById(id)
+      res.status(200).json(lupulo)
+    } catch (error) {
+      console.log(error)
+      res.status(500).send('Internal Server Error')
+    }
+  },
+  getLevaduraById: async (req, res) => {
+    try {
+      const { id } = req.params
+      const levadura = await IngredientesService.getLevaduraById(id)
+      res.status(200).json(levadura)
+    } catch (error) {
+      console.log(error)
+      res.status(500).send('Internal Server Error')
+    }
+  },
 
   deleteByIdLupulo: async (req, res) => {
     try {

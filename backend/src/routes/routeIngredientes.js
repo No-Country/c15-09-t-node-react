@@ -6,6 +6,10 @@ router.get('/lupulos', IngredientesController.getAllLupulos)
 router.get('/levaduras', IngredientesController.getAllLevaduras)
 router.get('/maltas', IngredientesController.getAllMaltas)
 
+router.get('/lupulos/:id', IngredientesController.getLupuloById)
+router.get('/levaduras/:id', IngredientesController.getLevaduraById)
+router.get('/maltas/:id', IngredientesController.getMaltaById)
+
 router.post('/lupulos', IngredientesController.createLupulos)
 router.post('/levaduras', IngredientesController.createLevaduras)
 router.post('/maltas', IngredientesController.createMaltas)
