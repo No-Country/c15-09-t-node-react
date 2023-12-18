@@ -1,234 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getAllStyles } from "../services/styles";
+import imagenEstilos from '../assets/images/imageRegister.png'
 
 export const Stylesbeer = () => {
-    const productos = [
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 1",
-            parrafo: "Descripción corta del objeto 1.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 2",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 3",
-            parrafo: "Descripción corta del objeto 3.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 4",
-            parrafo: "Descripción corta del objeto 4.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 5",
-            parrafo: "Descripción corta del objeto 5.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 6",
-            parrafo: "Descripción corta del objeto 6.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 7",
-            parrafo: "Descripción corta del objeto 7.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 8",
-            parrafo: "Descripción corta del objeto 8.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 9",
-            parrafo: "Descripción corta del objeto 9.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-        {
-            imagen: "https://sheikobsbagels.com/wp-content/uploads/2020/12/IMG_9566-scaled.jpeg",
-            nombre: "Objeto 10",
-            parrafo: "Descripción corta del objeto 10.",
-        },
-    ];
 
-    const productosPorPagina = 10;
-    const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        getAllStyles().then(data => setData(data))
+
+    }, []);
+
+    console.log(data)
+
+    const productosPorPagina = 15;
+    const totalPaginas = Math.ceil(data.length / productosPorPagina);
     const [paginaActual, setPaginaActual] = useState(1);
 
     const handlePaginaChange = (nuevaPagina) => {
         setPaginaActual(nuevaPagina);
     };
 
-    const productosPaginados = productos.slice(
+    const productosPaginados = data.slice(
         (paginaActual - 1) * productosPorPagina,
         paginaActual * productosPorPagina
     );
@@ -242,10 +36,10 @@ export const Stylesbeer = () => {
                         {" "}
                         <Link to={"/app/styleDetails"}>
                             <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
-                                <img className="w-full" src={producto.imagen} alt="Sunset in the mountains" />
+                                <img className="w-full" src={imagenEstilos} alt="Sunset in the mountains" />
                                 <div className="px-6 py-4">
-                                    <div className="font-bold font-homemade text-xl mb-2">{producto.nombre}</div>
-                                    <p className="text-gray-700 text-base">{producto.parrafo}</p>
+                                    <div className="font-bold font-homemade text-xl mb-2">{producto.name}</div>
+                                    <p className="text-gray-700 text-base">{producto.category}</p>
                                 </div>
                             </div>{" "}
                         </Link>

@@ -1,94 +1,32 @@
 import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getAllRecetas } from '../services/recipes'
 
 export const Recipe = () => {
+    const [data, setData] = useState([]);
 
-    const recetas = [
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Corona",
-            parrafo: "Descripción corta del objeto 1.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Zulia",
-            parrafo: "Descripción corta del objeto 3.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Quilmes",
-            parrafo: "Descripción corta del objeto 4.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        }, {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-        {
-            imagen: "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-            nombre: "Coors",
-            parrafo: "Descripción corta del objeto 2.",
-        },
-    ]
+    useEffect(() => {
+        getAllRecetas().then(data => setData(data))
+
+    }, []);
+    console.log(data)
+
 
     const recetasPorPagina = 10;
-    const totalPaginas = Math.ceil(recetas.length / recetasPorPagina);
+    const totalPaginas = Math.ceil(data.length / recetasPorPagina);
     const [paginaActual, setPaginaActual] = useState(1);
 
-    const handlePaginaChange = (nuevaPagina) => {
-        setPaginaActual(nuevaPagina);
-    };
-
-    const recetasPaginados = recetas.slice(
+    const recetasPaginados = data.slice(
         (paginaActual - 1) * recetasPorPagina,
         paginaActual * recetasPorPagina
     );
 
 
+    {/* Paginacion*/ }
+
+    const handlePaginaChange = (nuevaPagina) => {
+        setPaginaActual(nuevaPagina);
+    };
     return (
         <div className="flex items-center flex-col mt-8 ">
             <h1 className="font-homemade my-10 self-start">Recetas</h1>
@@ -98,10 +36,10 @@ export const Recipe = () => {
                         {" "}
                         <Link to={"/app/recipedetails"}>
                             <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
-                                <img className="w-full" src={receta.imagen} alt="Sunset in the mountains" />
+                                <img className=" h-60 w-96 " src={receta.image} alt="Cervezas de Autor" />
                                 <div className="px-6 py-4">
-                                    <div className="font-bold font-homemade text-xl mb-2">{receta.nombre}</div>
-                                    <p className="text-gray-700 text-base">{receta.parrafo}</p>
+                                    <div className="font-bold font-homemade text-xl mb-2">{receta.name}</div>
+                                    <p className="text-gray-700 text-base">Autor:{receta.author}</p>
                                 </div>
                             </div>{" "}
                         </Link>
