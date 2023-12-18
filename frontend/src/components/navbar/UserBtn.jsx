@@ -3,9 +3,23 @@ import { useState } from "react";
 
 export const UserBtn = () => {
   const [showMenu, setShowMenu] = useState(false);
+  let timeoutId;
 
   const handleToggleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
+  };
+
+  const handleMouseEnter = () => {
+    // Cancelar el cierre automático si el mouse vuelve antes de que se complete el temporizador
+    clearTimeout(timeoutId);
+    setShowMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    // Establecer un temporizador para ocultar el menú después de 2 segundos
+    timeoutId = setTimeout(() => {
+      setShowMenu(false);
+    }, 500);
   };
 
   const handleLogout = () => {
@@ -14,8 +28,12 @@ export const UserBtn = () => {
   };
 
   return (
-    <div className="navbar relative">
-      <div className="user-info" onClick={handleToggleMenu}>
+    <div
+      className="navbar relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="user-info">
         <img
           className="h-[28px] w-[28px]"
           src="https://i.postimg.cc/YjKcp3sw/Ellipse-1.png"
