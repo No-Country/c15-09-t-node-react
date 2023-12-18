@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export const useGetService = (service) => {
-  const [data, setData] = useState(null);
+export const useServiceGet = (service) => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
