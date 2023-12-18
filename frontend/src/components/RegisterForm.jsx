@@ -8,7 +8,6 @@ export const RegisterForm = () => {
     confirmpass: "",
   });
 
-  // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(localStorage.getItem("authToken"));
 
   const handleChange = (e) => {
