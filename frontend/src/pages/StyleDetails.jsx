@@ -2,7 +2,6 @@ import { useState } from "react";
 import amberAle from "../assets/images/amber-ale.jpg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ZoomImage from "../components/ZoomImage";
 
 // placeholder por ahora
 export const StyleDetails = () => {
@@ -103,16 +102,12 @@ export const StyleDetails = () => {
 
   return (
     <div className="container font-poppings">
-      <main className="flex mt-16">
-        <div>
-          <ZoomImage
-            src={amberAle}
-            alt="Zoomable Image"
-            zoomArea={{ x: 1, y: 1, width: 1, height: 1 }} // ajusta según tus necesidades
-          />
+      <main className="flex mt-16 justify-center">
+        <div className="hidden md:block">
+          <img src={amberAle} alt={`${json.name}`} className="rounded-md" />
         </div>
-        <div className="ml-auto max-w-xl">
-          <div className="flex items-center">
+        <div className="xl:ml-auto sm:ml-8 max-w-xl xl:mr-0 mx-2 sm:mx-8 md:w-1/2">
+          <div className="flex md:justify-start justify-center items-center">
             <h1 className="text-4xl font-bold mr-4">{json.name}</h1>
             {favorite === false ? (
               <FavoriteBorderIcon
@@ -130,7 +125,9 @@ export const StyleDetails = () => {
               />
             )}
           </div>
-
+          <div className="md:hidden max-w-xs sm:w-96 mx-auto">
+            <img src={amberAle} alt={`${json.name}`} className="rounded-md my-4" />
+          </div>
           <p className="font-normal mt-6">{json.overall_impression}</p>
           <div className="flex mt-12 text-[18px]">
             <h6 className="text-[#DB8116] font-bold mr-1">CATEGORY:</h6>{" "}

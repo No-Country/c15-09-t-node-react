@@ -1,6 +1,6 @@
 export const FermentablesSection = ({ fermentables, onChange, onAdd, onRemove }) => {
   return (
-    <div className="flex flex-col  justify-center items-center px-10 py-10">
+    <div className="flex flex-col  justify-center items-stretch px-10 py-10">
       <h2 className="text-2xl pb-4">Fermentables</h2>
       {fermentables.map((item, index) => (
         <div key={index} className="flex flex-wrap flex-col justify-center  mb-2">
@@ -35,7 +35,7 @@ export const FermentablesSection = ({ fermentables, onChange, onAdd, onRemove })
             />
           </label>
           <button
-            className="p-1 mt-2 bg-red-500 text-white rounded-md"
+            className="p-1 mt-6 bg-[#A04000]  text-white rounded-md"
             type="button"
             onClick={() => onRemove(index)}
           >
@@ -43,7 +43,7 @@ export const FermentablesSection = ({ fermentables, onChange, onAdd, onRemove })
           </button>
         </div>
       ))}
-      <button type="button" onClick={onAdd} className="mt-4 p-1 bg-green-500 text-white rounded-md">
+      <button type="button" onClick={onAdd} className="mt-4 p-2  bg-[#229954] hover:bg-[#145A32] text-white rounded-md">
         Agregar Fermentable
       </button>
     </div>

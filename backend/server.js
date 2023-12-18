@@ -5,7 +5,11 @@ const app = express()
 const PORT = process.env.PORT || 5001
 const { conn } = require('./src/db')
 
-const lupulosRoutes = require('./src/routes/lupulosRoutes')
+const cloudinary = require('cloudinary').v2
+const multer = require('multer')
+const upload = multer({ dest: 'uploads' })
+
+const ingredientesRoutes = require('./src/routes/routeIngredientes')
 const userRoutes = require('./src/routes/userRoutes')
 
 app.use(express.urlencoded({ extended: true }))
@@ -13,12 +17,23 @@ app.use(express.json())
 
 const { Estilos, Maltas } = require('./src/db')
 
-app.use('/lupulos', lupulosRoutes)
+app.use('/ingredientes', ingredientesRoutes)
 app.use('/users', userRoutes)
 
 // TEST ______________________________________________________________________________
 app.get('/', (req, res) => {
   res.send('Working')
+})
+
+app.post('/img', upload.single('image'), async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path)
+    res.status(200).json(result)
+    // cuando guardemos en el modelo : result.url
+  } catch (error) {
+    console.log({ errorMessage: error.message })
+    return res.status(500).json({ message: error.message })
+  }
 })
 
 app.get('/styles', async (req, res) => {
