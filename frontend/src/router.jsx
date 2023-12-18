@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         element: <Stylespage />,
       },
       {
-        path: "styledetails",
+        path: "styles/:id",
         element: <StyleDetails />,
       },
       {
