@@ -3,29 +3,39 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { getStyleById } from "../services/styles";
 import { useParams } from "react-router-dom";
+import { colorRanges } from "../utils/colorRanges.js";
+import { findColor } from "../utils/findColor.js";
+import { calculateAverageColor } from "../utils/calculateAverageColor.js";
+import placeholderImage from "../assets/images/placeholder.svg";
 
 // TODO: agregar favoritos cuando agreguen el endpoint
 // TODO: arreglar imagenes
 export const StyleDetails = () => {
   const [favorite, setFavorite] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(false);
+  const [beerImage, setBeerImage] = useState(colorRanges[data.category] || placeholderImage);
   const { id } = useParams();
-
-  useEffect(() => {
-    getStyleById(id).then((data) => setData(data));
-  }, [id]);
-
-  // TODO: agregar tooltips
 
   const totalSrm = 40;
   const totalIbu = 100;
   const totalAbv = 15;
-
   function calculatePercentage(value, totalType) {
     return (value / totalType) * 100;
   }
 
-  // hacer esto prop cuando tenga la info
+  useEffect(() => {
+    getStyleById(id).then((data) => {
+      setData(data);
+      // Calcular el color promedio de la cerveza
+      const averageColor = calculateAverageColor(data.color_min, data.color_max);
+      // Encontrar el rango de color en el cual cae el color promedio de la cerveza
+      const colorRange = findColor(colorRanges, averageColor);
+      // Si se encuentra un rango de color utilizar esa imagen de lo contrario utilizar un placeholder
+      setBeerImage(colorRange ? colorRange.image : "https://placehold.co/400");
+    });
+  }, [id, data.category]);
+
+  // TODO: agregar tooltips
 
   if (data === null) {
     return <div>Loading...</div>;
@@ -35,7 +45,7 @@ export const StyleDetails = () => {
     <div className="container font-poppings">
       <main className="flex mt-16 justify-center">
         <div className="hidden md:block">
-          <img src={"https://placehold.co/400"} alt={`${data.name}`} className="rounded-md" />
+          <img src={beerImage} alt={`${data.name}`} className="rounded-md" />
         </div>
         <div className="xl:ml-auto sm:ml-8 max-w-xl xl:mr-0 mx-2 sm:mx-8 md:w-1/2">
           <div className="flex md:justify-start justify-center items-center">
@@ -57,11 +67,7 @@ export const StyleDetails = () => {
             )}
           </div>
           <div className="md:hidden max-w-xs sm:w-96 mx-auto">
-            <img
-              src={"https://placehold.co/400"}
-              alt={`${data.name}`}
-              className="rounded-md my-4"
-            />
+            <img src={beerImage} alt={`${data.name}`} className="rounded-md my-4" />
           </div>
           <p className="font-normal mt-6">{data.overall_impression}</p>
           <div className="flex mt-12 text-[18px]">
