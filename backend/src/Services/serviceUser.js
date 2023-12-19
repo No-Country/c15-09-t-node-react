@@ -1,9 +1,8 @@
 const { User } = require('../db')
 const { Op } = require('sequelize')
 const bcrypt = require('bcrypt')
-// jwt y SK pueden ir en el .env mas adelante.
 const jwt = require('jsonwebtoken')
-const secretKey = 'cervezaNC'
+
 require('dotenv').config()
 
 const UserServices = {
@@ -107,8 +106,8 @@ const UserServices = {
       console.log(user)
 
       if (user) {
-        const token = jwt.sign({ user }, secretKey, {
-          expiresIn: '24h'
+        const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRATION
         })
         return {
           user,

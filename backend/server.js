@@ -5,24 +5,67 @@ const app = express()
 const PORT = process.env.PORT || 5001
 const { conn } = require('./src/db')
 const cors = require('cors')
+const cookieParser = require('cookie-parser');
+
+// google test -----
+const passport = require('passport');
+const session = require('express-session')
 
 const cloudinary = require('cloudinary').v2
 const multer = require('multer')
 const upload = multer({ dest: 'uploads' })
 
 const ingredientesRoutes = require('./src/routes/routeIngredientes')
-const userRoutes = require('./src/routes/userRoutes')
+const userRoutes = require('./src/routes/user.routes')
 const estilosRoutes = require('./src/routes/routeEstilos')
 const recetasRoutes = require('./src/routes/recetasRoutes')
+const loginRoutes = require('./src/routes/login.routes')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser());
 
 app.use('/ingredientes', ingredientesRoutes)
 app.use('/users', userRoutes)
 app.use('/estilos', estilosRoutes)
 app.use('/recetas', recetasRoutes)
+app.use('/login', loginRoutes)
+
+//middleware de proteccion de rutas
+function isLoggedIn(req, res, next) {
+  req.isAuthenticated() ? next() : res.sendStatus(401)
+}
+
+// Configuración de Passport
+app.use(session({ secret: 'cervezaNC', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/google',
+  passport.authenticate('google', {scope: ['email', 'profile'] })
+)
+
+app.get('/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/protected',
+    failureRedirect: '/auth/failure'
+  })
+)
+
+app.get('/auth/failure', (req, res) => {
+  res.send('Authentication Failure')
+})
+
+app.get('/protected', isLoggedIn, (req, res) => {
+  res.send('Ok')
+})
+
+app.get('/logout', (req, res) => {
+  req.logout()
+  req.session.destroy()
+  res.send('GoodBye!')
+})
 
 // TEST ______________________________________________________________________________
 app.get('/', (req, res) => {
