@@ -18,7 +18,7 @@ const SlideContent1 = () => (
         </p>
 
         <Link to="/app/recipe">
-          <button className="bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+          <button className="bg-secondary hover:bg-primary text-gray-dark py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
             Descubrir
           </button>
         </Link>
@@ -46,7 +46,7 @@ const SlideContent2 = () => (
 
         <Link to="/app/recipe">
           {" "}
-          <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] w-[246px] font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+          <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
             Descubrir
           </button>
         </Link>
