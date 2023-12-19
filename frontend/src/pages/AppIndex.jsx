@@ -1,5 +1,5 @@
 import { Carousel } from "../components/Carrousel";
-import { CardIndex } from "../components/cardIndex";
+import { CardIndex } from "../components/CardIndex";
 import { Ingredientes } from "../components/Ingredientes";
 
 import "../assets/styles/components/app-index.css";
