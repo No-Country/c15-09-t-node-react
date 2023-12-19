@@ -72,10 +72,10 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/app/favorites/reciepes" />,
+            element: <Navigate to="/app/favorites/recipes" />,
           },
           {
-            path: "reciepes",
+            path: "recipes",
             element: <RecipeFavorites />,
           },
           {
