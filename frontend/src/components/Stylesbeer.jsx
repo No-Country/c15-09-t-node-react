@@ -31,8 +31,9 @@ export const Stylesbeer = () => {
 
   return (
     <div className="flex items-center flex-col mt-8 ">
-      <h1 className="font-homemade my-10 self-start">Estilos de cerveza</h1>
+      <h1 className="font-homemade my-10 self-center md:self-start md:px-4">Estilos de cerveza</h1>
       <div className="flex gap-x-10 gap-y-5 flex-wrap justify-center">
+
         {productosPaginados.map((producto, index) => {
           // Calcular el color promedio de la cerveza
           const averageColor = calculateAverageColor(producto.color_min, producto.color_max);
@@ -56,6 +57,8 @@ export const Stylesbeer = () => {
             </div>
           );
         })}
+
+
       </div>
 
       {/* Paginación */}

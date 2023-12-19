@@ -6,11 +6,11 @@ import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 export default function Header() {
   return (
     <header className="flex items-center lg:flex-row flex-col justify-between mt-[57px]  ">
+      <div className="hidden ">
+        <DarkModeToggle />
+      </div>
       <div className="flex justify-between items-center gap-20 md:mb-0 mb-4">
         <Logo />
-        <div className="md:hidden block">
-          <DarkModeToggle />
-        </div>
       </div>
       <nav>
         <ul className="flex gap-[33px] items-center md:flex-row flex-col ">
@@ -27,7 +27,9 @@ export default function Header() {
             <li>
               <Link to={"/app/favorites"}> Favoritos </Link>
             </li>
-
+            <li className="md:block">
+              <DarkModeToggle />
+            </li>
             <li className="md:hidden block">
               <Link
                 className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
@@ -46,13 +48,11 @@ export default function Header() {
                 Crear
               </Link>
             </li>
-            <li className="md:block hidden">
-              <DarkModeToggle />
-            </li>
+
             <li>
               <Search />
             </li>
-            <li className="z-10">
+            <li className="z-10 ">
               <UserBtn />
             </li>
           </div>
