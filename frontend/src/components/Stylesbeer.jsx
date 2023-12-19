@@ -27,12 +27,12 @@ export const Stylesbeer = () => {
 
   return (
     <div className="flex items-center flex-col mt-8 ">
-      <h1 className="font-homemade my-10 self-start">Estilos de cerveza</h1>
+      <h1 className="font-homemade my-10 self-center md:self-start md:px-4">Estilos de cerveza</h1>
       <div className="flex gap-x-10 gap-y-5 flex-wrap justify-center">
         {productosPaginados.map((producto, index) => (
           <div key={index}>
             {" "}
-            <Link to={`/app/styles/${producto.id}`}>
+            <Link to={"/app/styleDetails"}>
               <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
                 <img className="w-full" src={imagenEstilos} alt="Sunset in the mountains" />
                 <div className="px-6 py-4">
