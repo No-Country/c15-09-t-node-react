@@ -4,7 +4,7 @@ import AmberAle from "../assets/images/srm-images/8-26 SRM/amber-ale.jpg";
 import BalticStylePorter from "../assets/images/srm-images/27-34 SRM/baltic-style-porter.jpg";
 import AmericanStout from "../assets/images/srm-images/35-40 SRM/american-stout.jpg";
 
-// Define your color ranges and corresponding images
+// Segun el rango de colores tiene una imagen diferente
 export const colorRanges = [
   { min: 0, max: 4, image: AmericanCreamAle },
   { min: 4, max: 7, image: BlondeAle },
