@@ -4,12 +4,12 @@ import { getFavoritesFromUser } from "../services/favorites";
 
 export const RecipeFavorites = () => {
   // temporal por ahora hasta que el endpoint de login
-  const [recipeId, setRecipeId] = useState(2);
-  const [userId, setUserId] = useState(9);
+
+  const [userId] = useState(9);
   const [recipesFavorites, setRecipesFavorites] = useState([]);
 
   useEffect(() => {
-    getFavoritesFromUser(9).then((data) => setRecipesFavorites(data.data["Recetas"]));
+    getFavoritesFromUser(userId).then((data) => setRecipesFavorites(data.data["Recetas"]));
   });
 
   const handleDeleteFavorite = (id) => {
