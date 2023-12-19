@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { createUser } from "../services/user";
+import { useNavigate } from "react-router-dom";
 export const RegisterForm = () => {
+  const [token, setToken] = useState(localStorage.getItem("authToken"));
   const [formulario, setFormulario] = useState({
     usuario: "",
     email: "",
     password: "",
     confirmpass: "",
   });
-
-  const [token, setToken] = useState(localStorage.getItem("authToken"));
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,7 @@ export const RegisterForm = () => {
       .then((data) => {
         localStorage.setItem("authToken", token);
         setToken(data.token);
+        navigate("/app");
       })
       .catch((e) => console.log(e));
   };
