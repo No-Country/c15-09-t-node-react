@@ -9,6 +9,15 @@ export const createUser = async (userData) => {
   }
 };
 
+export const loginUser = async (userData) => {
+  try {
+    const response = brewerApi.post(`/login/`, userData);
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const getAllUsers = async () => {
   const { data } = brewerApi.get("/users");
   return data;
