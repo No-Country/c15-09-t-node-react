@@ -19,10 +19,22 @@ const RecetasController = {
       res.status(500).send({ message: error.message })
     }
   },
+  /* createImg: async (req, res) => {
+    try {
+      const imagen = await RecetasService.createImg(req, res)
+      console.log(imagen.secure_url)
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Error uploading image' })
+    }
+  }, */
   createNewReceta: async (req, res) => {
     const recipeData = req.body
+    console.log(req.body.name)
     try {
-      const newRecipe = await RecetasService.createNewReceta(recipeData)
+      const imagen = await RecetasService.createImg(req, res)
+      console.log(imagen.secure_url)
+      const newRecipe = await RecetasService.createNewReceta(recipeData, imagen.secure_url)
       res.status(201).json({
         message: 'Recipe created sucessfully',
         newRecipe
