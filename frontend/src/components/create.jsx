@@ -3,8 +3,6 @@ import { LupulosSection } from "./createBeerComponents/LupulosSection";
 import { FermentablesSection } from "./createBeerComponents/FermentablesSection";
 import { LevadurasSection } from "./createBeerComponents/LevadurasSection";
 import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
-import { MaceracionSection } from "./createBeerComponents/MaceracionSection";
-import { FermentacionSection } from "./createBeerComponents/FermentacionSection";
 import bgForm from "../assets/images/bgForm.jpg";
 
 export const Create = () => {
@@ -22,18 +20,26 @@ export const Create = () => {
     spargeWaterAmount: "",
     boilSize: "",
     boilTime: "",
+    mashTemperature: "",
+    mashTime: "",
+    mashOutTemperature: "",
+    mashOutTime: "",
+    primaryFermentationTemperature: "",
+    primaryFermentationTime: "",
+    seccondaryFermentationTemperature: "",
+    seccondaryFermentationTime: "",
+    notes: "",
     style: "",
-    note: "",
+    UserID: "",
     fermentables: [
       {
-        name: "",
+        MaltaId: "",
         quantity: "",
-        color: "",
       },
     ],
     lupulos: [
       {
-        name: "",
+        LupuloId: "",
         quantity: "",
         alphaAcids: "",
         additionTime: "",
@@ -42,7 +48,7 @@ export const Create = () => {
     ],
     levadura: [
       {
-        name: "",
+        LevaduraId: "",
         quantity: "",
       },
     ],
@@ -52,19 +58,6 @@ export const Create = () => {
         type: "",
         quantity: "",
         unit: "",
-      },
-    ],
-    maceracion: [
-      {
-        temperature: "",
-        time: "",
-      },
-    ],
-    fermentacion: [
-      {
-        type: "",
-        temperature: "",
-        time: "",
       },
     ],
   });
@@ -77,270 +70,15 @@ export const Create = () => {
     });
   };
 
-  // const getLabel = (fieldName) => {
-  //   const unitLabel = recipeData.unitSystem === "metric" ? "(litros)" : "(galones)";
-  //   return `Cantidad ${unitLabel} de ${fieldName}`;
-  // };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/recetas", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recipeData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const responseData = await response.json();
-      console.log("Receta enviada con éxito. Respuesta del servidor:", responseData);
-    } catch (error) {
-      console.error("Error durante la solicitud:", error);
-    }
-  };
-
-  // Fermentables
-  const handleChangeFermentable = (e, index) => {
-    const { name, value } = e.target;
-    const updatedFermentables = [...recipeData.fermentables];
-    updatedFermentables[index] = {
-      ...updatedFermentables[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      fermentables: updatedFermentables,
-    });
-  };
-
-  const handleAddFermentable = () => {
-    setRecipeData({
-      ...recipeData,
-      fermentables: [...recipeData.fermentables, { name: "", quantity: "", color: "" }],
-    });
-  };
-
-  const handleRemoveFermentable = (index) => {
-    const updatedFermentables = [...recipeData.fermentables];
-    updatedFermentables.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      fermentables: updatedFermentables,
-    });
-  };
-
-  // Lupulos
-
-  const handleChangeLupulos = (e, index) => {
-    const { name, value } = e.target;
-    const updatedLupulos = [...recipeData.lupulos];
-    updatedLupulos[index] = {
-      ...updatedLupulos[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      lupulos: updatedLupulos,
-    });
-  };
-
-  const handleAddLupulos = () => {
-    setRecipeData({
-      ...recipeData,
-      lupulos: [
-        ...recipeData.lupulos,
-        {
-          name: "",
-          quantity: "",
-          alphaAcids: "",
-          additionTime: "",
-          bitterness: "",
-        },
-      ],
-    });
-  };
-
-  const handleRemoveLupulos = (index) => {
-    const updatedLupulos = [...recipeData.lupulos];
-    updatedLupulos.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      lupulos: updatedLupulos,
-    });
-  };
-
-  //Levadura
-  const handleChangeLevadura = (e, index) => {
-    const { name, value } = e.target;
-    const updatedLevadura = [...recipeData.levadura];
-    updatedLevadura[index] = {
-      ...updatedLevadura[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      levadura: updatedLevadura,
-    });
-  };
-
-  const handleAddLevadura = () => {
-    setRecipeData({
-      ...recipeData,
-      levadura: [
-        ...recipeData.levadura,
-        {
-          name: "",
-          type: "",
-          quantity: "",
-        },
-      ],
-    });
-  };
-
-  const handleRemoveLevadura = (index) => {
-    const updatedLevadura = [...recipeData.levadura];
-    updatedLevadura.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      levadura: updatedLevadura,
-    });
-  };
-
-  //Ingredientes adicionales
-
-  const handleChangeAdiciones = (e, index) => {
-    const { name, value } = e.target;
-    const updatedAdiciones = [...recipeData.adiciones];
-    updatedAdiciones[index] = {
-      ...updatedAdiciones[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      adiciones: updatedAdiciones,
-    });
-  };
-
-  const handleAddAdiciones = () => {
-    setRecipeData({
-      ...recipeData,
-      adiciones: [
-        ...recipeData.adiciones,
-        {
-          name: "",
-          type: "",
-          quantity: "",
-          unit: "",
-        },
-      ],
-    });
-  };
-
-  const handleRemoveAdiciones = (index) => {
-    const updatedAdiciones = [...recipeData.adiciones];
-    updatedAdiciones.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      adiciones: updatedAdiciones,
-    });
-  };
-
-  //MACERACION
-
-  const handleChangeMaceracion = (e, index) => {
-    const { name, value } = e.target;
-    const updatedMaceracion = [...recipeData.maceracion];
-    updatedMaceracion[index] = {
-      ...updatedMaceracion[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      maceracion: updatedMaceracion,
-    });
-  };
-
-  const handleAddMaceracion = () => {
-    setRecipeData({
-      ...recipeData,
-      maceracion: [
-        ...recipeData.maceracion,
-        {
-          temperature: "",
-          time: "",
-        },
-      ],
-    });
-  };
-
-  const handleRemoveMaceracion = (index) => {
-    const updatedMaceracion = [...recipeData.maceracion];
-    updatedMaceracion.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      maceracion: updatedMaceracion,
-    });
-  };
-
-  //FERMENTACION
-
-  const handleChangeFermentacion = (e, index) => {
-    const { name, value } = e.target;
-    const updatedFermentacion = [...recipeData.fermentacion];
-    updatedFermentacion[index] = {
-      ...updatedFermentacion[index],
-      [name]: value,
-    };
-
-    setRecipeData({
-      ...recipeData,
-      fermentacion: updatedFermentacion,
-    });
-  };
-
-  const handleAddFermentacion = () => {
-    setRecipeData({
-      ...recipeData,
-      fermentacion: [
-        ...recipeData.fermentacion,
-        {
-          temperature: "",
-          time: "",
-        },
-      ],
-    });
-  };
-
-  const handleRemoveFermentacion = (index) => {
-    const updatedFermentacion = [...recipeData.fermentacion];
-    updatedFermentacion.splice(index, 1);
-
-    setRecipeData({
-      ...recipeData,
-      fermentacion: updatedFermentacion,
-    });
+    console.log(recipeData);
   };
 
   return (
     <div className="w-full mt-5 ">
       <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4  ">
-        {" "}
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
@@ -427,6 +165,51 @@ export const Create = () => {
               value={recipeData.ibu}
               onChange={handleChange}
               placeholder="0"
+            />
+          </label>
+
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Temperatura Fermentacion Primaria (°C)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black"
+              name="primaryFermentationTemperature"
+              type="number"
+              value={recipeData.primaryFermentationTemperature}
+              onChange={handleChange}
+              placeholder="0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Tiempo Fermentacion Primaria (Dias)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black "
+              name="primaryFermentationTime"
+              type="number"
+              value={recipeData.primaryFermentationTime}
+              onChange={handleChange}
+              placeholder="0.0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Temperatura Fermentacion Secundaria (°C)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black"
+              name="seccondaryFermentationTemperature"
+              type="number"
+              value={recipeData.seccondaryFermentationTemperature}
+              onChange={handleChange}
+              placeholder="0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Tiempo Fermentacion Secundaria (Dias)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black "
+              name="seccondaryFermentationTime"
+              type="number"
+              value={recipeData.seccondaryFermentationTime}
+              onChange={handleChange}
+              placeholder="0.0"
             />
           </label>
         </div>
@@ -517,12 +300,55 @@ export const Create = () => {
           </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
-            Nota
+            Temperatura Macerado (°C)
             <input
-              className="mt-1 p-2 border rounded-md w-full"
-              name="note"
-              type="text"
-              value={recipeData.note}
+              className="mt-1 p-2 border rounded-md w-full text-black"
+              name="mashTemperature"
+              type="number"
+              value={recipeData.mashTemperature}
+              onChange={handleChange}
+              placeholder="0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Tiempo Macerado (min)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black "
+              name="mashTime"
+              type="number"
+              value={recipeData.mashTime}
+              onChange={handleChange}
+              placeholder="0.0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Temperatura Mash Out (°C)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black"
+              name="mashOutTemperature"
+              type="number"
+              value={recipeData.mashOutTemperature}
+              onChange={handleChange}
+              placeholder="0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Tiempo Mash Out (min)
+            <input
+              className="mt-1 p-2 border rounded-md w-full text-black "
+              name="mashOutTime"
+              type="number"
+              value={recipeData.mashOutTime}
+              onChange={handleChange}
+              placeholder="0.0"
+            />
+          </label>
+          <label className=" w-full mb-4 block text-lg font-medium">
+            Nota
+            <textarea
+              className="mt-1 p-2 border rounded-md w-full text-black"
+              name="notes"
+              value={recipeData.notes}
               onChange={handleChange}
               placeholder="Comentario adicional"
             />
@@ -533,9 +359,8 @@ export const Create = () => {
           <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <FermentablesSection
               fermentables={recipeData.fermentables}
-              onChange={handleChangeFermentable}
-              onAdd={handleAddFermentable}
-              onRemove={handleRemoveFermentable}
+              recipeData={recipeData}
+              setRecipeData={setRecipeData}
             />
           </div>
 
@@ -543,9 +368,8 @@ export const Create = () => {
           <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <LupulosSection
               lupulos={recipeData.lupulos}
-              onChange={handleChangeLupulos}
-              onAdd={handleAddLupulos}
-              onRemove={handleRemoveLupulos}
+              recipeData={recipeData}
+              setRecipeData={setRecipeData}
             />
           </div>
 
@@ -553,9 +377,8 @@ export const Create = () => {
           <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <LevadurasSection
               levadura={recipeData.levadura}
-              onChange={handleChangeLevadura}
-              onAdd={handleAddLevadura}
-              onRemove={handleRemoveLevadura}
+              recipeData={recipeData}
+              setRecipeData={setRecipeData}
             />
           </div>
 
@@ -563,29 +386,8 @@ export const Create = () => {
           <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
             <AdicionesSection
               adiciones={recipeData.adiciones}
-              onChange={handleChangeAdiciones}
-              onAdd={handleAddAdiciones}
-              onRemove={handleRemoveAdiciones}
-            />
-          </div>
-
-          {/* MACERACION */}
-          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
-            <MaceracionSection
-              maceracion={recipeData.maceracion}
-              onChange={handleChangeMaceracion}
-              onAdd={handleAddMaceracion}
-              onRemove={handleRemoveMaceracion}
-            />
-          </div>
-
-          {/* Fermentacion */}
-          <div className="bg-[#F9E79F] text-[#D35400] font-bold flex rounded-lg">
-            <FermentacionSection
-              fermentacion={recipeData.fermentacion}
-              onChange={handleChangeFermentacion}
-              onAdd={handleAddFermentacion}
-              onRemove={handleRemoveFermentacion}
+              recipeData={recipeData}
+              setRecipeData={setRecipeData}
             />
           </div>
         </div>
