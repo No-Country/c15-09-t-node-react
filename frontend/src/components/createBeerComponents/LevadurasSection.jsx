@@ -28,7 +28,7 @@ export const LevadurasSection = ({ levadura, recipeData, setRecipeData }) => {
         {
           LevaduraId: "",
           type: "",
-          quantity: "",
+          cantidad: "",
         },
       ],
     });
@@ -70,8 +70,8 @@ export const LevadurasSection = ({ levadura, recipeData, setRecipeData }) => {
             <input
               className="p-1 border rounded-md mr-2"
               type="text"
-              name="quantity"
-              value={item.quantity}
+              name="cantidad"
+              value={item.cantidad}
               onChange={(e) => onChange(e, index)}
             />
           </label>
