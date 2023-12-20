@@ -56,7 +56,6 @@ export const Stylesbeer = () => {
             </div>
           );
         })}
-        Temporary merge branch 2
       </div>
 
       {/* Paginación */}
