@@ -1,17 +1,16 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeRecipe } from "../redux/actions/userActions";
 
 export const RecipeFavorites = () => {
   // temporal por ahora hasta que el endpoint de autentication este
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   let { Recetas: userRecipes } = user;
 
-  useEffect(() => {});
-
-  const handleDeleteFavorite = (id) => {
-    userRecipes = userRecipes.filter((recipe) => recipe.id !== id);
+  const handleRemoveRecipe = (recipeId) => {
+    dispatch(removeRecipe(recipeId));
   };
 
   // para debuggear
@@ -37,7 +36,7 @@ export const RecipeFavorites = () => {
 
               <button
                 className="w-full text-center bg-gray-dark hover:bg-zinc-600 transition-colors text-white py-2"
-                onClick={() => handleDeleteFavorite(recipe.id)}
+                onClick={() => handleRemoveRecipe(recipe.id)}
               >
                 Quitar de favoritos
               </button>

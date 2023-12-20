@@ -559,6 +559,19 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+    case "REMOVE_RECIPE": {
+      // Filter out the recipe with the specified ID
+      const updatedRecipes = state.user.Recetas.filter((recipe) => recipe.id !== action.payload);
+
+      // Return the updated state
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          Recetas: updatedRecipes,
+        },
+      };
+    }
     default:
       return state;
   }
