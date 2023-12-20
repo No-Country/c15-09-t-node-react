@@ -1,4 +1,43 @@
-export const AdicionesSection = ({ adiciones, onChange, onAdd, onRemove }) => {
+export const AdicionesSection = ({ adiciones, recipeData, setRecipeData }) => {
+  const onChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedAdiciones = [...recipeData.adiciones];
+    updatedAdiciones[index] = {
+      ...updatedAdiciones[index],
+      [name]: value,
+    };
+
+    setRecipeData({
+      ...recipeData,
+      adiciones: updatedAdiciones,
+    });
+  };
+
+  const onAdd = () => {
+    setRecipeData({
+      ...recipeData,
+      adiciones: [
+        ...recipeData.adiciones,
+        {
+          name: "",
+          type: "",
+          quantity: "",
+          unit: "",
+        },
+      ],
+    });
+  };
+
+  const onRemove = (index) => {
+    const updatedAdiciones = [...recipeData.adiciones];
+    updatedAdiciones.splice(index, 1);
+
+    setRecipeData({
+      ...recipeData,
+      adiciones: updatedAdiciones,
+    });
+  };
+
   return (
     <div className="flex flex-col justify-between items-stretch px-10 py-10">
       <h2 className="text-2xl pb-4">Adiciones</h2>
@@ -51,13 +90,15 @@ export const AdicionesSection = ({ adiciones, onChange, onAdd, onRemove }) => {
           >
             Eliminar
           </button>
-
         </div>
       ))}
-      <button type="button" onClick={onAdd} className="p-2 bg-[#229954] hover:bg-[#145A32] text-white rounded-md  ">
+      <button
+        type="button"
+        onClick={onAdd}
+        className="p-2 bg-[#229954] hover:bg-[#145A32] text-white rounded-md  "
+      >
         Agregar Ingredientes
       </button>
-
     </div>
   );
 };
