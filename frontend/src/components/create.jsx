@@ -11,7 +11,7 @@ export const Create = () => {
     author: "",
     image: "",
     type: "All Grain",
-    alcoholByVolume: 0.0,
+    alcoholByVolume: "",
     originalGravity: "",
     finalGravity: "",
     ibu: "",
@@ -29,35 +29,36 @@ export const Create = () => {
     seccondaryFermentationTemperature: "",
     seccondaryFermentationTime: "",
     notes: "",
-    style: "",
+    EstiloId: "",
     UserID: "",
     fermentables: [
       {
         MaltaId: "",
-        quantity: "",
+        cantidad: "",
       },
     ],
     lupulos: [
       {
         LupuloId: "",
-        quantity: "",
-        alphaAcids: "",
-        additionTime: "",
-        bitterness: "",
+        cantidad: "",
+        uso: "",
+        tiempo: "",
+        ibu: "",
       },
     ],
     levadura: [
       {
         LevaduraId: "",
-        quantity: "",
+        cantidad: "",
       },
     ],
     adiciones: [
       {
         name: "",
         type: "",
-        quantity: "",
+        amount: "",
         unit: "",
+        notes: "",
       },
     ],
   });
@@ -72,7 +73,6 @@ export const Create = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(recipeData);
   };
 
@@ -110,10 +110,10 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Imagen
             <input
-              className="mt-1 p-2  rounded-md w-full"
-              placeholder="URL"
-              name="image"
+              className="mt-1 border-2 text-black border-gray-light rounded-md w-full"
+              id="default_size"
               type="file"
+              name="image"
               value={recipeData.image}
               onChange={handleChange}
             />
@@ -171,7 +171,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Temperatura Fermentacion Primaria (°C)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="primaryFermentationTemperature"
               type="number"
               value={recipeData.primaryFermentationTemperature}
@@ -182,7 +182,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Tiempo Fermentacion Primaria (Dias)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black "
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full "
               name="primaryFermentationTime"
               type="number"
               value={recipeData.primaryFermentationTime}
@@ -193,7 +193,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Temperatura Fermentacion Secundaria (°C)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="seccondaryFermentationTemperature"
               type="number"
               value={recipeData.seccondaryFermentationTemperature}
@@ -204,7 +204,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Tiempo Fermentacion Secundaria (Dias)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black "
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full "
               name="seccondaryFermentationTime"
               type="number"
               value={recipeData.seccondaryFermentationTime}
@@ -278,8 +278,8 @@ export const Create = () => {
             Estilo
             <select
               className="mt-1 p-2 border-2  border-gray-light rounded-md w-full text-black"
-              name="style"
-              value={recipeData.style}
+              name="EstiloId"
+              value={recipeData.EstiloId}
               onChange={handleChange}
             >
               <option value="">Selecciona un estilo</option>
@@ -302,7 +302,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Temperatura Macerado (°C)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="mashTemperature"
               type="number"
               value={recipeData.mashTemperature}
@@ -313,7 +313,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Tiempo Macerado (min)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black "
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full "
               name="mashTime"
               type="number"
               value={recipeData.mashTime}
@@ -324,7 +324,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Temperatura Mash Out (°C)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="mashOutTemperature"
               type="number"
               value={recipeData.mashOutTemperature}
@@ -335,7 +335,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Tiempo Mash Out (min)
             <input
-              className="mt-1 p-2 border rounded-md w-full text-black "
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full "
               name="mashOutTime"
               type="number"
               value={recipeData.mashOutTime}
@@ -346,7 +346,7 @@ export const Create = () => {
           <label className=" w-full mb-4 block text-lg font-medium">
             Nota
             <textarea
-              className="mt-1 p-2 border rounded-md w-full text-black"
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="notes"
               value={recipeData.notes}
               onChange={handleChange}

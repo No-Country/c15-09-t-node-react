@@ -26,10 +26,10 @@ export const LupulosSection = ({ lupulos, recipeData, setRecipeData }) => {
         ...recipeData.lupulos,
         {
           LupuloId: "",
-          quantity: "",
-          alphaAcids: "",
-          additionTime: "",
-          bitterness: "",
+          cantidad: "",
+          uso: "",
+          tiempo: "",
+          ibu: "",
         },
       ],
     });
@@ -71,38 +71,38 @@ export const LupulosSection = ({ lupulos, recipeData, setRecipeData }) => {
             <input
               className="p-1 border rounded-md mr-2"
               type="text"
-              name="quantity"
-              value={item.quantity}
+              name="cantidad"
+              value={item.cantidad}
               onChange={(e) => onChange(e, index)}
             />
           </label>
           <label className="flex flex-col justify-between mr-4">
-            AlphaAcids:
+            Uso:
             <input
               className="p-1 border rounded-md mr-2"
               type="text"
-              name="alphaAcids"
-              value={item.alphaAcids}
+              name="uso"
+              value={item.uso}
               onChange={(e) => onChange(e, index)}
             />
           </label>
           <label className="flex flex-col justify-between mr-4">
-            AdditionTime:
+            Tiempo:
             <input
               className="p-1 border rounded-md mr-2"
               type="text"
-              name="additionTime"
-              value={item.additionTime}
+              name="tiempo"
+              value={item.tiempo}
               onChange={(e) => onChange(e, index)}
             />
           </label>
           <label className="flex flex-col justify-between mr-4">
-            Bitterness:
+            Ibu:
             <input
               className="p-1 border rounded-md mr-2"
               type="text"
-              name="bitterness"
-              value={item.bitterness}
+              name="ibu"
+              value={item.ibu}
               onChange={(e) => onChange(e, index)}
             />
           </label>
