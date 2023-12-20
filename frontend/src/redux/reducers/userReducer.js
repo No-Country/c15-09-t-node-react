@@ -1,3 +1,4 @@
+// el initialState tiene un user placeholder por ahora, cuando tenga el endpoint de autenticacion lo implemento
 const initialState = {
   user: {
     id: 24,
