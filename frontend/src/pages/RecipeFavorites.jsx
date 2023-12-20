@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeRecipe } from "../redux/actions/userActions";
 
 export const RecipeFavorites = () => {
-  // temporal por ahora hasta que el endpoint de autentication este
+  //TODO: temporal por ahora hasta que el endpoint de autentication este
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
