@@ -56,10 +56,10 @@ export const FermentablesSection = ({ fermentables, recipeData, setRecipeData })
             </select>
           </label>
           <label className="flex flex-col justify-between">
-            Cantidad:
+            Cantidad(kg)
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
+              type="number"
               name="cantidad"
               value={item.cantidad}
               onChange={(e) => onChange(e, index)}

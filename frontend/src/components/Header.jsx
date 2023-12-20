@@ -1,18 +1,18 @@
 import { Logo } from "./Logo";
-import { Search } from "./navbar/Search";
+
 import { UserBtn } from "./navbar/UserBtn";
 import { Link } from "react-router-dom";
 import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 export default function Header() {
   return (
-    <header className="flex items-center lg:flex-row flex-col justify-between mt-[57px]  ">
+    <header className="flex items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-[#D77533] text-white md:px-56 md:py-9 py-5">
       <div className="hidden ">
         <DarkModeToggle />
       </div>
       <div className="flex justify-between items-center gap-20 md:mb-0 mb-4">
         <Logo />
       </div>
-      <nav>
+      <nav className="">
         <ul className="flex gap-[33px] items-center md:flex-row flex-col ">
           <div className="flex flex-wrap justify-center md:gap-10 gap-10 md:order-1 order-2">
             <li>
@@ -49,9 +49,6 @@ export default function Header() {
               </Link>
             </li>
 
-            <li>
-              <Search />
-            </li>
             <li className="z-10 ">
               <UserBtn />
             </li>

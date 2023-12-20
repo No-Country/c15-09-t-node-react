@@ -66,10 +66,10 @@ export const LevadurasSection = ({ levadura, recipeData, setRecipeData }) => {
           </label>
 
           <label className="flex flex-col justify-between mr-4">
-            Cantidad:
+            Cantidad(paq)
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
+              type="Number"
               name="cantidad"
               value={item.cantidad}
               onChange={(e) => onChange(e, index)}
