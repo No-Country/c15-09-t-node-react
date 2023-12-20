@@ -17,7 +17,7 @@ export const Ingredientes = () => {
                 <img className="w-[22%] rounded-full" src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
             </div>
 
-            <p className="font-poppings text-lg mt-8">Lo bueno de la cerveza es que admite gran cantidad de ingredientes diferentes por lo que podrás crear cervezas diferentes constantemente.
+            <p className="font-poppings text-lg mt-8 mb-36">Lo bueno de la cerveza es que admite gran cantidad de ingredientes diferentes por lo que podrás crear cervezas diferentes constantemente.
                 <b>Las posibilidades de las cervezas artesanas son infinitas</b>.</p>
         </div>
     )

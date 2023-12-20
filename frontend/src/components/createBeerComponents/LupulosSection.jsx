@@ -67,10 +67,10 @@ export const LupulosSection = ({ lupulos, recipeData, setRecipeData }) => {
             </select>
           </label>
           <label className="flex flex-col justify-between mr-4">
-            Cantidad:
+            Cantidad(g)
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
+              type="number"
               name="cantidad"
               value={item.cantidad}
               onChange={(e) => onChange(e, index)}
@@ -87,10 +87,10 @@ export const LupulosSection = ({ lupulos, recipeData, setRecipeData }) => {
             />
           </label>
           <label className="flex flex-col justify-between mr-4">
-            Tiempo:
+            Tiempo(min)
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
+              type="number"
               name="tiempo"
               value={item.tiempo}
               onChange={(e) => onChange(e, index)}
@@ -100,7 +100,7 @@ export const LupulosSection = ({ lupulos, recipeData, setRecipeData }) => {
             Ibu:
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
+              type="number"
               name="ibu"
               value={item.ibu}
               onChange={(e) => onChange(e, index)}

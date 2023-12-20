@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LupulosSection } from "./createBeerComponents/LupulosSection";
 import { FermentablesSection } from "./createBeerComponents/FermentablesSection";
 import { LevadurasSection } from "./createBeerComponents/LevadurasSection";
 import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
 import bgForm from "../assets/images/bgForm.jpg";
+import { getAllStyles } from "../services/styles";
 
 export const Create = () => {
+
+
+  const [estilos, setEstilos] = useState([]);
+  useEffect(() => {
+    getAllStyles().then((data) => setEstilos(data));
+  }, []);
+
+
+
   const [recipeData, setRecipeData] = useState({
     name: "",
     author: "",
@@ -78,7 +88,7 @@ export const Create = () => {
 
   return (
     <div className="w-full mt-5 ">
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4  ">
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encType="multipart/form-data">
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
@@ -94,6 +104,7 @@ export const Create = () => {
               name="name"
               value={recipeData.name}
               onChange={handleChange}
+
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -105,6 +116,7 @@ export const Create = () => {
               type="text"
               value={recipeData.author}
               onChange={handleChange}
+
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -116,11 +128,12 @@ export const Create = () => {
               name="image"
               value={recipeData.image}
               onChange={handleChange}
+
             />
           </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
-            Alcohol por Volumen
+            Alcohol por Volumen %
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="alcoholByVolume"
@@ -129,6 +142,7 @@ export const Create = () => {
               value={recipeData.alcoholByVolume}
               onChange={handleChange}
               placeholder="0.0"
+
             />
           </label>
 
@@ -141,6 +155,7 @@ export const Create = () => {
               value={recipeData.originalGravity}
               onChange={handleChange}
               placeholder="0.0"
+
             />
           </label>
 
@@ -153,6 +168,7 @@ export const Create = () => {
               value={recipeData.finalGravity}
               onChange={handleChange}
               placeholder="0.0"
+
             />
           </label>
 
@@ -165,6 +181,7 @@ export const Create = () => {
               value={recipeData.ibu}
               onChange={handleChange}
               placeholder="0"
+
             />
           </label>
 
@@ -177,6 +194,7 @@ export const Create = () => {
               value={recipeData.primaryFermentationTemperature}
               onChange={handleChange}
               placeholder="0"
+
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -188,6 +206,7 @@ export const Create = () => {
               value={recipeData.primaryFermentationTime}
               onChange={handleChange}
               placeholder="0.0"
+
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -199,6 +218,7 @@ export const Create = () => {
               value={recipeData.seccondaryFermentationTemperature}
               onChange={handleChange}
               placeholder="0"
+
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -215,7 +235,7 @@ export const Create = () => {
         </div>
         <div className="md:w-1/3 w-96">
           <label className=" w-full mb-4 block text-lg font-medium">
-            Tamaño del Lote
+            Tamaño del Lote (lts)
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="batchSize"
@@ -227,7 +247,7 @@ export const Create = () => {
           </label>
 
           <label className="w-full mb-4 block text-lg font-medium">
-            Volumen de Agua de Maceración
+            Volumen de Agua de Maceración(lts)
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="mashWaterAmount"
@@ -239,7 +259,7 @@ export const Create = () => {
           </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
-            Volumen de Agua de Lavado
+            Volumen de Agua de Lavado(lts)
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="spargeWaterAmount"
@@ -251,7 +271,7 @@ export const Create = () => {
           </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
-            Tamaño del Hervor
+            Volumen de Hervor(lts)
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="boilSize"
@@ -263,7 +283,7 @@ export const Create = () => {
           </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
-            Tiempo del Hervor
+            Tiempo de Hervor(min)
             <input
               className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
               name="boilTime"
@@ -274,6 +294,10 @@ export const Create = () => {
             />
           </label>
 
+
+
+
+
           <label className="w-full mb-4 block text-lg font-medium">
             Estilo
             <select
@@ -283,19 +307,11 @@ export const Create = () => {
               onChange={handleChange}
             >
               <option value="">Selecciona un estilo</option>
-              <option value="Ale">Ale</option>
-              <option value="Lager">Lager</option>
-              <option value="Stout">Stout</option>
-              <option value="Porter">Porter</option>
-              <option value="Pilsner">Pilsner</option>
-              <option value="IPA">India Pale Ale (IPA)</option>
-              <option value="APA">American Pale Ale (APA)</option>
-              <option value="DIPA">Double IPA (DIPA)</option>
-              <option value="Wheat Beer">Cerveza de Trigo</option>
-              <option value="Saison">Saison</option>
-              <option value="Belgian Dubbel">Belgian Dubbel</option>
-              <option value="Belgian Tripel">Belgian Tripel</option>
-              <option value="Belgian Quad">Belgian Quad</option>
+              {estilos.map((estilo) => (
+                <option key={estilo.id} value={estilo.id}>
+                  {estilo.name}
+                </option>
+              ))}
             </select>
           </label>
 
