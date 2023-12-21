@@ -14,12 +14,3 @@ export const getRecetaById = async (id) => {
   const { data } = await brewerApi.get(`/recetas/${id}`);
   return data;
 };
-
-export const postImage = async (formData) => {
-  try {
-    const { response } = await brewerApi.post("/recetas/img", formData);
-    return response;
-  } catch (e) {
-    console.log(e);
-  }
-};
