@@ -7,7 +7,7 @@ import { calculateAverageColor } from "../utils/calculateAverageColor.js";
 
 export const Stylesbeer = () => {
   const [data, setData] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getAllStyles().then((data) => {
       setData(data);
@@ -28,34 +28,63 @@ export const Stylesbeer = () => {
     (paginaActual - 1) * productosPorPagina,
     paginaActual * productosPorPagina
   );
+  useEffect(() => {
+    getAllStyles()
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const renderSkeleton = () => (
+    <div className="w-48">
+      <div className="h-60 bg-slate-300 rounded-lg animate-pulse"></div>
+      <div className="px-6  py-4">
+        <div className="font-bold font-homemade  text-xl mb-2 bg-slate-300 animate-pulse"></div>
+        <p className="text-slate-700 text-base bg-slate-300 animate-pulse"></p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex items-center flex-col mt-8 ">
       <h1 className="font-homemade my-10 self-center md:self-start md:px-4">Estilos de cerveza</h1>
       <div className="flex gap-x-10 gap-y-5 flex-wrap justify-center">
-        {productosPaginados.map((producto, index) => {
-          // Calcular el color promedio de la cerveza
-          const averageColor = calculateAverageColor(producto.color_min, producto.color_max);
-          // Encontrar el rango de color en el cual cae el color promedio de la cerveza
-          const colorRange = findColor(colorRanges, averageColor);
-          // Si se encuentra un rango de color utilizar esa imagen de lo contrario utilizar un placeholder
-          const beerImage = colorRange ? colorRange.image : "https://placehold.co/400";
+        {loading
+          ? // Renderizar esqueletos durante la carga
+            Array.from({ length: 10 }).map((_, index) => <div key={index}>{renderSkeleton()}</div>)
+          : // Renderizar datos cuando estén disponibles
+            productosPaginados.map((producto, index) => {
+              // Calcular el color promedio de la cerveza
+              const averageColor = calculateAverageColor(producto.color_min, producto.color_max);
+              // Encontrar el rango de color en el cual cae el color promedio de la cerveza
+              const colorRange = findColor(colorRanges, averageColor);
+              // Si se encuentra un rango de color utilizar esa imagen de lo contrario utilizar un placeholder
+              const beerImage = colorRange ? colorRange.image : "https://placehold.co/400";
 
-          return (
-            <div key={index}>
-              {" "}
-              <Link to={`/app/styles/${producto.id}`}>
-                <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
-                  <img className="w-full" src={beerImage} alt="Sunset in the mountains" />
-                  <div className="px-6 py-4">
-                    <div className="font-bold font-homemade text-xl mb-2">{producto.name}</div>
-                    <p className="text-gray-700 text-base">{producto.category}</p>
-                  </div>
-                </div>{" "}
-              </Link>
-            </div>
-          );
-        })}
+              return (
+                <div key={index}>
+                  {" "}
+                  <Link to={`/app/styles/${producto.id}`}>
+                    <div className="w-48 hover:scale-110 transition-transform rounded h-full overflow-hidden shadow-lg">
+                      <img
+                        className=" w-full object-cover"
+                        src={beerImage}
+                        alt="Sunset in the mountains"
+                      />
+                      <div className="px-6 py-4">
+                        <div className="font-bold font-homemade text-xl mb-2">{producto.name}</div>
+                        <p className="text-gray-700 text-base">{producto.category}</p>
+                      </div>
+                    </div>{" "}
+                  </Link>
+                </div>
+              );
+            })}
       </div>
 
       {/* Paginación */}

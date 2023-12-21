@@ -46,7 +46,7 @@ export default function Header() {
               </Link>
             </li>
 
-            <li className="z-10 ">
+            <li className="z-10 w-8 h-8 ">
               <UserBtn />
             </li>
           </div>

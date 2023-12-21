@@ -275,7 +275,7 @@ export const RecipeDetails = () => {
                       </div>
                     </div>
 
-                    <div className="w-48 order-1 mb-6 md:order-3 md:mb-0">
+                    <div className="w-full h-full order-1 mb-6 md:order-3 md:mb-0">
                       <ZoomImage
                         src={receta.image}
                         className="rounded-xl  "
