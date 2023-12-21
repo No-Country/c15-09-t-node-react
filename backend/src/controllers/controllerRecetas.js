@@ -30,11 +30,12 @@ const RecetasController = {
   }, */
   createNewReceta: async (req, res) => {
     const recipeData = req.body
-    console.log(req.body.name)
+    console.log(recipeData)
     try {
       const imagen = await RecetasService.createImg(req, res)
       console.log(imagen.secure_url)
       const newRecipe = await RecetasService.createNewReceta(recipeData, imagen.secure_url)
+      console.log(newRecipe)
       res.status(201).json({
         message: 'Recipe created sucessfully',
         newRecipe
