@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         element: <RecipeBeer />,
       },
       {
-        path: "recipedetails",
+        path: "recipedetails/:id",
         element: <RecipeBeerDetails />,
       },
       {
