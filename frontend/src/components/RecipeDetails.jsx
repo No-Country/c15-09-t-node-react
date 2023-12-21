@@ -75,7 +75,7 @@ export const RecipeDetails = () => {
                           {receta.name}{" "}
                         </h2>
                         <h4 className="text-center text-[#f08649] font-bold text-2xl first-letter: ">
-                          Autor: {receta?.User?.usuario}
+                          Autor: {receta?.author}
                         </h4>
                       </div>
 
