@@ -8,7 +8,7 @@ export const RecipeFavorites = () => {
 
   let { Recetas: userRecipes } = user;
 
-  useEffect(() => {});
+  useEffect(() => { });
 
   const handleDeleteFavorite = (id) => {
     userRecipes = userRecipes.filter((recipe) => recipe.id !== id);
@@ -37,7 +37,7 @@ export const RecipeFavorites = () => {
                     <p className="text-gray-700 text-base">{recipe.author}</p>
                   </div>
                   <button
-                    className="w-full text-center bg-primary hover:bg-zinc-600 transition-colors text-white py-2"
+                    className="w-full text-center bg-primary hover:bg-secondary transition-colors text-white py-2"
                     onClick={() => handleDeleteFavorite(recipe.id)}
                   >
                     Quitar de favoritos

@@ -26,14 +26,13 @@ export const DarkModeToggle = () => {
       />
       <label
         className={`flex items-center justify-between cursor-pointer w-14 h-7   rounded-full p-1 transition duration-200 ease-in-out
-        ${darkMode ? " bg-blue-800" : " bg-blue-400"}`}
+        ${darkMode ? " bg-[#125478]" : " bg-[#176a97]"}`}
         htmlFor={`react-switch-new`}
         onClick={toggleDarkMode}
       >
         <span
-          className={`block w-5 h-5  rounded-full shadow-md transition-transform ease-in-out ${
-            darkMode ? "translate-x-7 bg-white" : "translate-x-0 bg-white"
-          }`}
+          className={`block w-5 h-5  rounded-full shadow-md transition-transform ease-in-out ${darkMode ? "translate-x-7 bg-white" : "translate-x-0 bg-white"
+            }`}
         />
       </label>
     </>

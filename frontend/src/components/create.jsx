@@ -6,6 +6,7 @@ import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
 import bgForm from "../assets/images/bgForm.jpg";
 import { getAllStyles } from "../services/styles";
 
+
 export const Create = () => {
 
 
@@ -86,9 +87,16 @@ export const Create = () => {
     console.log(recipeData);
   };
 
+
+
+
+
   return (
     <div className="w-full mt-5 ">
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encType="multipart/form-data">
+
+
+
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encype="multipart/form-data">
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
@@ -119,6 +127,9 @@ export const Create = () => {
 
             />
           </label>
+
+
+
           <label className=" w-full mb-4 block text-lg font-medium">
             Imagen
             <input
@@ -419,3 +430,4 @@ export const Create = () => {
     </div>
   );
 };
+
