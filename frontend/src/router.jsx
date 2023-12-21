@@ -12,6 +12,7 @@ import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
 import { ProfileLayout } from "./components/layouts/ProfileLayout";
 import { Contact } from "./pages/Contact";
 import { RecipeFavorites } from "./pages/RecipeFavorites";
+import { MyRecipes } from "./pages/MyRecipes";
 
 export const router = createBrowserRouter([
   {
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "myRecipes",
-            element: <h1 className="mt-8 text-center">Mis recetas</h1>,
+            element: <MyRecipes />,
           },
         ],
       },

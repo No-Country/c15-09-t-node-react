@@ -5,10 +5,9 @@ import Header from "../Header";
 
 export const MainLayout = () => {
   return (
-    <div >
+    <div className="">
       <Header />
-      <div className="container">
-
+      <div className="container min-h-screen">
         <Outlet />
       </div>
       <Footer />
