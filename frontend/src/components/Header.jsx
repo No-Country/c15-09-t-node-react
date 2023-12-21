@@ -3,8 +3,6 @@ import { UserBtn } from "./navbar/UserBtn";
 import { Link } from "react-router-dom";
 import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 
-
-
 export default function Header() {
   return (
     <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-[#f1c31cfd] text-[#684320] md:px-56 md:py-9 py-5">
@@ -51,7 +49,7 @@ export default function Header() {
               </Link>
             </li>
 
-            <li className="z-10 ">
+            <li className="z-10 w-8 h-8 ">
               <UserBtn />
             </li>
           </div>
