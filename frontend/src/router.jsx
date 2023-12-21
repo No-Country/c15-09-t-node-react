@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         element: <Stylespage />,
       },
       {
-        path: "styledetails",
+        path: "styles/:id",
         element: <StyleDetails />,
       },
       {
@@ -72,10 +72,10 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/app/favorites/reciepes" />,
+            element: <Navigate to="/app/favorites/recipes" />,
           },
           {
-            path: "reciepes",
+            path: "recipes",
             element: <RecipeFavorites />,
           },
           {

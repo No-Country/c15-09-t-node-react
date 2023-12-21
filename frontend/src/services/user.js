@@ -1,8 +1,21 @@
 import { brewerApi } from "./brewerApi";
 
 export const createUser = async (userData) => {
-  const { data } = brewerApi.post("/users/register", userData);
-  return data;
+  try {
+    const response = await brewerApi.post("/users/register", userData);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const loginUser = async (userData) => {
+  try {
+    const response = brewerApi.post(`/login/`, userData);
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const getAllUsers = async () => {

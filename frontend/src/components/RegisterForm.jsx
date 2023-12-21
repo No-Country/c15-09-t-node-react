@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { createUser } from "../services/user";
+import { useNavigate } from "react-router-dom";
 export const RegisterForm = () => {
+  const [token, setToken] = useState(localStorage.getItem("authToken"));
   const [formulario, setFormulario] = useState({
     usuario: "",
     email: "",
     password: "",
     confirmpass: "",
   });
-
-  const URL = "http://localhost:5001/users/register";
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,27 +19,13 @@ export const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formulario),
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Respuesta del servidor:", responseData);
-        // Puedes realizar acciones adicionales después de un registro exitoso
-      } else {
-        console.error("Error en la solicitud al backend:", response.statusText);
-        // Puedes manejar errores aquí
-      }
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
-      // Puedes manejar errores de red aquí
-    }
+    createUser(formulario)
+      .then((data) => {
+        localStorage.setItem("authToken", token);
+        setToken(data.token);
+        navigate("/app");
+      })
+      .catch((e) => console.log(e));
   };
 
   return (

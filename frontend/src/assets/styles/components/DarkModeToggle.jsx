@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
 export const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // Obtener el estado inicial del modo oscuro desde localStorage
+  const initialDarkMode = localStorage.getItem("darkMode") === "true";
+  const [darkMode, setDarkMode] = useState(initialDarkMode);
 
   useEffect(() => {
+    // Actualizar la clase del cuerpo y almacenar el estado en localStorage
     document.body.classList.toggle("dark-mode", darkMode);
+    localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
   const toggleDarkMode = () => {

@@ -4,7 +4,7 @@ import { getLastPath } from "../../utils/path";
 
 const routes = [
   {
-    href: "/app/favorites/reciepes",
+    href: "/app/favorites/recipes",
     text: "Recetas Favoritas",
   },
   {

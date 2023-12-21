@@ -5,12 +5,13 @@ import Header from "../Header";
 
 export const MainLayout = () => {
   return (
-    <>
+    <div >
+      <Header />
       <div className="container">
-        <Header />
+
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
