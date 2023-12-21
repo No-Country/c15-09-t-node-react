@@ -33,7 +33,7 @@ export const Recipe = () => {
         {recetasPaginados.map((receta, index) => (
           <div key={index}>
             {" "}
-            <Link to={`/app/recipedetails/${receta.id}`}>
+            <Link to={`/app/recipe/${receta.id}`}>
               <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
                 <img className=" h-60 w-96 " src={receta.image} alt="Cervezas de Autor" />
                 <div className="px-6 py-4">
