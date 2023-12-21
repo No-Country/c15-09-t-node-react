@@ -8,12 +8,12 @@ export const Ingredientes = () => {
                 Además si quieres experimentar y conseguir cervezas de carácter especial tendrás que añadir
                 otros <b>ingredientes especiales como azúcares, hierbas, flores, frutos o especias</b>.
                 A continuación te mostramos con todo detalle los ingredientes de la cerveza.</p>
-            <h4 className="text-center text-3xl font-semibold text-[#D35400] mt-6">Son los siguientes</h4>
+            <h4 className="text-center text-3xl font-semibold text-[#a76b32] mt-6">Son los siguientes</h4>
 
             <div className="flex flex-wrap justify-between mt-9 ">
-                <img className="w-[22%] rounded-full " src="https://images.pexels.com/photos/14430641/pexels-photo-14430641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-                <img className="w-[22%] rounded-full" src="https://media.istockphoto.com/id/510688436/es/foto/verificar-el-l%C3%BApulo.jpg?s=612x612&w=0&k=20&c=Cxr1vEcO4y9hP2DF-fYE13fKpsVh3NDE3JC0QrcmuE4=" alt="" />
-                <img className="w-[22%] rounded-full" src="https://media.istockphoto.com/id/1124245117/es/foto/la-levadura-para-el-pan-es-activa-motor-de-arranque-masa-madre-el-concepto-de-una-dieta.jpg?s=612x612&w=0&k=20&c=yRY-RiCYi5_L_qdxqfrc9dMKCvucRkiet0au3a_-23Q=" alt="" />
+                <img className="w-[22%] rounded-full " src="https://sooluciona.com/wp-content/uploads/2019/04/Diferencias-entre-malta-cebada-y-grano.jpg" alt="" />
+                <img className="w-[22%] rounded-full" src="https://campo.lavozdelpueblo.com.ar/wp-content/uploads/2022/02/lupulo.jpg" alt="" />
+                <img className="w-[22%] rounded-full" src="https://img2.rtve.es/im/5897902/?w=900" alt="" />
                 <img className="w-[22%] rounded-full" src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
             </div>
 
