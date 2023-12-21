@@ -1,18 +1,20 @@
 import { Logo } from "./Logo";
-import { Search } from "./navbar/Search";
 import { UserBtn } from "./navbar/UserBtn";
 import { Link } from "react-router-dom";
 import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
+
+
+
 export default function Header() {
   return (
-    <header className="flex items-center lg:flex-row flex-col justify-between mt-[57px]  ">
+    <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-[#f1c31cfd] text-[#684320] md:px-56 md:py-9 py-5">
       <div className="hidden ">
         <DarkModeToggle />
       </div>
       <div className="flex justify-between items-center gap-20 md:mb-0 mb-4">
         <Logo />
       </div>
-      <nav>
+      <nav className="">
         <ul className="flex gap-[33px] items-center md:flex-row flex-col ">
           <div className="flex flex-wrap justify-center md:gap-10 gap-10 md:order-1 order-2">
             <li>
@@ -32,7 +34,7 @@ export default function Header() {
             </li>
             <li className="md:hidden block">
               <Link
-                className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
+                className="bg-[#3b9d16] hover:bg-[#156e0f] transition-colors py-2 px-3 text-white font-bold rounded-lg"
                 to={"/app/create"}
               >
                 Crear
@@ -42,16 +44,13 @@ export default function Header() {
           <div className="flex md:gap-10 gap-10 items-center order-1 md:order-2">
             <li className="md:block hidden">
               <Link
-                className="bg-secondary hover:bg-primary transition-colors py-2 px-3 text-white font-bold rounded-lg"
+                className="bg-[#3b9d16] hover:bg-[#156e0f] transition-colors py-2 px-3 text-white font-bold rounded-lg"
                 to={"/app/create"}
               >
                 Crear
               </Link>
             </li>
 
-            <li>
-              <Search />
-            </li>
             <li className="z-10 ">
               <UserBtn />
             </li>

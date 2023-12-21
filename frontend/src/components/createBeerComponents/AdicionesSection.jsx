@@ -21,8 +21,9 @@ export const AdicionesSection = ({ adiciones, recipeData, setRecipeData }) => {
         {
           name: "",
           type: "",
-          quantity: "",
+          amount: "",
           unit: "",
+          notes: "",
         },
       ],
     });
@@ -64,12 +65,12 @@ export const AdicionesSection = ({ adiciones, recipeData, setRecipeData }) => {
             />
           </label>
           <label className="flex flex-col justify-between mr-4">
-            Cantidad:
+            Cantidad
             <input
               className="p-1 border rounded-md mr-2"
-              type="text"
-              name="quantity"
-              value={item.quantity}
+              type="number"
+              name="amount"
+              value={item.amount}
               onChange={(e) => onChange(e, index)}
             />
           </label>
@@ -80,6 +81,16 @@ export const AdicionesSection = ({ adiciones, recipeData, setRecipeData }) => {
               type="text"
               name="unit"
               value={item.unit}
+              onChange={(e) => onChange(e, index)}
+            />
+          </label>
+          <label className="flex flex-col justify-between mr-4">
+            Notas:
+            <textarea
+              className="p-1 border rounded-md mr-2"
+              type="text"
+              name="notes"
+              value={item.notes}
               onChange={(e) => onChange(e, index)}
             />
           </label>

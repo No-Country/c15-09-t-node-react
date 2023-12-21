@@ -12,7 +12,6 @@ export const DarkModeToggle = () => {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    console.log("Toggling Dark Mode");
     setDarkMode(!darkMode);
   };
 
