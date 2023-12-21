@@ -68,7 +68,7 @@ export const RecipeDetails = () => {
             <div className=" max-w-full">
               <div>
                 <div className=" flex flex-col ">
-                  <div className="flex flex-col items-center justify-center md:flex-row ">
+                  <div className="flex flex-col items-center justify-center md:flex-row">
                     <div className="flex flex-col  mb-8 order-2 px-5 md:px-0">
                       <div>
                         <h2 className=" mx-auto text-center  text-4xl  font-bold ">
@@ -80,7 +80,7 @@ export const RecipeDetails = () => {
                       </div>
 
                       <div className="flex  flex-col md:flex-row mt-10 order-3 md:order-2">
-                        <div>
+                        <div className="min-w-[280px]">
                           <div className="group ">
                             <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100">
                               {" "}
@@ -117,7 +117,7 @@ export const RecipeDetails = () => {
                           </div>
                         </div>
 
-                        <div>
+                        <div className="min-w-[280px]">
                           <div className="group">
                             <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
                               {" "}
@@ -149,7 +149,7 @@ export const RecipeDetails = () => {
                           </div>
                         </div>
 
-                        <div>
+                        <div className="min-w-[280px]">
                           <div className="group">
                             <h3 className="text-2xl font-semibold mb-2 group-hover:opacity-100 ">
                               {" "}
@@ -194,7 +194,7 @@ export const RecipeDetails = () => {
                         </div>
                       </div>
 
-                      <div className="order-1 md:order-3">
+                      <div className="order-1 md:order-3 p-10">
                         <div className="mb-8 mt-10">
                           <h6 className="text-xl font-semibold my-2  ">
                             {" "}
