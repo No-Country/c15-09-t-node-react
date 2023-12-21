@@ -96,7 +96,7 @@ export const Create = () => {
 
 
 
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encype="multipart/form-data">
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encType="multipart/form-data">
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
