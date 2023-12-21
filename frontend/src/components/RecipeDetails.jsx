@@ -91,14 +91,12 @@ export const RecipeDetails = () => {
                               }}
                             />
                           )}
-
                         </h2>
                       </div>
 
                       <h4 className="text-center text-[#f08649] font-bold text-2xl first-letter: ">
                         Autor: {receta?.author}
                       </h4>
-
 
                       <div className="flex  flex-col md:flex-row mt-10 order-3 md:order-2">
                         <div className="min-w-[280px]">
@@ -244,7 +242,7 @@ export const RecipeDetails = () => {
                       </div>
                     </div>
 
-                    <div className="w-48 order-1 mb-6 md:order-3 md:mb-0">
+                    <div className="w-full h-full order-1 mb-6 md:order-3 md:mb-0">
                       <ZoomImage
                         src={receta.image}
                         className="rounded-xl  "

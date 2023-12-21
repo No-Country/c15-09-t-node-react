@@ -35,7 +35,7 @@ export const UserBtn = () => {
     >
       <div className="user-info">
         <img
-          className="h-[28px] w-[28px]"
+          className="h-full w-full"
           src="https://i.postimg.cc/YjKcp3sw/Ellipse-1.png"
           alt="logo"
         />

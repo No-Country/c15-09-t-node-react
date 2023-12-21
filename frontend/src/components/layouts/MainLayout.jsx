@@ -5,10 +5,9 @@ import Header from "../Header";
 
 export const MainLayout = () => {
   return (
-    <div >
+    <div className="h-screen flex flex-col justify-between">
       <Header />
       <div className="container">
-
         <Outlet />
       </div>
       <Footer />
