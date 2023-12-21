@@ -1,41 +1,30 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getFavoritesFromUser, removeFavoriteFromUser } from "../services/favorites";
+import { getRecetasFromUser } from "../services/recipes";
 import { useEffect, useState } from "react";
 import "./RecipeFavorites.css";
 
-export const RecipeFavorites = () => {
+export const MyRecipes = () => {
   const user = useSelector((state) => state.user);
-  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-
-  // TODO: agregar que no se en contraron recetas si favoriteRecipes is empty
+  const [userRecipes, setUserRecipes] = useState([]);
 
   useEffect(() => {
-    getFavoritesFromUser(user.userID)
+    // TODO: no tengo la id del user, cuando normalicen la info que me dan lo arreglo
+    getRecetasFromUser(24)
       .then((data) => {
-        setFavoriteRecipes(data);
+        setUserRecipes(data);
       })
       .catch((e) => console.log(e));
-  }, [user.userID]);
+  }, [user.id]);
 
-  const handleRemoveRecipe = (recipeId) => {
-    removeFavoriteFromUser(user.userID, recipeId).then(() => {
-      // After successfully removing a favorite, re-fetch the favorites
-      getFavoritesFromUser(user.userID)
-        .then((data) => {
-          setFavoriteRecipes(data);
-        })
-        .catch((e) => console.log(e));
-    });
-  };
-  if (favoriteRecipes == null) {
+  if (userRecipes == null) {
     return <h1>No se encontraron recetas favoritas</h1>;
   } else {
     return (
-      <div className="w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings">
-        {favoriteRecipes.map((recipe) => {
+      <div className="w-full flex justify-between mt-8 font-poppings">
+        {userRecipes.map((recipe) => {
           return (
-            <div key={recipe.id} className="shadow-lg mb-14 w-full lg:w-[47.5%] bg-stone-100">
+            <div key={recipe.id} className="shadow-lg w-[47.5%] bg-stone-100">
               <Link to={`/app/recipe/${recipe.id}`}>
                 <div className="rounded flex justify-center w-full">
                   <div
@@ -63,12 +52,6 @@ export const RecipeFavorites = () => {
                     >
                       Entrar
                     </Link>
-                    <button
-                      className="w-full text-center bg-red-900 font-bold hover:bg-zinc-600 transition-colors text-white py-2 mt-2"
-                      onClick={() => handleRemoveRecipe(recipe.id)}
-                    >
-                      Quitar de favoritos
-                    </button>
                   </div>
                 </div>
               </Link>
