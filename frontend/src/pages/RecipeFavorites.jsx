@@ -8,20 +8,20 @@ export const RecipeFavorites = () => {
   const user = useSelector((state) => state.user);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
+  // TODO: agregar que no se en contraron recetas si favoriteRecipes is empty
+
   useEffect(() => {
-    // TODO: no tengo la id del user, cuando normalicen la info que me dan lo arreglo
-    getFavoritesFromUser("24")
+    getFavoritesFromUser(user.userID)
       .then((data) => {
         setFavoriteRecipes(data);
       })
       .catch((e) => console.log(e));
-  }, [user.id]);
+  }, [user.userID]);
 
   const handleRemoveRecipe = (recipeId) => {
-    // TODO: no tengo la id del user, cuando normalicen la info que me dan lo arreglo
-    removeFavoriteFromUser("24", recipeId).then(() => {
+    removeFavoriteFromUser(user.userID, recipeId).then(() => {
       // After successfully removing a favorite, re-fetch the favorites
-      getFavoritesFromUser("24")
+      getFavoritesFromUser(user.userID)
         .then((data) => {
           setFavoriteRecipes(data);
         })
@@ -32,10 +32,10 @@ export const RecipeFavorites = () => {
     return <h1>No se encontraron recetas favoritas</h1>;
   } else {
     return (
-      <div className="w-full flex justify-between mt-8 font-poppings">
+      <div className="w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings">
         {favoriteRecipes.map((recipe) => {
           return (
-            <div key={recipe.id} className="shadow-lg w-[47.5%] bg-stone-100">
+            <div key={recipe.id} className="shadow-lg mb-14 w-full lg:w-[47.5%] bg-stone-100">
               <Link to={`/app/recipe/${recipe.id}`}>
                 <div className="rounded flex justify-center w-full">
                   <div

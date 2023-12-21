@@ -1,5 +1,11 @@
 import { brewerApi } from "./brewerApi";
 
+export const postImage = async () => {
+  const { response } = await brewerApi.post("/recetas/img");
+  console.log(response);
+  return response;
+};
+
 export const createReceta = async (RecetaData) => {
   const { data } = await brewerApi.post("/recetas", RecetaData);
   return data;
