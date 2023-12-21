@@ -9,18 +9,30 @@ import { useEffect, useState } from "react";
 import { getLevaduraById } from "../services/ingredients/levadura";
 import { getLupuloById } from "../services/ingredients/lupulo";
 import { getMaltaById } from "../services/ingredients/malta";
+import {
+  addFavoriteToUser,
+  getFavoritesFromUser,
+  removeFavoriteFromUser,
+} from "../services/favorites";
+import { useSelector } from "react-redux";
 
 export const RecipeDetails = () => {
+  const user = useSelector((state) => state.user);
   const params = useParams();
   const [receta, setReceta] = useState({});
   const [levadurasReceta, setLevadurasReceta] = useState([]);
   const [fermentablesReceta, setFermentablesReceta] = useState([]);
   const [lupulosReceta, setLupulosReceta] = useState([]);
-  const [favorite, setFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const getData = async () => {
     const recetaDB = await getRecetaById(params.id);
     setReceta(recetaDB);
+    // esto funciona bien
+    getFavoritesFromUser(user.userID).then((data) => {
+      setFavoriteRecipes(data);
+    });
     await getOtherData(recetaDB.LevadurasReceta, recetaDB.Fermentables, recetaDB.LupulosReceta);
   };
 
@@ -50,10 +62,31 @@ export const RecipeDetails = () => {
     setLupulosReceta(lupulos);
   };
 
+  function isRecipeFavorite(recipeId, favoriteRecipes) {
+    return favoriteRecipes.some((recipe) => recipe.id == recipeId);
+  }
+
+  function handleAddFavoriteToUser() {
+    addFavoriteToUser(user.userID, parseInt(params.id))
+      .then(() => setIsFavorite(!isFavorite))
+      .catch((e) => console.log(e));
+  }
+
+  function handleRemoveFavoriteFromUser() {
+    removeFavoriteFromUser(user.userID, parseInt(params.id))
+      .then(() => setIsFavorite(!isFavorite))
+      .catch((e) => console.log(e));
+  }
+
   useEffect(() => {
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isFavorite]);
+
+  useEffect(() => {
+    // Llamar a isRecipeFavorite después de actualizar favoriteRecipes
+    setIsFavorite(isRecipeFavorite(params.id, favoriteRecipes));
+  }, [params.id, favoriteRecipes, isFavorite]);
 
   return (
     <div>
@@ -76,18 +109,18 @@ export const RecipeDetails = () => {
                       <div className="">
                         <h2 className=" mx-auto text-center  text-4xl  font-bold  ">
                           {receta.name}{" "}
-                          {favorite === false ? (
+                          {isFavorite === false ? (
                             <FavoriteBorderIcon
                               className="scale-150 text-red-900"
                               onClick={() => {
-                                setFavorite(!favorite);
+                                handleAddFavoriteToUser();
                               }}
                             />
                           ) : (
                             <FavoriteIcon
                               className="scale-150 text-red-900"
                               onClick={() => {
-                                setFavorite(!favorite);
+                                handleRemoveFavoriteFromUser();
                               }}
                             />
                           )}

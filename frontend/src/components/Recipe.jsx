@@ -46,6 +46,20 @@ export const Recipe = () => {
     <div className="flex items-center flex-col mt-8">
       <h1 className="font-homemade my-10 self-center md:self-start md:px-4">Recetas</h1>
       <div className="flex gap-x-10 gap-y-5 flex-wrap justify-center">
+        {recetasPaginados.map((receta, index) => (
+          <div key={index}>
+            {" "}
+            <Link to={`/app/recipe/${receta.id}`}>
+              <div className="w-48 hover:scale-110 transition-transform rounded overflow-hidden shadow-lg">
+                <img className=" h-60 w-96 " src={receta.image} alt="Cervezas de Autor" />
+                <div className="px-6 py-4">
+                  <div className="font-bold font-homemade text-xl mb-2">{receta.name}</div>
+                  <p className="text-gray-700 text-base">Autor:{receta.author}</p>
+                </div>
+              </div>{" "}
+            </Link>
+          </div>
+        ))}
         {loading
           ? // Renderizar esqueletos durante la carga
             Array.from({ length: 10 }).map((_, index) => <div key={index}>{renderSkeleton()}</div>)

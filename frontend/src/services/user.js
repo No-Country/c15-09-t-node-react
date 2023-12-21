@@ -12,6 +12,7 @@ export const createUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const response = brewerApi.post(`/login/`, userData);
+    console.log(response);
     return response;
   } catch (e) {
     console.log(e);

@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Home } from "./pages/Home";
@@ -10,9 +10,9 @@ import { StyleDetails } from "./pages/StyleDetails";
 import { RecipeBeer } from "./pages/RecipeBeer";
 import { RecipeBeerDetails } from "./pages/RecipeBeerDetails";
 import { ProfileLayout } from "./components/layouts/ProfileLayout";
-import { RecipeFavorites } from "./pages/RecipeFavorites";
-import { FavoritesLayout } from "./components/layouts/FavoritesLayout";
 import { Contact } from "./pages/Contact";
+import { RecipeFavorites } from "./pages/RecipeFavorites";
+import { MyRecipes } from "./pages/MyRecipes";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         element: <RecipeBeer />,
       },
       {
-        path: "recipedetails/:id",
+        path: "recipe/:id",
         element: <RecipeBeerDetails />,
       },
       {
@@ -64,23 +64,13 @@ export const router = createBrowserRouter([
             index: true,
             element: <div className="mt-8"></div>,
           },
-        ],
-      },
-      {
-        path: "favorites",
-        element: <FavoritesLayout />,
-        children: [
           {
-            index: true,
-            element: <Navigate to="/app/favorites/recipes" />,
-          },
-          {
-            path: "recipes",
+            path: "recipeFavorites",
             element: <RecipeFavorites />,
           },
           {
-            path: "styles",
-            element: <h1 className="mt-8 text-center">No se encontraron estilos favoritos</h1>,
+            path: "myRecipes",
+            element: <MyRecipes />,
           },
         ],
       },
