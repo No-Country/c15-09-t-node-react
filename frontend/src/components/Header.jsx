@@ -24,9 +24,6 @@ export default function Header() {
             <li>
               <Link to={"/app/styles"}> Estilos </Link>
             </li>
-            <li>
-              <Link to={"/app/favorites"}> Favoritos </Link>
-            </li>
             <li className="md:block">
               <DarkModeToggle />
             </li>
