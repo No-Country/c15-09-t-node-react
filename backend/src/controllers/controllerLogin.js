@@ -1,6 +1,3 @@
-// controllerLogin.js
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const { addGooglePass, verifyLocalPassword, tokenLogin, verifyTokenSession } = require('../Services/serviceLogin');
 const { createCookie } = require('../Services/serviceLogin'); // Importa la función createCookie
 

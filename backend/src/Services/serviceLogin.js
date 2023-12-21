@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
-const loginControllers = {
+const loginServices = {
    //!---------------Para implementar login de manera local-------------------------------------
     verifyLocalPassword: async (email, password) => {
         const user = await User.findOne({
@@ -18,8 +18,9 @@ const loginControllers = {
         if (!isValidPassword) {
           throw new Error('Error de credenciales');
         }
-      
-        return user.dataValues;
+        
+        const userData = {...user.dataValues, id: user.id}
+        return userData.dataValues;
       },
 
     tokenLogin: async(user) => {
@@ -66,5 +67,5 @@ const loginControllers = {
   },
 };
 
-module.exports = loginControllers
+module.exports = loginServices
  

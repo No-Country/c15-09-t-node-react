@@ -5,7 +5,7 @@ const { User } = require('./db')
 passport.use(new GoogleStrategy({
   clientID: '779460091956-25p9glvpp2p2hregu2gb8ed1igbm79o9.apps.googleusercontent.com',
   clientSecret: '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',
-  callbackURL: 'http://localhost:3000/google/callback',
+  callbackURL: 'http://localhost:5001/google/callback',
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
   try {
