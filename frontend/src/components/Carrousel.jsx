@@ -4,21 +4,21 @@ import licorImg from "../assets/images/app-index/licor-hero.png";
 
 const SlideContent1 = () => (
   <div>
-    <section className="bg-gray-dark appIndex text-white mt-[56px] rounded-0 md:rounded-[32px] flex flex-col md:flex-row relative justify-between ">
+    <section className="bg-[#587688] appIndex text-white mt-[56px] rounded-0 md:rounded-[32px] flex flex-col md:flex-row relative justify-between ">
       <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="font-poppings text-[38px]">
           El Arte de la
           <span className="block font-homemade">Cerveza Casera</span>
         </h1>
 
-        <p className="mt-6 max-w-[512px] md:block hidden text-lg">
+        <p className="mt-6 max-w-[512px] md:block hidden text-lg font-poppings">
           Encuentra inspiración en una amplia colección de recetas probadas y, lo mejor de todo,
           ¡también puedes compartir tus creaciones únicas con la comunidad! Descubre, aprende y
           conviértete en un maestro cervecero desde la comodidad de tu dispositivo.
         </p>
 
         <Link to="/app/recipe">
-          <button className="bg-secondary hover:bg-primary text-gray-dark py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+          <button className="bg-[#9d2c15] hover:bg-[#802411] text-[white] py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
             Descubrir
           </button>
         </Link>
@@ -37,7 +37,7 @@ const SlideContent1 = () => (
 
 const SlideContent2 = () => (
   <div>
-    <section className=" bg-gray-dark appIndex text-white mt-[56px]  rounded-0 md:rounded-[32px] flex w-full h-full">
+    <section className=" bg-[#587688] appIndex text-white mt-[56px]  rounded-0 md:rounded-[32px] flex w-full h-full">
       <div className="relative md:block hidden order-2">
         <div className="absolute block-gradiant z-10"></div>
         <img
@@ -51,7 +51,7 @@ const SlideContent2 = () => (
       <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="block font-homemade">La Cerveza Artesanal</h1>
 
-        <p className="mt-6 max-w-[512px] md:block hidden text-lg">
+        <p className="mt-6 max-w-[512px] md:block hidden text-lg font-poppings">
           Es un 90% de la cerveza agua, por lo que en un consumo moderado, nos ayuda a estar
           hidratados. Además, el lúpulo que contiene la cerveza ayuda a prevenir la formación de
           piedras en los riñones.
@@ -59,7 +59,7 @@ const SlideContent2 = () => (
 
         <Link to="/app/recipe">
           {" "}
-          <button className=" bg-secondary hover:bg-primary text-gray-dark py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+          <button className="bg-[#9d2c15] hover:bg-[#802411] text-white py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
             Descubrir
           </button>
         </Link>
@@ -73,21 +73,21 @@ const SlideContent2 = () => (
 
 const SlideContent3 = () => (
   <div>
-    <section className="bg-gray-dark appIndex text-white mt-[56px] rounded-0 md:rounded-[32px] flex flex-col md:flex-row relative justify-between ">
+    <section className="bg-[#587688] appIndex text-white mt-[56px] rounded-0 md:rounded-[32px] flex flex-col md:flex-row relative justify-between ">
       <div className="pt-[123px] pl-[40px]  md:pl-[85px] ">
         <h1 className="font-poppings text-[38px]">
           ...
           <span className="block font-poppings">Sabias que?</span>
         </h1>
 
-        <p className="mt-6 max-w-[512px] md:block hidden text-lg">
+        <p className="mt-6 max-w-[512px] md:block hidden text-lg font-poppings">
           la cerveza artesanal, no engorda. Es buena para la salud, ademas Comparada con otras bebidas como el vino, es una bebida con un contenido de alcohol muy bajo,
           menor al 50%. Por este motivo, puedes acompañar tus almuerzos
           o cenas con una cerveza, sin temor a sufrir efectos adversos.
         </p>
 
         <Link to="/app/recipe">
-          <button className="bg-secondary hover:bg-primary text-gray-dark py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
+          <button className="bg-[#9d2c15] hover:bg-[#802411] text-white py-[12px] px-10 font-bold mt-[43px] mb-[97px] rounded-[30px] hover:text-white">
             Descubrir
           </button>
         </Link>

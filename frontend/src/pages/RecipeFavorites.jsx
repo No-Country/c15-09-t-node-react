@@ -10,6 +10,7 @@ export const RecipeFavorites = () => {
 
   // TODO: agregar que no se en contraron recetas si favoriteRecipes is empty
 
+
   useEffect(() => {
     getFavoritesFromUser(user.userID)
       .then((data) => {

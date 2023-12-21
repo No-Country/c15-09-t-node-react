@@ -33,10 +33,10 @@ export const UserBtn = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="user-info">
+      <div >
         <img
           className="h-full w-full"
-          src="https://i.postimg.cc/YjKcp3sw/Ellipse-1.png"
+          src="https://cdn-icons-png.flaticon.com/512/180/180658.png"
           alt="logo"
         />
       </div>
@@ -52,11 +52,7 @@ export const UserBtn = () => {
                 Perfil
               </Link>
             </li>
-            <li>
-              <Link to="/configuracion" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                Configuración
-              </Link>
-            </li>
+
             <li
               onClick={() => {
                 handleToggleMenu();
