@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { getStyleById } from "../services/styles";
 import { useParams } from "react-router-dom";
 import { colorRanges } from "../utils/colorRanges.js";
@@ -11,7 +9,7 @@ import placeholderImage from "../assets/images/placeholder.svg";
 // TODO: agregar favoritos cuando agreguen el endpoint
 // TODO: arreglar imagenes
 export const StyleDetails = () => {
-  const [favorite, setFavorite] = useState(false);
+
   const [data, setData] = useState(false);
   const [beerImage, setBeerImage] = useState(colorRanges[data.category] || placeholderImage);
   const { id } = useParams();
@@ -50,21 +48,7 @@ export const StyleDetails = () => {
         <div className="xl:ml-auto sm:ml-8 max-w-xl xl:mr-0 mx-2 sm:mx-8 md:w-1/2">
           <div className="flex md:justify-start justify-center items-center">
             <h1 className="text-4xl font-bold mr-4">{data.name}</h1>
-            {favorite === false ? (
-              <FavoriteBorderIcon
-                className="scale-150 text-red-900"
-                onClick={() => {
-                  setFavorite(!favorite);
-                }}
-              />
-            ) : (
-              <FavoriteIcon
-                className="scale-150 text-red-900"
-                onClick={() => {
-                  setFavorite(!favorite);
-                }}
-              />
-            )}
+
           </div>
           <div className="md:hidden max-w-xs sm:w-96 mx-auto">
             <img src={beerImage} alt={`${data.name}`} className="rounded-md my-4" />

@@ -1,6 +1,8 @@
 import ZoomImage from "./ZoomImage";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import ChecklistIcon from "@mui/icons-material/Checklist";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { getRecetaById } from "../services/recipes";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,6 +16,7 @@ export const RecipeDetails = () => {
   const [levadurasReceta, setLevadurasReceta] = useState([]);
   const [fermentablesReceta, setFermentablesReceta] = useState([]);
   const [lupulosReceta, setLupulosReceta] = useState([]);
+  const [favorite, setFavorite] = useState(false);
 
   const getData = async () => {
     const recetaDB = await getRecetaById(params.id);
@@ -70,14 +73,32 @@ export const RecipeDetails = () => {
                 <div className=" flex flex-col ">
                   <div className="flex flex-col items-center justify-center md:flex-row">
                     <div className="flex flex-col  mb-8 order-2 px-5 md:px-0">
-                      <div>
-                        <h2 className=" mx-auto text-center  text-4xl  font-bold ">
+                      <div className="">
+                        <h2 className=" mx-auto text-center  text-4xl  font-bold  ">
                           {receta.name}{" "}
+                          {favorite === false ? (
+                            <FavoriteBorderIcon
+                              className="scale-150 text-red-900"
+                              onClick={() => {
+                                setFavorite(!favorite);
+                              }}
+                            />
+                          ) : (
+                            <FavoriteIcon
+                              className="scale-150 text-red-900"
+                              onClick={() => {
+                                setFavorite(!favorite);
+                              }}
+                            />
+                          )}
+
                         </h2>
-                        <h4 className="text-center text-[#f08649] font-bold text-2xl first-letter: ">
-                          Autor: {receta?.author}
-                        </h4>
                       </div>
+
+                      <h4 className="text-center text-[#f08649] font-bold text-2xl first-letter: ">
+                        Autor: {receta?.author}
+                      </h4>
+
 
                       <div className="flex  flex-col md:flex-row mt-10 order-3 md:order-2">
                         <div className="min-w-[280px]">
