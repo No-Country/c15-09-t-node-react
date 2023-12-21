@@ -11,7 +11,7 @@ export const Contact = () => {
     <main className="font-poppings text-neutral-100 text-center mt-24">
       <img
         src={contactoImage}
-        className="h-screen z-[-1] absolute w-full right-0 md:top-28 top-44 bg-contain brightness-[0.4] object-cover"
+        className="min-h-[120vh] z-[-1] absolute w-full right-0 md:top-28 top-44 bg-contain brightness-[0.4] object-cover"
       ></img>
       <div className="my-16">
         <h1 className="uppercase font-black text-4xl sm:text-7xl mb-4">Contactanos 🍻</h1>
