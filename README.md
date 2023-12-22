@@ -1,5 +1,6 @@
 # PROYECTO CERVEZAS
-![image](https://github.com/No-Country/c12-12-m-java-react/assets/102260190/b2c91d97-872c-42a5-80f6-6fe01d0fe260)
+![image](https://github.com/No-Country/c15-09-t-node-react/assets/106632070/b57e3501-2156-4c31-bd7c-fc282d53781c)
+
 <h3>👉🏻 Nuestra plataforma de recetas de cervezas artesanales ofrece un amplio catálogo de productos para aquellos interesados en la industria, desde recetas, estilos, insumos y maquinaria hasta una comunidad donde compartir con colegas interesados en las cervezas artesanales como tu .El website ofrece una expeiencia de usuario centrada en ser lo mas sencilla y eficiente posible.</h3>
 <h3>👉🏻 <b>Visita nuestra website en <a href="https://c15-09-t-node-react.vercel.app/app">Brewer's CookBook</a></b></h3>
 <hr/>
