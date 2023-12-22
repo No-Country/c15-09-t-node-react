@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUser } from "../services/user";
+import { createUser, loginUser } from "../services/user";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/actions/userActions";
@@ -23,10 +23,15 @@ export const RegisterForm = () => {
 
     createUser(formulario)
       .then((data) => {
-        localStorage.setItem("authToken", data.data.token);
-        console.log("esto es data", data);
-        dispatch(setUser(data.data));
-        navigate("/app");
+        // TODO: por ahora!
+        loginUser(data)
+          .then((data) => {
+            localStorage.setItem("authToken", data.data.token);
+            dispatch(setUser(data.data));
+            console.log(data.data);
+            navigate("/app");
+          })
+          .catch((e) => console.error("Error de red:", e.message));
       })
       .catch((e) => {
         console.error(e);
@@ -36,7 +41,6 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="w-96">
-
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">
           Usuario:

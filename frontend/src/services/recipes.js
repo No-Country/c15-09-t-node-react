@@ -26,5 +26,6 @@ export const getRecetasFromUser = async (userId) => {
 
   // Filtrar las recetas basado en el userId
   const userRecipes = data.filter((recipe) => recipe.UserId === userId);
+  console.log(userRecipes);
   return userRecipes;
 };

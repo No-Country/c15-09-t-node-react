@@ -17,8 +17,12 @@ export const MyRecipes = () => {
       .catch((e) => console.log(e));
   }, [user.id]);
 
-  if (userRecipes == null) {
-    return <h1>No se encontraron recetas favoritas</h1>;
+  if (userRecipes == null || userRecipes.length === 0) {
+    return (
+      <div className="w-full flex-col flex mt-8 font-poppings">
+        <h1 className="text-center mx-auto w-8/12">No se encontraron recetas propias.</h1>
+      </div>
+    );
   } else {
     return (
       <div className="w-full flex justify-between mt-8 font-poppings">
