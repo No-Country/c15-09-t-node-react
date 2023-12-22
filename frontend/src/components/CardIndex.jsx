@@ -30,14 +30,14 @@ export const CardIndex = () => {
             <div key={index}>
               {" "}
               <Link to={"/app/styles"}>
-                <div className="w-48 hover:scale-110 transition-transform rounded h-full overflow-hidden shadow-lg">
+                <div className="w-48  bg-[#e8e8e8] hover:scale-110 transition-transform rounded h-full overflow-hidden shadow-lg">
                   <img
                     className="h-60 w-full object-cover"
                     src={beerImage}
                     alt="Sunset in the mountains"
                   />
-                  <div className="px-6 py-4 bg-white">
-                    <div className="font-bold  text-xl mb-2 text-[#af3312]">{estilo.name}</div>
+                  <div className="px-6 py-4 text-black">
+                    <div className="font-bold  text-xl mb-2 text-[#652e1f]">{estilo.name}</div>
                     <p className="text-gray-700 text-base">{estilo.category}</p>
                   </div>
                 </div>{" "}
