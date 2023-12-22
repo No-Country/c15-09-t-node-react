@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export const UserBtn = () => {
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   let timeoutId;
 
@@ -24,7 +25,8 @@ export const UserBtn = () => {
 
   const handleLogout = () => {
     console.log("Cerrar sesión");
-    window.location.href = "/";
+    localStorage.removeItem("authToken");
+    navigate("/");
   };
 
   return (
@@ -33,7 +35,7 @@ export const UserBtn = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div >
+      <div>
         <img
           className="h-full w-full"
           src="https://cdn-icons-png.flaticon.com/512/180/180658.png"
