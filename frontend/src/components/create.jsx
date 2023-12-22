@@ -7,7 +7,6 @@ import bgForm from "../assets/images/bgForm.jpg";
 import { getAllStyles } from "../services/styles";
 import { useSelector } from "react-redux";
 
-
 export const Create = () => {
   const user = useSelector((state) => state.user);
   const [estilos, setEstilos] = useState([]);
@@ -16,7 +15,6 @@ export const Create = () => {
   }, []);
 
   const [recipeData, setRecipeData] = useState({
-
     name: "",
     author: "",
     image: "",
@@ -25,6 +23,7 @@ export const Create = () => {
     originalGravity: "",
     finalGravity: "",
     ibu: "",
+    colorSRM: "",
     batchSize: "",
     mashWaterAmount: "",
     spargeWaterAmount: "",
@@ -40,8 +39,7 @@ export const Create = () => {
     seccondaryFermentationTime: "",
     notes: "",
     EstiloId: "",
-    UserID: user.id,
-    colorSRM: "",
+    UserId: user.id,
     fermentables: [
       {
         MaltaId: "",
@@ -86,7 +84,7 @@ export const Create = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/crearReceta", {
+      const response = await fetch("https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/recetas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,16 +101,44 @@ export const Create = () => {
     } catch (error) {
       console.error("Error en la solicitud:", error.message);
     }
+    console.log(recipeData);
   };
 
+  const handlePicture = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("image", recipeData.image);
 
+      // Realizar la solicitud POST al endpoint
+      const response = await fetch(
+        "https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/recetas/img",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
+      // Manejar la respuesta según sea necesario
+      if (response.ok) {
+        // Éxito
+        console.log("Imagen enviada exitosamente.");
+      } else {
+        // Error en la respuesta
+        console.error("Error al enviar la imagen.");
+      }
+    } catch (error) {
+      // Manejar errores de red u otros errores
+      console.error("Error de red al enviar la imagen:", error);
+    }
+  };
   return (
     <div className="w-full mt-5 ">
-
-
-
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encType="multipart/form-data">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap justify-around md:gap-5 p-4"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
@@ -151,21 +177,28 @@ export const Create = () => {
               type="text"
               value={recipeData.colorSRM}
               onChange={handleChange}
-
             />
           </label>
 
-          <label className=" w-full mb-4 block text-lg font-medium">
+          <label className="flex flex-col mb-4 text-lg font-medium">
             Imagen
             <input
               className="mt-1 border-2 text-black border-gray-light rounded-md w-full"
               id="default_size"
               type="file"
               name="image"
-              value={recipeData.image}
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+              }}
             />
           </label>
+          <button
+            type="button"
+            onClick={handlePicture}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Subir Foto
+          </button>
 
           <label className=" w-full mb-4 block text-lg font-medium">
             Alcohol por Volumen %
@@ -435,7 +468,6 @@ export const Create = () => {
           <button
             className="p-2 bg-[#1E8449] hover:bg-[#145A32] text-white rounded-md"
             type="submit"
-
           >
             Enviar Receta
           </button>
@@ -444,4 +476,3 @@ export const Create = () => {
     </div>
   );
 };
-
