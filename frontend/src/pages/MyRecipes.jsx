@@ -10,7 +10,7 @@ export const MyRecipes = () => {
 
   useEffect(() => {
     // TODO: no tengo la id del user, cuando normalicen la info que me dan lo arreglo
-    getRecetasFromUser(24)
+    getRecetasFromUser(user.id)
       .then((data) => {
         setUserRecipes(data);
       })
@@ -25,36 +25,34 @@ export const MyRecipes = () => {
         {userRecipes.map((recipe) => {
           return (
             <div key={recipe.id} className="shadow-lg w-[47.5%] bg-stone-100">
-              <Link to={`/app/recipe/${recipe.id}`}>
-                <div className="rounded flex justify-center w-full">
-                  <div
-                    style={{
-                      backgroundImage: `url(${recipe.image})`,
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                    className="bg-cover w-[40%]"
-                    aria-label={recipe.name}
-                  ></div>
-                  <div className="pl-8 pt-8 pb-5 w-1/2 text-stone-800">
-                    <div className="mb-6 pb-6 border-b-2 border-stone-600">
-                      <h1 className="font-bold text-2xl mb-1">{recipe.name}</h1>
-                      <p className="font-semibold text-base">{recipe.author}</p>
-                    </div>
-                    <p className="mb-5">
-                      Punk IPA clone from the GF recipe library, this came out as close to an
-                      original beer that Ive brewed, genuinely nice beer, looks, smells, and most
-                      importantly tastes pretty close to the original...
-                    </p>{" "}
-                    <Link
-                      to={`/app/recipe/${recipe.id}`}
-                      className="block w-full text-center bg-secondary hover:bg-primary font-bold transition-colors text-white py-2"
-                    >
-                      Entrar
-                    </Link>
+              <div className="rounded flex justify-center w-full">
+                <div
+                  style={{
+                    backgroundImage: `url(${recipe.image})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                  className="bg-cover w-[40%]"
+                  aria-label={recipe.name}
+                ></div>
+                <div className="pl-8 pt-8 pb-5 w-1/2 text-stone-800">
+                  <div className="mb-6 pb-6 border-b-2 border-stone-600">
+                    <h1 className="font-bold text-2xl mb-1">{recipe.name}</h1>
+                    <p className="font-semibold text-base">{recipe.author}</p>
                   </div>
+                  <p className="mb-5">
+                    Punk IPA clone from the GF recipe library, this came out as close to an original
+                    beer that Ive brewed, genuinely nice beer, looks, smells, and most importantly
+                    tastes pretty close to the original...
+                  </p>{" "}
+                  <Link
+                    to={`/app/recipe/${recipe.id}`}
+                    className="block w-full text-center bg-secondary hover:bg-primary font-bold transition-colors text-white py-2"
+                  >
+                    Entrar
+                  </Link>
                 </div>
-              </Link>
+              </div>
             </div>
           );
         })}

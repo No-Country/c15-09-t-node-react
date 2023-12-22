@@ -5,7 +5,7 @@ import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 
 export default function Header() {
   return (
-    <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-mostaza text-[#684320] md:px-56 md:py-9 py-5">
+    <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-20 bg-mostaza text-[#684320] md:px-56 md:py-9 py-5">
       <div className="hidden ">
         <DarkModeToggle />
       </div>

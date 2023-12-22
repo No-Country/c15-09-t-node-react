@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { createUser } from "../services/user";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/actions/userActions";
 export const RegisterForm = () => {
-  const [token, setToken] = useState(localStorage.getItem("authToken"));
+  const dispatch = useDispatch();
   const [formulario, setFormulario] = useState({
     usuario: "",
     email: "",
@@ -21,8 +23,9 @@ export const RegisterForm = () => {
 
     createUser(formulario)
       .then((data) => {
-        localStorage.setItem("authToken", token);
-        setToken(data.token);
+        localStorage.setItem("authToken", data.data.token);
+        console.log("esto es data", data);
+        dispatch(setUser(data.data));
         navigate("/app");
       })
       .catch((e) => {

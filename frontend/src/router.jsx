@@ -13,6 +13,7 @@ import { ProfileLayout } from "./components/layouts/ProfileLayout";
 import { Contact } from "./pages/Contact";
 import { RecipeFavorites } from "./pages/RecipeFavorites";
 import { MyRecipes } from "./pages/MyRecipes";
+import RequireAuth from "./pages/Auth/RequireAuth";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +30,13 @@ export const router = createBrowserRouter([
   },
   {
     path: "/app",
-    element: <MainLayout />,
+
+    element: (
+      <RequireAuth>
+        {" "}
+        <MainLayout />
+      </RequireAuth>
+    ),
     children: [
       {
         // path: "/",
