@@ -19,8 +19,6 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(formulario);
     loginUser(formulario)
       .then((data) => {
         localStorage.setItem("authToken", data.data.token);

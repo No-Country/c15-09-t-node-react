@@ -30,23 +30,21 @@ export const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    createUser(formulario)
-      .then(() => {
-        // TODO: por ahora!
-        console.log("esta es data proveniente del formularioLogin:", formularioLogin);
-        loginUser(formularioLogin)
-          .then((data) => {
-            localStorage.setItem("authToken", data.data.token);
-            dispatch(setUser(data.data));
-            console.log(data.data);
-            navigate("/app");
-          })
-          .catch((e) => console.error("Error de red:", e.message));
-      })
-      .catch((e) => {
-        console.error(e);
-        alert("Error de registro: " + e.message);
-      });
+    const userCreated = await createUser(formulario);
+    if (userCreated) {
+      console.log("esta es data proveniente del formularioLogin:", formularioLogin);
+      loginUser(formularioLogin)
+        .then((data) => {
+          localStorage.setItem("authToken", data.data.token);
+          dispatch(setUser(data.data));
+          console.log(data.data);
+          navigate("/app");
+        })
+        .catch((e) => console.error("Error de red:", e.message));
+    } else {
+      console.error("Error de registro: el usuario no se pudo crear");
+      alert("Error de registro: el usuario no se pudo crear");
+    }
   };
 
   return (
