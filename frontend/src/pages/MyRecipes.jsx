@@ -25,11 +25,11 @@ export const MyRecipes = () => {
     );
   } else {
     return (
-      <div className="w-full flex justify-between mt-8 font-poppings">
+      <div className="md:w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings flex-wrap mx-6 md:mx-0">
         {userRecipes.map((recipe) => {
           return (
-            <div key={recipe.id} className="shadow-lg w-[47.5%] bg-stone-100">
-              <div className="rounded flex justify-center w-full">
+            <div key={recipe.id} className="shadow-lg mb-14 w-full lg:w-[47.5%] bg-stone-100">
+              <div className="rounded flex  w-full">
                 <div
                   style={{
                     backgroundImage: `url(${recipe.image})`,
@@ -44,14 +44,10 @@ export const MyRecipes = () => {
                     <h1 className="font-bold text-2xl mb-1">{recipe.name}</h1>
                     <p className="font-semibold text-base">{recipe.author}</p>
                   </div>
-                  <p className="mb-5">
-                    Punk IPA clone from the GF recipe library, this came out as close to an original
-                    beer that Ive brewed, genuinely nice beer, looks, smells, and most importantly
-                    tastes pretty close to the original...
-                  </p>{" "}
+                  <p className="mb-5"></p>{" "}
                   <Link
                     to={`/app/recipe/${recipe.id}`}
-                    className="block w-full text-center bg-secondary hover:bg-primary font-bold transition-colors text-white py-2"
+                    className="block w-full text-center bg-mostaza hover:bg-[#c39803] font-bold transition-colors text-white py-2"
                   >
                     Entrar
                   </Link>
