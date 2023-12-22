@@ -10,19 +10,18 @@ export const RecipeFavorites = () => {
 
   // TODO: agregar que no se en contraron recetas si favoriteRecipes is empty
 
-
   useEffect(() => {
-    getFavoritesFromUser(user.userID)
+    getFavoritesFromUser(user.user.id)
       .then((data) => {
         setFavoriteRecipes(data);
       })
       .catch((e) => console.log(e));
-  }, [user.userID]);
+  }, [user.user.id]);
 
   const handleRemoveRecipe = (recipeId) => {
-    removeFavoriteFromUser(user.userID, recipeId).then(() => {
+    removeFavoriteFromUser(user.user.id, recipeId).then(() => {
       // After successfully removing a favorite, re-fetch the favorites
-      getFavoritesFromUser(user.userID)
+      getFavoritesFromUser(user.user.id)
         .then((data) => {
           setFavoriteRecipes(data);
         })

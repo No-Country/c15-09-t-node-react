@@ -30,7 +30,8 @@ export const RecipeDetails = () => {
     const recetaDB = await getRecetaById(params.id);
     setReceta(recetaDB);
     // esto funciona bien
-    getFavoritesFromUser(user.userID).then((data) => {
+    getFavoritesFromUser(user.user.id).then((data) => {
+      console.log(user);
       setFavoriteRecipes(data);
     });
     await getOtherData(recetaDB.LevadurasReceta, recetaDB.Fermentables, recetaDB.LupulosReceta);
@@ -67,13 +68,13 @@ export const RecipeDetails = () => {
   }
 
   function handleAddFavoriteToUser() {
-    addFavoriteToUser(user.userID, parseInt(params.id))
+    addFavoriteToUser(user.user.id, parseInt(params.id))
       .then(() => setIsFavorite(!isFavorite))
       .catch((e) => console.log(e));
   }
 
   function handleRemoveFavoriteFromUser() {
-    removeFavoriteFromUser(user.userID, parseInt(params.id))
+    removeFavoriteFromUser(user.user.id, parseInt(params.id))
       .then(() => setIsFavorite(!isFavorite))
       .catch((e) => console.log(e));
   }

@@ -27,7 +27,7 @@ export const LoginForm = () => {
         console.log(data.data);
         navigate("/app");
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => console.error("Error de red:", e.message));
   };
 
   return (
