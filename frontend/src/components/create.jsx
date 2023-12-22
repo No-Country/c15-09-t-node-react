@@ -5,15 +5,18 @@ import { LevadurasSection } from "./createBeerComponents/LevadurasSection";
 import { AdicionesSection } from "./createBeerComponents/AdicionesSection";
 import bgForm from "../assets/images/bgForm.jpg";
 import { getAllStyles } from "../services/styles";
+import { useSelector } from "react-redux";
 
 
 export const Create = () => {
+  const user = useSelector((state) => state.user);
   const [estilos, setEstilos] = useState([]);
   useEffect(() => {
     getAllStyles().then((data) => setEstilos(data));
   }, []);
 
   const [recipeData, setRecipeData] = useState({
+
     name: "",
     author: "",
     image: "",
@@ -37,7 +40,8 @@ export const Create = () => {
     seccondaryFermentationTime: "",
     notes: "",
     EstiloId: "",
-    UserID: "",
+    UserID: user.id,
+    colorSRM: "",
     fermentables: [
       {
         MaltaId: "",
@@ -78,12 +82,28 @@ export const Create = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(recipeData);
+
+    try {
+      const response = await fetch("https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/crearReceta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recipeData),
+      });
+
+      if (response.ok) {
+        console.log("Receta enviada con éxito");
+        // Puedes redirigir o realizar otras acciones después de enviar con éxito
+      } else {
+        console.error("Error al enviar la receta:", response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error.message);
+    }
   };
-
-
 
 
 
@@ -122,7 +142,18 @@ export const Create = () => {
             />
           </label>
 
+          <label className=" w-full mb-4 block text-lg font-medium">
+            ColorSRM
+            <input
+              className="mt-1 p-2 border-2 text-black border-gray-light rounded-md w-full"
+              placeholder="Louis Pasteur"
+              name="colorSRM"
+              type="text"
+              value={recipeData.colorSRM}
+              onChange={handleChange}
 
+            />
+          </label>
 
           <label className=" w-full mb-4 block text-lg font-medium">
             Imagen
@@ -404,6 +435,7 @@ export const Create = () => {
           <button
             className="p-2 bg-[#1E8449] hover:bg-[#145A32] text-white rounded-md"
             type="submit"
+
           >
             Enviar Receta
           </button>

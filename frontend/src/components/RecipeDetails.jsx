@@ -30,8 +30,7 @@ export const RecipeDetails = () => {
     const recetaDB = await getRecetaById(params.id);
     setReceta(recetaDB);
     // esto funciona bien
-    getFavoritesFromUser(user.user.id).then((data) => {
-      console.log(user);
+    getFavoritesFromUser(user.id).then((data) => {
       setFavoriteRecipes(data);
     });
     await getOtherData(recetaDB.LevadurasReceta, recetaDB.Fermentables, recetaDB.LupulosReceta);
@@ -68,13 +67,13 @@ export const RecipeDetails = () => {
   }
 
   function handleAddFavoriteToUser() {
-    addFavoriteToUser(user.user.id, parseInt(params.id))
+    addFavoriteToUser(user.id, parseInt(params.id))
       .then(() => setIsFavorite(!isFavorite))
       .catch((e) => console.log(e));
   }
 
   function handleRemoveFavoriteFromUser() {
-    removeFavoriteFromUser(user.user.id, parseInt(params.id))
+    removeFavoriteFromUser(user.id, parseInt(params.id))
       .then(() => setIsFavorite(!isFavorite))
       .catch((e) => console.log(e));
   }
@@ -276,7 +275,7 @@ export const RecipeDetails = () => {
                       </div>
                     </div>
 
-                    <div className="w-full h-full order-1 mb-6 md:order-3 md:mb-0">
+                    <div className="w-36 md:w-full h-full order-1 mb-6  md:order-3 md:mb-0">
                       <ZoomImage
                         src={receta.image}
                         className="rounded-xl  "
