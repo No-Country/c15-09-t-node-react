@@ -17,6 +17,7 @@ export const RecipeFavorites = () => {
         console.log(favoriteRecipes);
       })
       .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id]);
 
   const handleRemoveRecipe = (recipeId) => {
