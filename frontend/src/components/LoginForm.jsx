@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/user";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/actions/userActions";
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [formulario, setFormulario] = useState({
     email: "",
@@ -19,9 +23,11 @@ export const LoginForm = () => {
     loginUser(formulario)
       .then((data) => {
         localStorage.setItem("authToken", data.data.token);
+        dispatch(setUser(data.data));
+        console.log(data.data);
         navigate("/app");
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => console.error("Error de red:", e.message));
   };
 
   return (

@@ -36,8 +36,8 @@ export const CardIndex = () => {
                     src={beerImage}
                     alt="Sunset in the mountains"
                   />
-                  <div className="px-6 py-4">
-                    <div className="font-bold  text-xl mb-2">{estilo.name}</div>
+                  <div className="px-6 py-4 bg-white">
+                    <div className="font-bold  text-xl mb-2 text-[#af3312]">{estilo.name}</div>
                     <p className="text-gray-700 text-base">{estilo.category}</p>
                   </div>
                 </div>{" "}

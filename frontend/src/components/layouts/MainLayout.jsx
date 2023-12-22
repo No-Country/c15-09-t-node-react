@@ -5,9 +5,9 @@ import Header from "../Header";
 
 export const MainLayout = () => {
   return (
-    <div className="h-screen flex flex-col justify-between">
+    <div className="">
       <Header />
-      <div className="container">
+      <div className="container min-h-screen">
         <Outlet />
       </div>
       <Footer />

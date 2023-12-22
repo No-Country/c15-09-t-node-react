@@ -5,7 +5,7 @@ import { DarkModeToggle } from "../assets/styles/components/DarkModeToggle";
 
 export default function Header() {
   return (
-    <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-[#f1c31cfd] text-[#684320] md:px-56 md:py-9 py-5">
+    <header className="flex  items-center lg:flex-row flex-col justify-between font-bold text-xl md:sticky  top-0 z-10 bg-mostaza text-[#684320] md:px-56 md:py-9 py-5">
       <div className="hidden ">
         <DarkModeToggle />
       </div>
@@ -24,15 +24,12 @@ export default function Header() {
             <li>
               <Link to={"/app/styles"}> Estilos </Link>
             </li>
-            <li>
-              <Link to={"/app/favorites"}> Favoritos </Link>
-            </li>
             <li className="md:block">
               <DarkModeToggle />
             </li>
             <li className="md:hidden block">
               <Link
-                className="bg-[#3b9d16] hover:bg-[#156e0f] transition-colors py-2 px-3 text-white font-bold rounded-lg"
+                className="bg-[#9d2c15] hover:bg-[#802411] transition-colors py-2 px-3 text-white font-bold rounded-lg"
                 to={"/app/create"}
               >
                 Crear
@@ -42,7 +39,7 @@ export default function Header() {
           <div className="flex md:gap-10 gap-10 items-center order-1 md:order-2">
             <li className="md:block hidden">
               <Link
-                className="bg-[#3b9d16] hover:bg-[#156e0f] transition-colors py-2 px-3 text-white font-bold rounded-lg"
+                className="bg-[#9d2c15] hover:bg-[#802411] transition-colors py-2 px-3 text-white font-bold rounded-lg"
                 to={"/app/create"}
               >
                 Crear

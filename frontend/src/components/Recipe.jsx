@@ -52,7 +52,7 @@ export const Recipe = () => {
           : // Renderizar datos cuando estén disponibles
             recetasPaginados.map((receta, index) => (
               <div key={index}>
-                <Link to={`/app/recipedetails/${receta.id}`}>
+                <Link to={`/app/recipe/${receta.id}`}>
                   <div className="w-48 hover:scale-110 transition-transform rounded h-full overflow-hidden shadow-lg">
                     <img
                       className="h-60 w-full object-cover"
