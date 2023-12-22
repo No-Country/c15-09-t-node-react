@@ -3,7 +3,8 @@ import { brewerApi } from "./brewerApi";
 export const createUser = async (userData) => {
   try {
     const response = await brewerApi.post("/users/register", userData);
-    return response.data;
+    console("esto viene del axios", response);
+    return response;
   } catch (error) {
     console.log(error);
   }
@@ -41,5 +42,10 @@ export const updateUser = async (id, userData) => {
 
 export const deleteUser = async (id) => {
   const { data } = brewerApi.delete(`/users/delete/${id}`);
+  return data;
+};
+
+export const getUserByToken = async (token) => {
+  const { data } = await brewerApi.get(`/login/token/${token}`);
   return data;
 };
