@@ -7,14 +7,10 @@ import bgForm from "../assets/images/bgForm.jpg";
 import { getAllStyles } from "../services/styles";
 
 export const Create = () => {
-
-
   const [estilos, setEstilos] = useState([]);
   useEffect(() => {
     getAllStyles().then((data) => setEstilos(data));
   }, []);
-
-
 
   const [recipeData, setRecipeData] = useState({
     name: "",
@@ -88,7 +84,12 @@ export const Create = () => {
 
   return (
     <div className="w-full mt-5 ">
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-around md:gap-5 p-4" method="POST" encType="multipart/form-data">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap justify-around md:gap-5 p-4"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <img
           className=" mt-9 rounded-xl overflow-hidden mb-4  flex justify-center items-center  w-full md:px-0"
           src={bgForm}
@@ -104,7 +105,6 @@ export const Create = () => {
               name="name"
               value={recipeData.name}
               onChange={handleChange}
-
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -116,9 +116,9 @@ export const Create = () => {
               type="text"
               value={recipeData.author}
               onChange={handleChange}
-
             />
           </label>
+
           <label className=" w-full mb-4 block text-lg font-medium">
             Imagen
             <input
@@ -128,7 +128,6 @@ export const Create = () => {
               name="image"
               value={recipeData.image}
               onChange={handleChange}
-
             />
           </label>
 
@@ -142,7 +141,6 @@ export const Create = () => {
               value={recipeData.alcoholByVolume}
               onChange={handleChange}
               placeholder="0.0"
-
             />
           </label>
 
@@ -155,7 +153,6 @@ export const Create = () => {
               value={recipeData.originalGravity}
               onChange={handleChange}
               placeholder="0.0"
-
             />
           </label>
 
@@ -168,7 +165,6 @@ export const Create = () => {
               value={recipeData.finalGravity}
               onChange={handleChange}
               placeholder="0.0"
-
             />
           </label>
 
@@ -181,7 +177,6 @@ export const Create = () => {
               value={recipeData.ibu}
               onChange={handleChange}
               placeholder="0"
-
             />
           </label>
 
@@ -194,7 +189,6 @@ export const Create = () => {
               value={recipeData.primaryFermentationTemperature}
               onChange={handleChange}
               placeholder="0"
-
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -206,7 +200,6 @@ export const Create = () => {
               value={recipeData.primaryFermentationTime}
               onChange={handleChange}
               placeholder="0.0"
-
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -218,7 +211,6 @@ export const Create = () => {
               value={recipeData.seccondaryFermentationTemperature}
               onChange={handleChange}
               placeholder="0"
-
             />
           </label>
           <label className=" w-full mb-4 block text-lg font-medium">
@@ -293,10 +285,6 @@ export const Create = () => {
               placeholder="10 minutos"
             />
           </label>
-
-
-
-
 
           <label className="w-full mb-4 block text-lg font-medium">
             Estilo
