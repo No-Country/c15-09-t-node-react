@@ -16,6 +16,9 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%231a202c.svg?&style=for-the-badge&logo=tailwind-css&logoColor=38b2ac)](https://tailwindcss.com/)
 [![Material UI](https://img.shields.io/badge/Material%20UI-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white)](https://material-ui.com/)
 [![React Icons](https://img.shields.io/badge/React%20Icons-%2361DAFB.svg?&style=for-the-badge&logo=react&logoColor=white)](https://react-icons.github.io/react-icons/) 
+[![vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/) 
+[![vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/) 
+
 
 #### 🧑‍💻 Developers:
 
