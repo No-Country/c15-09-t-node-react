@@ -15,7 +15,7 @@ export const loginUser = async (userData) => {
     console.log(response);
     return response;
   } catch (e) {
-    console.log(e);
+    console.error("Error de inicio de sesion:", e);
   }
 };
 

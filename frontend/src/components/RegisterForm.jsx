@@ -25,7 +25,10 @@ export const RegisterForm = () => {
         setToken(data.token);
         navigate("/app");
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.error(e);
+        alert("Error de registro: " + e.message);
+      });
   };
 
   return (
