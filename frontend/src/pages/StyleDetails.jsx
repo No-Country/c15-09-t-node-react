@@ -45,7 +45,7 @@ export const StyleDetails = () => {
           <img src={beerImage} alt={`${data.name}`} className="rounded-md" />
         </div>
         <div className="xl:ml-auto sm:ml-8 max-w-xl xl:mr-0 mx-2 sm:mx-8 md:w-1/2">
-          <div className="flex md:justify-start justify-center items-center">
+          <div className="flex text-center md:justify-start justify-center items-center">
             <h1 className="text-4xl font-bold mr-4">{data.name}</h1>
           </div>
           <div className="md:hidden max-w-xs sm:w-96 mx-auto">

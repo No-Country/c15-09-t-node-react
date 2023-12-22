@@ -32,11 +32,11 @@ export const RecipeFavorites = () => {
     return <h1>No se encontraron recetas favoritas</h1>;
   } else {
     return (
-      <div className="w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings">
+      <div className="md:w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings flex-wrap mx-6 md:mx-0">
         {favoriteRecipes.map((recipe) => {
           return (
             <div key={recipe.id} className="shadow-lg mb-14 w-full lg:w-[47.5%] bg-stone-100">
-              <div className="rounded flex justify-center w-full">
+              <div className="rounded flex  w-full">
                 <div
                   style={{
                     backgroundImage: `url(${recipe.image})`,
@@ -58,12 +58,12 @@ export const RecipeFavorites = () => {
                   </p>{" "}
                   <Link
                     to={`/app/recipe/${recipe.id}`}
-                    className="block w-full text-center bg-secondary hover:bg-primary font-bold transition-colors text-white py-2"
+                    className="block w-full text-center bg-mostaza hover:bg-[#c39803] font-bold transition-colors text-white py-2"
                   >
                     Entrar
                   </Link>
                   <button
-                    className="w-full text-center bg-red-900 font-bold hover:bg-zinc-600 transition-colors text-white py-2 mt-2"
+                    className="w-full text-center bg-primary font-bold hover:bg-secondary transition-colors text-white py-2 mt-2"
                     onClick={() => handleRemoveRecipe(recipe.id)}
                   >
                     Quitar de favoritos
