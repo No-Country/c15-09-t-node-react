@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export const Create = () => {
   const user = useSelector((state) => state.user);
-  console.log(user)
+
 
   const [estilos, setEstilos] = useState([]);
   useEffect(() => {
@@ -43,7 +43,7 @@ export const Create = () => {
     seccondaryFermentationTime: "",
     notes: "",
     EstiloId: "",
-    UserID: user.user.id,
+    UserID: user.id,
     colorSRM: "",
     fermentables: [
       {
@@ -89,9 +89,6 @@ export const Create = () => {
     e.preventDefault();
     console.log(recipeData);
   };
-
-
-
 
 
 
