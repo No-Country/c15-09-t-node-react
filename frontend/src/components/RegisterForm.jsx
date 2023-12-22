@@ -11,20 +11,30 @@ export const RegisterForm = () => {
     password: "",
     confirmpass: "",
   });
+
+  const [formularioLogin, setFormularioLogin] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario({ ...formulario, [name]: value });
+    if (name === "email" || name === "password") {
+      setFormularioLogin({ ...formularioLogin, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     createUser(formulario)
-      .then((data) => {
+      .then(() => {
         // TODO: por ahora!
-        loginUser(data)
+        console.log("esta es data proveniente del formularioLogin:", formularioLogin);
+        loginUser(formularioLogin)
           .then((data) => {
             localStorage.setItem("authToken", data.data.token);
             dispatch(setUser(data.data));

@@ -20,6 +20,7 @@ export const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log(formulario);
     loginUser(formulario)
       .then((data) => {
         localStorage.setItem("authToken", data.data.token);
@@ -32,8 +33,6 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="w-96 ">
-
-
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
           Email:
