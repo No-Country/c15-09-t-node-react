@@ -14,124 +14,125 @@ export const Create = () => {
     getAllStyles().then((data) => setEstilos(data));
   }, []);
 
-  const [recipeData, setRecipeData] = useState({
-    name: "Cerveza Tester",
-    author: "Julian Crack",
-    image: "https://i.imgur.com/GcJYO3Y.jpeg",
-    type: "All Grain",
-    alcoholByVolume: 6.5,
-    originalGravity: 1060.03,
-    finalGravity: 1.007,
-    ibu: 108.0,
-    colorSRM: 7,
-    batchSize: 23,
-    mashWaterAmount: 23.86,
-    spargeWaterAmount: 13.66,
-    boilSize: 25,
-    boilTime: 60,
-    mashTemperature: 66,
-    mashTime: 75,
-    mashOutTemperature: 75,
-    mashOutTime: 10,
-    primaryFermentationTemperature: 18,
-    primaryFermentationTime: 10,
-    seccondaryFermentationTemperature: null,
-    seccondaryFermentationTime: null,
-    notes: "Cerveza creada por el equipo de No Country para The Brewer's Cookbook.",
-    EstiloId: 56,
-    UserId: user.id,
-    fermentables: [
-      {
-        MaltaId: 5,
-        cantidad: 3.0,
-      },
-      {
-        MaltaId: 9,
-        cantidad: 5.5,
-      },
-    ],
-    lupulos: [
-      {
-        LupuloId: 5,
-        cantidad: 23.0,
-        uso: "Boil",
-        tiempo: 60,
-        ibu: 38,
-      },
-      {
-        LupuloId: 10,
-        cantidad: 10.7,
-        uso: "Dry Hop",
-        tiempo: 5,
-        ibu: 0,
-      },
-    ],
-    levadura: [
-      {
-        LevaduraId: 1,
-        cantidad: 1,
-      },
-    ],
-    adiciones: [],
-  });
-
   // const [recipeData, setRecipeData] = useState({
-  //   name: "",
-  //   author: "",
+  //   name: "Cerveza Tester",
+  //   author: "Julian Crack",
   //   image: "https://i.imgur.com/GcJYO3Y.jpeg",
   //   type: "All Grain",
-  //   alcoholByVolume: "",
-  //   originalGravity: "",
-  //   finalGravity: "",
-  //   ibu: "",
-  //   colorSRM: "",
-  //   batchSize: "",
-  //   mashWaterAmount: "",
-  //   spargeWaterAmount: "",
-  //   boilSize: "",
-  //   boilTime: "",
-  //   mashTemperature: "",
-  //   mashTime: "",
-  //   mashOutTemperature: "",
-  //   mashOutTime: "",
-  //   primaryFermentationTemperature: "",
-  //   primaryFermentationTime: "",
-  //   seccondaryFermentationTemperature: "",
-  //   seccondaryFermentationTime: "",
-  //   notes: "",
-  //   EstiloId: "",
+  //   alcoholByVolume: 6.5,
+  //   originalGravity: 1060.03,
+  //   finalGravity: 1.007,
+  //   ibu: 108.0,
+  //   colorSRM: 7,
+  //   batchSize: 23,
+  //   mashWaterAmount: 23.86,
+  //   spargeWaterAmount: 13.66,
+  //   boilSize: 25,
+  //   boilTime: 60,
+  //   mashTemperature: 66,
+  //   mashTime: 75,
+  //   mashOutTemperature: 75,
+  //   mashOutTime: 10,
+  //   primaryFermentationTemperature: 18,
+  //   primaryFermentationTime: 10,
+  //   seccondaryFermentationTemperature: null,
+  //   seccondaryFermentationTime: null,
+  //   notes: "Cerveza creada por el equipo de No Country para The Brewer's Cookbook.",
+  //   EstiloId: 56,
   //   UserId: user.id,
   //   fermentables: [
   //     {
-  //       MaltaId: "",
-  //       cantidad: "",
+  //       MaltaId: 5,
+  //       cantidad: 3.0,
+  //     },
+  //     {
+  //       MaltaId: 9,
+  //       cantidad: 5.5,
   //     },
   //   ],
   //   lupulos: [
   //     {
-  //       LupuloId: "",
-  //       cantidad: "",
-  //       uso: "",
-  //       tiempo: "",
-  //       ibu: "",
+  //       LupuloId: 5,
+  //       cantidad: 23.0,
+  //       uso: "Boil",
+  //       tiempo: 60,
+  //       ibu: 38,
+  //     },
+  //     {
+  //       LupuloId: 10,
+  //       cantidad: 10.7,
+  //       uso: "Dry Hop",
+  //       tiempo: 5,
+  //       ibu: 0,
   //     },
   //   ],
   //   levadura: [
   //     {
-  //       LevaduraId: "",
-  //       cantidad: "",
+  //       LevaduraId: 1,
+  //       cantidad: 1,
   //     },
   //   ],
-  //   adiciones: [
-  //     {
-  //       name: "",
-  //       type: "",
-  //       amount: "",
-  //       unit: "",
-  //       notes: "",
-  //     },
-  //   ],
+  //   adiciones: [],
   // });
+  const [uploadMessage, setUploadMessage] = useState(null);
+
+  const [recipeData, setRecipeData] = useState({
+    name: "",
+    author: "",
+    image: "",
+    type: "All Grain",
+    alcoholByVolume: "",
+    originalGravity: "",
+    finalGravity: "",
+    ibu: "",
+    colorSRM: "",
+    batchSize: "",
+    mashWaterAmount: "",
+    spargeWaterAmount: "",
+    boilSize: "",
+    boilTime: "",
+    mashTemperature: "",
+    mashTime: "",
+    mashOutTemperature: "",
+    mashOutTime: "",
+    primaryFermentationTemperature: "",
+    primaryFermentationTime: "",
+    seccondaryFermentationTemperature: "",
+    seccondaryFermentationTime: "",
+    notes: "",
+    EstiloId: "",
+    UserId: user.id,
+    fermentables: [
+      {
+        MaltaId: "",
+        cantidad: "",
+      },
+    ],
+    lupulos: [
+      {
+        LupuloId: "",
+        cantidad: "",
+        uso: "",
+        tiempo: "",
+        ibu: "",
+      },
+    ],
+    levadura: [
+      {
+        LevaduraId: "",
+        cantidad: "",
+      },
+    ],
+    adiciones: [
+      {
+        name: "",
+        type: "",
+        amount: "",
+        unit: "",
+        notes: "",
+      },
+    ],
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -170,7 +171,6 @@ export const Create = () => {
       const formData = new FormData();
       formData.append("image", recipeData.image);
 
-      // Realizar la solicitud POST al endpoint
       const response = await fetch(
         "https://brewerscookbookserver-dev-tear.2.us-1.fl0.io/recetas/img",
         {
@@ -179,19 +179,33 @@ export const Create = () => {
         }
       );
 
-      // Manejar la respuesta según sea necesario
       if (response.ok) {
-        // Éxito
-        console.log("Imagen enviada exitosamente.");
+        const imageUrl = await response.text(); // Obtener el enlace directamente
+
+        console.log("Imagen subida con éxito. Enlace:", imageUrl);
+
+        // Eliminar comillas adicionales y actualizar el estado con el mensaje de éxito
+        setUploadMessage("Imagen subida con éxito.");
+
+        // Eliminar comillas adicionales y actualizar el estado con la URL de la imagen
+        setRecipeData({
+          ...recipeData,
+          image: imageUrl.replace(/['"]+/g, ""), // Eliminar comillas adicionales
+        });
       } else {
-        // Error en la respuesta
-        console.error("Error al enviar la imagen.");
+        console.error("Error al subir la imagen:", response.status, response.statusText);
+
+        // Actualizar el estado con el mensaje de error
+        setUploadMessage("Error al subir la imagen. Por favor, intenta nuevamente.");
       }
     } catch (error) {
-      // Manejar errores de red u otros errores
-      console.error("Error de red al enviar la imagen:", error);
+      console.error("Error en la solicitud:", error.message);
+
+      // Actualizar el estado con el mensaje de error
+      setUploadMessage("Error en la solicitud. Por favor, intenta nuevamente.");
     }
   };
+
   return (
     <div className="w-full mt-5 ">
       <form
@@ -249,10 +263,24 @@ export const Create = () => {
               type="file"
               name="image"
               onChange={(e) => {
-                handleChange(e);
+                const file = e.target.files[0];
+                setRecipeData({
+                  ...recipeData,
+                  image: file,
+                });
               }}
             />
           </label>
+          {uploadMessage && (
+            <div
+              className={`text-center p-2 ${
+                uploadMessage.includes("éxito") ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {uploadMessage}
+            </div>
+          )}
+
           <button
             type="button"
             onClick={handlePicture}
