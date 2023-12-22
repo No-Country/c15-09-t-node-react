@@ -3,7 +3,7 @@ import { brewerApi } from "./brewerApi";
 export const createUser = async (userData) => {
   try {
     const response = await brewerApi.post("/users/register", userData);
-    console("esto viene del axios", response);
+    console.log("esto viene del axios", response);
     return response;
   } catch (error) {
     console.log(error);
