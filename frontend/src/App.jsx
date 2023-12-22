@@ -1,8 +1,8 @@
-import { RouterProvider, useNavigate } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { setUser } from "./redux/actions/userActions";
+// import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { setUser } from "./redux/actions/userActions";
 
 export const App = () => {
   // const dispatch = useDispatch();
