@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { createUser, loginUser } from "../services/user";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/actions/userActions";
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
   const [formulario, setFormulario] = useState({
     usuario: "",
     email: "",
@@ -7,54 +12,43 @@ export const RegisterForm = () => {
     confirmpass: "",
   });
 
-  const URL = "http://localhost:5001/users/register";
+  const [formularioLogin, setFormularioLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario({ ...formulario, [name]: value });
+    if (name === "email" || name === "password") {
+      setFormularioLogin({ ...formularioLogin, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formulario),
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Respuesta del servidor:", responseData);
-        // Puedes realizar acciones adicionales después de un registro exitoso
-      } else {
-        console.error("Error en la solicitud al backend:", response.statusText);
-        // Puedes manejar errores aquí
-      }
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
-      // Puedes manejar errores de red aquí
+    const userCreated = await createUser(formulario);
+    if (userCreated) {
+      console.log("esta es data proveniente del formularioLogin:", formularioLogin);
+      loginUser(formularioLogin)
+        .then((data) => {
+          localStorage.setItem("authToken", data.data.token);
+          dispatch(setUser(data.data));
+          console.log(data.data);
+          navigate("/app");
+        })
+        .catch((e) => console.error("Error de red:", e.message));
+    } else {
+      console.error("Error de registro: el usuario no se pudo crear");
+      alert("Error de registro: el usuario no se pudo crear");
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-96">
-      <button
-        className="bg-white w-full mb-2 hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-2xl border-2"
-        onClick={() => {
-          // Lógica de inicio de sesión con Google
-        }}
-      >
-        Registrarse con Google
-      </button>
-      <div className="inline-flex items-center justify-between w-full">
-        <hr className="w-44 h-px  bg-gray-400 border-0" />
-        <span className="font-medium text-gray-700">O</span>
-        <hr className="w-44 h-px  bg-gray-400 border-0 " />
-      </div>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">
           Usuario:

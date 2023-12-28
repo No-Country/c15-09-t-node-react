@@ -1,43 +1,77 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getFavoritesFromUser, removeFavoriteFromUser } from "../services/favorites";
+import { useEffect, useState } from "react";
+import "./RecipeFavorites.css";
 
 export const RecipeFavorites = () => {
-  const [recipesFavorites, setRecipesFavorites] = useState([
-    {
-      id: 61651,
-      imagen:
-        "https://cibart.com.ar/wp-content/uploads/2021/04/Curso-de-Elaboracion-de-Cervezas-Libres-de-Gluten-Modalidad-Online-1.png",
-      nombre: "Corona",
-      parrafo: "Descripción corta del objeto 1.",
-    },
-  ]);
+  const user = useSelector((state) => state.user);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
-  const handleDeleteFavorite = (id) => {
-    setRecipesFavorites(recipesFavorites.filter((recipe) => recipe.id !== id));
+  // TODO: agregar que no se en contraron recetas si favoriteRecipes is empty
+
+  useEffect(() => {
+    getFavoritesFromUser(user.id)
+      .then((data) => {
+        setFavoriteRecipes(data);
+        console.log(favoriteRecipes);
+      })
+      .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.id]);
+
+  const handleRemoveRecipe = (recipeId) => {
+    removeFavoriteFromUser(user.id, recipeId).then(() => {
+      // After successfully removing a favorite, re-fetch the favorites
+      getFavoritesFromUser(user.id)
+        .then((data) => {
+          setFavoriteRecipes(data);
+        })
+        .catch((e) => console.log(e));
+    });
   };
-
-  return (
-    <div className="w-full flex mt-8">
-      {recipesFavorites.map((recipe) => (
-        <div key={recipe.id} className="shadow-lg">
-          <Link to={"/app/recipedetails"}>
-            <div className="w-48 rounded overflow-hidden">
-              <img className="w-full" src={recipe.imagen} alt="Sunset in the mountains" />
-              <div className="px-6 py-4">
-                <div className="font-bold font-homemade text-xl mb-2">{recipe.nombre}</div>
-                <p className="text-gray-700 text-base">{recipe.parrafo}</p>
+  if (favoriteRecipes == null) {
+    return <h1>No se encontraron recetas favoritas</h1>;
+  } else {
+    return (
+      <div className="md:w-full h-auto flex flex-col lg:flex-row lg:justify-between mt-8 font-poppings flex-wrap mx-6 md:mx-0">
+        {favoriteRecipes.map((recipe) => {
+          return (
+            <div key={recipe.id} className="shadow-lg mb-14 w-full lg:w-[47.5%] bg-stone-100">
+              <div className="rounded flex  w-full">
+                <div
+                  style={{
+                    backgroundImage: `url(${recipe.image})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                  className="bg-cover w-[40%]"
+                  aria-label={recipe.name}
+                ></div>
+                <div className="pl-8 pt-8 pb-5 w-1/2 text-stone-800">
+                  <div className="mb-6 pb-6 border-b-2 border-stone-600">
+                    <h1 className="font-bold text-2xl mb-1">{recipe.name}</h1>
+                    <p className="font-semibold text-base">{recipe.author}</p>
+                  </div>
+                  <p className="mb-5"></p>{" "}
+                  <Link
+                    to={`/app/recipe/${recipe.id}`}
+                    className="block w-full text-center bg-mostaza hover:bg-[#c39803] font-bold transition-colors text-white py-2"
+                  >
+                    Entrar
+                  </Link>
+                  <button
+                    className="w-full text-center bg-primary font-bold hover:bg-secondary transition-colors text-white py-2 mt-2"
+                    onClick={() => handleRemoveRecipe(recipe.id)}
+                  >
+                    Quitar de favoritos
+                  </button>
+                </div>
               </div>
             </div>
-          </Link>
-
-          <button
-            className="w-full text-center bg-gray-dark hover:bg-zinc-600 transition-colors text-white py-2"
-            onClick={() => handleDeleteFavorite(recipe.id)}
-          >
-            Quitar de favoritos
-          </button>
-        </div>
-      ))}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
+  }
 };

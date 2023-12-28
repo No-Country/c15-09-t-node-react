@@ -12,7 +12,7 @@ export const Login = () => {
       </div>
 
       <div className="flex-1 p-8  flex flex-col justify-center items-center relative">
-        <h1 className="text-4xl font-bold mb-8">Iniciar Sesion</h1>
+        <h1 className="text-4xl font-bold mb-6">Iniciar Sesion</h1>
 
         <LoginForm />
         <Link to={"/register"} className="underline ">

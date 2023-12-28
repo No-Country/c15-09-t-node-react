@@ -5,7 +5,7 @@ export const FavoritesLayout = () => {
   return (
     <section className="">
       <ActionButtons />
-      <div className="h-[435px] max-h-[435px]">
+      <div className="">
         <Outlet />
       </div>
     </section>

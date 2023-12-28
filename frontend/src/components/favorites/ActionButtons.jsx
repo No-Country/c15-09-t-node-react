@@ -4,18 +4,18 @@ import { getLastPath } from "../../utils/path";
 
 const routes = [
   {
-    href: "/app/favorites/reciepes",
+    href: "/app/profile/recipeFavorites",
     text: "Recetas Favoritas",
   },
   {
-    href: "/app/favorites/styles",
-    text: "Estilos Favoritos",
+    href: "/app/profile/myRecipes",
+    text: "Mis recetas",
   },
 ];
 
 export const ActionButtons = () => {
   const location = useLocation();
-  const [currentPath, setCurrentPath] = useState("");
+  const [currentPath, setCurrentPath] = useState("/app/profile/recipeFavorites");
 
   useEffect(() => {
     setCurrentPath(getLastPath(location.pathname));
