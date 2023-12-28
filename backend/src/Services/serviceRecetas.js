@@ -1,23 +1,39 @@
-const { Recetas } = require('../db')
-
+const { Recetas, Fermentables, LevadurasReceta, LupulosReceta, AdicionesReceta, conn } = require('../db')
 const cloudinary = require('cloudinary').v2
 const multer = require('multer')
-const upload = multer({ dest: 'uploads' })
-const fs = require('fs')
+// const path = require('path')
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+
+const storage = new CloudinaryStorage({
+  cloudinary
+  /* params: {
+    folder: 'peticiones',
+    // allowed_formats: ['jpg', 'png'],
+    public_id: (req, file) => `${Date.now()}-${file.originalname}`
+  } */
+})
+const upload = multer({ storage })
+// const fs = require('fs')
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 const RectasServices = {
 
-  getAllRecetas: async () => {
+  getAllRecepies: async () => {
     try {
       const recetas = await Recetas.findAll()
 
       if (recetas.length === 0) {
-        return 'There are not recipes in the Data Base'
+        return 'There are not recepies in the Data Base'
       }
       return recetas
     } catch (error) {
       console.error(error)
-      throw new Error('Error fetching recipes')
+      throw new Error('Error fetching recepies')
     }
   },
   getRecetaById: async (id) => {
@@ -25,35 +41,35 @@ const RectasServices = {
       const response = await Recetas.findByPk(id, { include: { all: true, nested: true } })
 
       if (!response) {
-        return 'Cannot find the Recipe ID'
+        return 'Cannot find the Recepie ID'
       }
       return response
     } catch (error) {
       console.error(error)
-      throw new Error('Error fetching recipes')
+      throw new Error('Error fetching recepies')
     }
   },
-  updateReceta: async (id, updateData) => {
+  updateRecepie: async (id, updateData) => {
     try {
       const receta = await Recetas.findByPk(id)
 
       if (!receta) {
-        throw new Error(`Cannot update recipe with id: ${id} `)
+        throw new Error(`Cannot update recepie with id: ${id} `)
       }
 
-      const updatedRecipe = await Recetas.update(updateData)
+      const updatedRecepie = await Recetas.update(updateData)
 
-      return updatedRecipe
+      return updatedRecepie
     } catch (error) {
       console.error(error)
-      throw new Error('Error fetching recipe')
+      throw new Error('Error fetching recepie')
     }
   },
-  deleteReceta: async (id) => {
+  deleteRecepie: async (id) => {
     try {
       const response = await Recetas.findByPk(id)
       if (!response) {
-        throw new Error('Recipe not found')
+        throw new Error('Recepie not found')
       }
       await response.update({ isActive: false })
 
@@ -67,12 +83,15 @@ const RectasServices = {
     return new Promise((resolve, reject) => {
       upload.single('image')(req, res, async function (err) {
         if (err) {
-          console.log(err)
+          res.status(500).send(err)
         } else {
           try {
-            const result = await cloudinary.uploader.upload(req.file.path, function () {
-              fs.unlinkSync(req.file.path)
-            })
+            // console.log(req.body.data)
+
+            const result = await cloudinary.uploader.upload(req.file.path)
+
+            console.log(result.secure_url)
+
             resolve(result)
           } catch (error) {
             reject(error.message)
@@ -81,15 +100,17 @@ const RectasServices = {
       })
     })
   },
-  createNewReceta: async (recipeData, img) => {
+  createNewReceta: async (recipeData/*, img */) => {
+    const t = await conn.transaction()
     try {
       console.log(recipeData)
-      if (!recipeData || !img) {
+      if (!recipeData /* || !img */) {
         return 'Recipe information invalid'
       }
       const {
         name,
         author,
+        image,
         type,
         alcoholByVolume,
         originalGravity,
@@ -111,13 +132,18 @@ const RectasServices = {
         seccondaryFermentationTime,
         notes,
         EstiloId,
-        UserId
+        UserId,
+        fermentables,
+        lupulos,
+        levadura,
+        adiciones
+
       } = recipeData
 
       const newRecipe = await Recetas.create({
         name,
         author,
-        image: img,
+        image,
         type,
         alcoholByVolume,
         originalGravity,
@@ -141,10 +167,70 @@ const RectasServices = {
         EstiloId,
         UserId
       })
+
       if (newRecipe) {
+        // Añadir fermentables
+
+        const RecetaId = newRecipe.id
+        // fermentables.forEach(async malta => {
+        //   const {MaltaId, cantidad} = malta
+        //   const newFermentable = await Fermentables.create({MaltaId, RecetaId, cantidad })
+        //   console.log(newFermentable)
+        // });
+        if (fermentables && fermentables.length > 0) {
+          await Promise.all(
+            fermentables.map(async malta => {
+              const { MaltaId, cantidad } = malta
+              return Fermentables.create({ MaltaId, RecetaId, cantidad })
+            })
+          )
+        }
+        // lupulos.forEach(async lupulo => {
+        //   const {LupuloId, cantidad, uso, tiempo, ibu} = lupulo
+        //   const newLupulo = await LupulosReceta.create({cantidad, tiempo, ibu, uso, LupuloId, RecetaId})
+        //   console.log(newLupulo)
+        // });
+        if (lupulos && lupulos.length > 0) {
+          await Promise.all(
+            lupulos.map(async lupulo => {
+              const { LupuloId, cantidad, uso, tiempo, ibu } = lupulo
+              return LupulosReceta.create({ cantidad, tiempo, ibu, uso, LupuloId, RecetaId })
+            })
+          )
+        }
+        // levadura.forEach(async levadura => {
+        //   const {LevaduraId, cantidad} = levadura
+        //   const newLevadura = await LevadurasReceta.create({cantidad, LevaduraId, RecetaId })
+        //   console.log(newLevadura)
+        // });
+        if (levadura && levadura.length > 0) {
+          await Promise.all(
+            levadura.map(async levadura => {
+              const { LevaduraId, cantidad } = levadura
+              return LevadurasReceta.create({ cantidad, LevaduraId, RecetaId })
+            })
+          )
+        }
+        // adiciones.forEach(async adicion => {
+        //   const {name, type, amount, units, notes} = adicion
+        //   const newAdicion = await AdicionesReceta.create({name, type, amount, units, notes, RecetaId })
+        //   console.log(newAdicion)
+        // });
+        if (adiciones && adiciones.length > 0) {
+          await Promise.all(
+            adiciones.map(async adicion => {
+              const { name, type, amount, unit, notes } = adicion
+              return AdicionesReceta.create({ name, type, amount, unit, notes, RecetaId })
+            })
+          )
+        }
+        console.log(newRecipe)
+        // Commit the transaction
+        await t.commit()
         return 'Recipe Created Successfully'
       }
     } catch (error) {
+      await t.rollback()
       console.error(error)
       throw new Error('Error fetching Recipe')
     }

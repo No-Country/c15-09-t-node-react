@@ -11,9 +11,10 @@ const multer = require('multer')
 const upload = multer({ dest: 'uploads' })
 
 const ingredientesRoutes = require('./src/routes/routeIngredientes')
-const userRoutes = require('./src/routes/userRoutes')
+const userRoutes = require('./src/routes/user.routes')
 const estilosRoutes = require('./src/routes/routeEstilos')
 const recetasRoutes = require('./src/routes/recetasRoutes')
+const loginRoutes = require('./src/routes/login.routes')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -23,48 +24,13 @@ app.use('/ingredientes', ingredientesRoutes)
 app.use('/users', userRoutes)
 app.use('/estilos', estilosRoutes)
 app.use('/recetas', recetasRoutes)
+app.use('/login', loginRoutes)
 
 // TEST ______________________________________________________________________________
 app.get('/', (req, res) => {
   res.send('Bienvenido al servidor de Brewer\'s cookbook.')
 })
 
-app.post('/img', upload.single('image'), async (req, res) => {
-  try {
-    const result = await cloudinary.uploader.upload(req.file.path)
-    res.status(200).json(result)
-    // cuando guardemos en el modelo : result.url
-  } catch (error) {
-    console.log({ errorMessage: error.message })
-    return res.status(500).json({ message: error.message })
-  }
-})
-
-// app.get('/styles', async (req, res) => {
-//   try {
-//     const styles = await Estilos.findAll()
-//     if (!styles) {
-//       return res.status(404).json({ message: 'not found' })
-//     }
-//     return res.status(200).json(styles)
-//   } catch (error) {
-//     console.log({ errorMessage: error.message })
-//     return res.status(500).json({ message: error.message })
-//   }
-// })
-// app.get('/malts', async (req, res) => {
-//   try {
-//     const malts = await Maltas.findAll()
-//     if (!malts) {
-//       return res.status(404).json({ message: 'not found' })
-//     }
-//     return res.status(200).json(malts)
-//   } catch (error) {
-//     console.log({ errorMessage: error.message })
-//     return res.status(500).json({ message: error.message })
-//   }
-// })
-// END TEST ______________________________________________________________________________
 // conn.sync({ force: false })
 conn.sync({ alter: false })
   .then(() => {

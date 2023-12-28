@@ -1,43 +1,44 @@
 const RecetasService = require('../Services/serviceRecetas')
 
 const RecetasController = {
-  getAllRecetas: async (req, res) => {
+  getAllRecepies: async (req, res) => {
     try {
-      const recepies = await RecetasService.getAllRecetas()
+      const recepies = await RecetasService.getAllRecepies()
       res.json(recepies)
     } catch (error) {
       console.error(error)
       res.status(500).send('Internal Server Error')
     }
   },
-  getRecetaById: async (req, res) => {
+  getRecepieById: async (req, res) => {
     const { id } = req.params
     try {
-      const recipe = await RecetasService.getRecetaById(id)
-      res.status(200).json(recipe)
+      const recepie = await RecetasService.getRecetaById(id)
+      res.status(200).json(recepie)
     } catch (error) {
       res.status(500).send({ message: error.message })
     }
   },
-  /* createImg: async (req, res) => {
+  createImg: async (req, res) => {
     try {
       const imagen = await RecetasService.createImg(req, res)
       console.log(imagen.secure_url)
+      res.status(200).json(imagen.secure_url)
     } catch (error) {
       console.error(error)
       res.status(500).json({ error: 'Error uploading image' })
     }
-  }, */
-  createNewReceta: async (req, res) => {
-    const recipeData = req.body
+  },
+  createNewRecepie: async (req, res) => {
+    const recipeData = req.body.data
     console.log(recipeData)
     try {
-      const imagen = await RecetasService.createImg(req, res)
-      console.log(imagen.secure_url)
-      const newRecipe = await RecetasService.createNewReceta(recipeData, imagen.secure_url)
+      // const imagen = await RecetasService.createImg(req, res)
+      // console.log(imagen.secure_url)
+      const newRecipe = await RecetasService.createNewReceta(recipeData/*, imagen.secure_url */)
       console.log(newRecipe)
       res.status(201).json({
-        message: 'Recipe created sucessfully',
+        message: 'image and receta created sucessfully',
         newRecipe
       })
     } catch (error) {
